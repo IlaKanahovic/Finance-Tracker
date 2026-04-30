@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+:root {
+  --bg: #0a0a0a;
+  --card-bg: #1a1a1a;
+  --text-main: #ffffff;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-main);
+  font-family: "Source Code Pro", monospace;
+  padding: 30px;
+  padding-top: 20px;
+}
