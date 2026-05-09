@@ -4,6 +4,6 @@ type Props = {
 
 export function ExpensesTitle(props: Props) {
     return (
-        <p className="text-sm font-medium text-gray-500"> {props.title} </p>
+        <p className="text-sm font-medium text-gray-500 "> {props.title} </p>
     )
 }

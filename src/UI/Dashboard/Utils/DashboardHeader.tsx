@@ -1,5 +1,5 @@
 import { FaBookOpen } from "react-icons/fa";
-import { IoIosNotifications } from "react-icons/io";
+import { FaMoon } from "react-icons/fa6";
 import { MdAccountCircle } from "react-icons/md";
 
 export function DashboardHeader() {
@@ -13,7 +13,7 @@ export function DashboardHeader() {
             <h1>Dashboard</h1>
             <div>
                 <button className={btnHeader}>
-                    <IoIosNotifications />
+                    <FaMoon />
                 </button>
                 <button className={btnHeader}>
                     <MdAccountCircle />

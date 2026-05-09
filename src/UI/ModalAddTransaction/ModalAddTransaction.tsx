@@ -1,0 +1,25 @@
+import { FaBookOpen } from "react-icons/fa";
+import { ModalFormTransaction } from "./ModalFormTransaction";
+import type { Props } from "./ModalButtonsForm";
+
+
+export function ModalAddTransaction(props: Props) {
+    return (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+            <div className="bg-[#0A0A0A] border border-[#333333] rounded-2xl p-8 w-full max-w-2xl shadow-2xl">
+                <div className="flex justify-between items-center mb-8">
+                    <h1 className="text-4xl font-normal text-white tracking-tight">
+                        Add Transaction
+                    </h1>
+                    <FaBookOpen className="text-4xl transition-colors" />
+                </div>
+
+                <ModalFormTransaction
+                    isOpen={props.isOpen}
+                    onClose={props.onClose}
+                />
+            </div>
+        </div>
+    )
+}
+

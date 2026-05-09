@@ -4,7 +4,7 @@ import { CardMonthlyChangeDashboard } from "./Dashboard-Cards/CardMonthlyChangeD
 import { DashboardHeader } from "./Utils/DashboardHeader";
 import { Filters } from "./Filters/Filters";
 import { ExpensesMenu } from "./Dashboard-Menu-Expenses/ExpensesMenu";
-import { ButtonAddTransition } from "./Utils/ButtonAddTransition";
+import { ButtonAddTransition } from "./Utils/ButtonAddTransaction";
 
 export function Dashboard() {
     return (
