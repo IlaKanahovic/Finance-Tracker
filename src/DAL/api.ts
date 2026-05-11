@@ -2,7 +2,7 @@
 export type GetTransactions = {
     id: string
     date: string
-    titleDesc: string
+    title: string
     description: string
     category: string
     amount: string

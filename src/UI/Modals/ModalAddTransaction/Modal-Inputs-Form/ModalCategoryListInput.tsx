@@ -1,6 +1,7 @@
 import Select from "react-select";
-import { categoryOptions } from "../../assets/static-files/categoryOptionsByModalTransaction";
-import { customStylesForReactSelect } from "../../assets/static-files/customStylesForReactSelect";
+import { categoryOptions } from "../../../../assets/static-files/categoryOptionsByModalTransaction";
+import { customStylesForReactSelect } from "../../../../assets/static-files/customStylesForReactSelect";
+
 
 export function ModalCategoryListInput(props: { setCategory: (value: string) => void } ) {
     return (

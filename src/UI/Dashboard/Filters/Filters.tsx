@@ -1,7 +1,8 @@
 import { FaSearch } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import { ButtonFiltersDays } from "./ButtonFiltersDays";
-import { ButtonFiltersRight } from "./ButtonFiltersRight";
+import { ButtonFiltersExport } from "./ButtonFiltersExport";
+import { ButtonFiltersAddTransaction } from "./ButtonFiltersAddTransaction";
 
 export function Filters() {
     return (
@@ -45,8 +46,8 @@ export function Filters() {
                 </div>
 
                 <div className="flex items-center gap-2 shrink-0">
-                    <ButtonFiltersRight name={"Export"} />
-                    <ButtonFiltersRight name={"New Transaction"} />
+                    <ButtonFiltersExport />
+                    <ButtonFiltersAddTransaction />
                 </div>
             </div>
         </div>

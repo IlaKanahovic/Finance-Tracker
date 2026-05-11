@@ -1,29 +1,4 @@
 {
-  "transactions": [
-    {
-      "date": "09/05/2026",
-      "title": "Hool",
-      "description": "Купил продукты",
-      "category": "🚚 Food Delivery",
-      "amount": "+$254.214",
-      "id": "R9_INrlKzMA"
-    },
-    {
-      "date": "09/05/2026",
-      "title": "ААА",
-      "description": "ПЫУПЦУП",
-      "category": "💰 Income - Salary",
-      "amount": "+$0.42",
-      "id": "G-dANbh5cbM"
-    },
-    {
-      "date": "09/05/2026",
-      "title": "АЫА",
-      "description": "ЫАЫАФ",
-      "category": "👥 Transfer to Friend",
-      "amount": "+$123",
-      "id": "4NIYDsH86NE"
-    }
-  ],
+  "transactions": [],
   "$schema": "./node_modules/json-server/schema.json"
 }

@@ -1,4 +1,4 @@
-import { type TransactionFormData } from "./useFormTransations"
+import type { TransactionFormData } from "../BLL/useFormTransations";
 
 export const handleSubmit = (
     transactionsValueForm: TransactionFormData,

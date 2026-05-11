@@ -1,10 +1,11 @@
-import { ModalAmountInput } from "./ModalAmountInput"
+import { useFormTransations } from "../../../BLL/useFormTransations"
+import { handleSubmit } from "../../../DAL/submitTransaction"
+import { ModalAmountInput } from "./Modal-Inputs-Form/ModalAmountInput"
+import { ModalCategoryListInput } from "./Modal-Inputs-Form/ModalCategoryListInput"
+import { ModalDescriptionInput } from "./Modal-Inputs-Form/ModalDescriptionInput"
+import { ModalTitleInput } from "./Modal-Inputs-Form/ModalTitleInput"
 import { ModalButtonsForm, type Props } from "./ModalButtonsForm"
-import { ModalCategoryListInput } from "./ModalCategoryListInput"
-import { ModalDescriptionInput } from "./ModalDescriptionInput"
-import { useFormTransations } from "../../BLL/useFormTransations"
-import { ModalTitleInput } from "./ModalTitleInput"
-import { handleSubmit } from "../../BLL/useSubmitTransaction"
+
 
 export function ModalFormTransaction(props: Props) {
     const transactionsValueForm = useFormTransations()

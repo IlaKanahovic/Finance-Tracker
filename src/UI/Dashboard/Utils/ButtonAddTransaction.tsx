@@ -1,6 +1,6 @@
 import { FaPlus } from "react-icons/fa6";
-import { ModalAddTransaction } from "../../ModalAddTransaction/ModalAddTransaction";
 import { useButtonTransaction } from "../../../BLL/useButtonAddTransaction";
+import { ModalAddTransaction } from "../../Modals/ModalAddTransaction/ModalAddTransaction";
 
 export function ButtonAddTransition() {
     const { openModalAddTransaction, setOpenModalAddTransaction } = useButtonTransaction()
