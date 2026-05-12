@@ -1,4 +1,21 @@
 {
-  "transactions": [],
+  "transactions": [
+    {
+      "date": "12/05/2026",
+      "title": "ыап",
+      "description": "пвпв",
+      "category": "💰 Income - Salary",
+      "amount": "$+543",
+      "id": "m1KKuSo-PwY"
+    },
+    {
+      "date": "12/05/2026",
+      "title": "ааа",
+      "description": "фапып",
+      "category": "💰 Income - Salary",
+      "amount": "$-244",
+      "id": "xmYCu62ryKw"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

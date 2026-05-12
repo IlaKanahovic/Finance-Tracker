@@ -3,6 +3,8 @@ import { ButtonsChangeAndRemoveTransaction } from "../../Modals/ModalAddTransact
 import { ModalDeleteTransaction } from "../../Modals/ModalDeleteTransaction/ModalDeleteTransaction"
 import { useShowActions } from "../../../BLL/useShowActions"
 import { useShowDeleteModal } from "../../../BLL/useShowDeleteModal"
+import { useState } from "react"
+import { ModalChangeTransaction } from "../../Modals/ModalChangeTransaction/ModalChangeTransaction"
 
 type Props = {
     data: GetTransactions
@@ -11,6 +13,8 @@ type Props = {
 export function ExpensesItem(props: Props) {
     const { showActions, setShowActions } = useShowActions()
     const { showDeleteModal, setShowDeleteModal } = useShowDeleteModal()
+
+    const [showChangeModal, setShowChangeModal] = useState(false)
 
     return (
         <div key={props.data.id} className="p-4 sm:p-0">
@@ -57,6 +61,10 @@ export function ExpensesItem(props: Props) {
                             setShowActions(false)
                             setShowDeleteModal(true)
                         }}
+                        onChangeClick={() => {
+                            setShowActions(false)
+                            setShowChangeModal(true)
+                        }}
                     />
                 )}
                 <p className="text-white text-sm truncate">
@@ -84,6 +92,13 @@ export function ExpensesItem(props: Props) {
                 <ModalDeleteTransaction
                     dataId={props.data.id}
                     onClose={() => setShowDeleteModal(false)}
+                />
+            )}
+
+            {showChangeModal && (
+                <ModalChangeTransaction
+                    data={props.data}
+                    onClose={() => setShowChangeModal(false)}
                 />
             )}
         </div>

@@ -1,7 +1,9 @@
-import type { TransactionFormData } from "../BLL/useFormTransations";
+import type { TransactionFormData } from "../BLL/useChangeTransactionForm";
+import type { GetTransactions } from "./api";
 
-export const handleSubmit = (
+export const handleChange = (
     transactionsValueForm: TransactionFormData,
+    data: GetTransactions,
     onClose: () => void
 ) => {
     return (event: React.FormEvent<HTMLFormElement>) => {
@@ -12,31 +14,24 @@ export const handleSubmit = (
             return ind > 0 ? '+' : '';
         }
 
-        const date = new Date();
-        const formattedDate = date.toLocaleDateString('en-GB', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit'
-        })
-
-        const newTransaction = {
-            date: formattedDate,
+        const changeTransaction = {
+            date: data.date,
             title: transactionsValueForm.handleTitleChange,
             description: transactionsValueForm.handleDescriptionChange,
             category: transactionsValueForm.handleCategoryChange,
             amount: '$' + indicator() + transactionsValueForm.handleAmountChange,
         }
 
-        fetch('http://localhost:3001/transactions', {
-            method: 'POST',
+        fetch(`http://localhost:3001/transactions/${data.id}`, {
+            method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newTransaction)
+            body: JSON.stringify(changeTransaction)
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                onClose()
-            })
-            .catch(er => console.error('Error submit:', er))
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            onClose()
+        })
+        .catch(er => console.log('ERROR CHANGE', er))
     }
 }
