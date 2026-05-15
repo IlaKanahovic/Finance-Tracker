@@ -6,6 +6,7 @@ import { ModalChangeButtonsForm } from "./ModalChangeInputsTransaction/ModalChan
 import { useChangeTransationsForm } from "../../../BLL/useChangeTransactionForm";
 import { handleChange } from "../../../DAL/changeTransaction";
 import type { GetTransactions } from "../../../DAL/api";
+import { ModalChangeCurrencyInput } from "./ModalChangeInputsTransaction/ModalChangeCurrencyInput";
 
 type ModalDeleteTransactionProps = {
     data: GetTransactions
@@ -13,7 +14,7 @@ type ModalDeleteTransactionProps = {
 }
 
 export function ModalChangeTransaction(props: ModalDeleteTransactionProps) {
-    const transactionsValueForm = useChangeTransationsForm()
+    const transactionsValueForm = useChangeTransationsForm(props.data)
 
     return (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
@@ -21,10 +22,11 @@ export function ModalChangeTransaction(props: ModalDeleteTransactionProps) {
                 <div>
                     <h1 className="text-2xl text-white mb-8">Сhange the transaction</h1>
                     <form onSubmit={handleChange(transactionsValueForm, props.data, props.onClose)}>
-                        <ModalChangeTitleInput setTitle={transactionsValueForm.setHandleTitleChange}/>
-                        <ModalChangeDescInput setDesc={transactionsValueForm.setHandleDescriptionChange}/>
-                        <ModalChangeCategotyInput setCategory={transactionsValueForm.setHandleCategoryChange}/>
-                        <ModalChangeAmountInput setAmount={transactionsValueForm.setHandleAmountChange}/>
+                        <ModalChangeTitleInput setTitle={transactionsValueForm.setHandleTitleChange} title={transactionsValueForm.handleTitleChange}/>
+                        <ModalChangeDescInput setDesc={transactionsValueForm.setHandleDescriptionChange} description={transactionsValueForm.handleDescriptionChange}/>
+                        <ModalChangeCategotyInput setCategory={transactionsValueForm.setHandleCategoryChange} category={transactionsValueForm.handleCategoryChange}/>
+                        <ModalChangeCurrencyInput setCurrency={transactionsValueForm.setHandleCurrencyChange} currency={transactionsValueForm.handleCurrencyChange}/>
+                        <ModalChangeAmountInput setAmount={transactionsValueForm.setHandleAmountChange} amount={transactionsValueForm.handleAmountChange}/>
                         <ModalChangeButtonsForm onClose={props.onClose} />
                     </form>
                 </div>

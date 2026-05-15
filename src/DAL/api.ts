@@ -5,6 +5,7 @@ export type GetTransactions = {
     title: string
     description: string
     category: string
+    currency: string
     amount: string
 }
 

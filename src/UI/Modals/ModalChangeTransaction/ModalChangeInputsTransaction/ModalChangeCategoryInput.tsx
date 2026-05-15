@@ -1,8 +1,24 @@
-import Select from "react-select";
-import { categoryOptions } from "../../../../assets/static-files/categoryOptionsByModalTransaction";
+import Select, { type SingleValue } from "react-select";
+import { categoryOptions } from "../../../../assets/static-files/categoryOptions";
 import { customStylesForReactSelect } from "../../../../assets/static-files/customStylesForReactSelect";
 
-export function ModalChangeCategotyInput(props: { setCategory: (value: string) => void }) {
+type CategoryOption = {
+    value: string;
+    label: string;
+};
+
+type ModalChangeCategotyInputType = {
+    setCategory: (value: string) => void
+    category: string
+}
+
+export function ModalChangeCategotyInput(props: ModalChangeCategotyInputType) {
+    const selectedOption = categoryOptions.find(option => option.value === props.category);
+
+    const handleChange = (selectedOption: SingleValue<CategoryOption>) => {
+        props.setCategory(selectedOption?.value || '');
+    };
+
     return (
         <div className='mt-4'>
             <label
@@ -10,13 +26,15 @@ export function ModalChangeCategotyInput(props: { setCategory: (value: string) =
                 className="text-xl text-white font-medium block mb-2"
             > Category
             </label>
-            <Select
+            <Select<CategoryOption>
                 options={categoryOptions}
                 styles={customStylesForReactSelect}
                 placeholder="Select category..."
                 id="category"
                 instanceId="category-select"
-                onChange={(selectedOption) => props.setCategory(selectedOption?.value || '')}
+                required
+                value={selectedOption}
+                onChange={handleChange}
             />
         </div>
     )

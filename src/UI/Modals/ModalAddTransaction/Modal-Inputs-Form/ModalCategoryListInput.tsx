@@ -1,5 +1,5 @@
 import Select from "react-select";
-import { categoryOptions } from "../../../../assets/static-files/categoryOptionsByModalTransaction";
+import { categoryOptions } from "../../../../assets/static-files/categoryOptions";
 import { customStylesForReactSelect } from "../../../../assets/static-files/customStylesForReactSelect";
 
 
@@ -17,6 +17,7 @@ export function ModalCategoryListInput(props: { setCategory: (value: string) => 
                 placeholder="Select category..."
                 id="category"
                 instanceId="category-select"
+                required
                 onChange={(selectedOption) => props.setCategory(selectedOption?.value || '')}
             />
         </div>

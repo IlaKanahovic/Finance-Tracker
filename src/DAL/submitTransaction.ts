@@ -1,3 +1,4 @@
+import { getCurrencySymbol } from "../assets/static-files/getCurrencySymbol";
 import type { TransactionFormData } from "../BLL/useFormTransations";
 
 export const handleSubmit = (
@@ -12,6 +13,8 @@ export const handleSubmit = (
             return ind > 0 ? '+' : '';
         }
 
+        const currencySymbol  = getCurrencySymbol(transactionsValueForm.handleCurrencyChange)
+
         const date = new Date();
         const formattedDate = date.toLocaleDateString('en-GB', {
             year: 'numeric',
@@ -24,7 +27,8 @@ export const handleSubmit = (
             title: transactionsValueForm.handleTitleChange,
             description: transactionsValueForm.handleDescriptionChange,
             category: transactionsValueForm.handleCategoryChange,
-            amount: '$' + indicator() + transactionsValueForm.handleAmountChange,
+            currency: transactionsValueForm.handleCurrencyChange,
+            amount: currencySymbol + indicator() + transactionsValueForm.handleAmountChange,
         }
 
         fetch('http://localhost:3001/transactions', {

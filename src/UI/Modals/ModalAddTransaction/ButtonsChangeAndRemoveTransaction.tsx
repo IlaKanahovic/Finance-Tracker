@@ -1,17 +1,17 @@
 import { ModalDeleteTransactionButtonChange } from "../ModalChangeTransaction/ModalChangeTransactionButtonChange"
 import { ModalDeleteTransactionButtonDelete } from "../ModalDeleteTransaction/ModalDeleteTransactionButtonDelete"
 
-type ButtonsChangeAndRemoveTransactionProps  = {
+type ButtonsChangeAndRemoveTransactionProps = {
     actions: () => void
     onDeleteClick: () => void
     onChangeClick: () => void
 }
 
-export function ButtonsChangeAndRemoveTransaction(props: ButtonsChangeAndRemoveTransactionProps ) {
+export function ButtonsChangeAndRemoveTransaction(props: ButtonsChangeAndRemoveTransactionProps) {
     return (
-        <div className="flex absolute bottom-8.5 left-30">
+        <div className="flex gap-2 justify-center">
             <ModalDeleteTransactionButtonDelete onDeleteClick={props.onDeleteClick} />
-            <ModalDeleteTransactionButtonChange onChangeClick={props.onChangeClick}/>
+            <ModalDeleteTransactionButtonChange onChangeClick={props.onChangeClick} />
         </div>
     )
 }

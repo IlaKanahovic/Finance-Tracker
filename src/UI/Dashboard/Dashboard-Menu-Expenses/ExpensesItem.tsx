@@ -3,8 +3,9 @@ import { ButtonsChangeAndRemoveTransaction } from "../../Modals/ModalAddTransact
 import { ModalDeleteTransaction } from "../../Modals/ModalDeleteTransaction/ModalDeleteTransaction"
 import { useShowActions } from "../../../BLL/useShowActions"
 import { useShowDeleteModal } from "../../../BLL/useShowDeleteModal"
-import { useState } from "react"
 import { ModalChangeTransaction } from "../../Modals/ModalChangeTransaction/ModalChangeTransaction"
+import { useShowChangeModal } from "../../../BLL/useShowChangeModal"
+import { useEffect, useRef } from "react"
 
 type Props = {
     data: GetTransactions
@@ -13,59 +14,91 @@ type Props = {
 export function ExpensesItem(props: Props) {
     const { showActions, setShowActions } = useShowActions()
     const { showDeleteModal, setShowDeleteModal } = useShowDeleteModal()
+    const { showChangeModal, setShowChangeModal } = useShowChangeModal()
 
-    const [showChangeModal, setShowChangeModal] = useState(false)
+    const refContainer = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        const handleClick = (event: MouseEvent) => {
+            if (refContainer.current && !refContainer.current.contains(event.target as Node)) {
+                setShowActions(false)
+            }
+        }
+
+        document.addEventListener('click', handleClick)
+        return () => document.removeEventListener('click', handleClick)
+    }, [])
 
     return (
-        <div key={props.data.id} className="p-4 sm:p-0">
+        <div key={props.data.id} ref={refContainer} className="relative p-4 sm:p-0">
+
             {/* mobile */}
-            <div className="block sm:hidden space-y-2 cursor-pointer">
-                <div className="flex justify-between items-start">
-                    <span className="text-gray-400 text-xs">DATE</span>
-                    <p className="text-white text-sm font-medium">{props.data.date}</p>
-                </div>
-                <div className="space-y-1 mt-3">
+            <div className="block sm:hidden relative">
+                {showActions && (
+                    <div className="absolute inset-0 bg-black/70 rounded-lg flex items-center justify-center gap-4 z-10">
+                        <ButtonsChangeAndRemoveTransaction
+                            actions={() => setShowActions(false)}
+                            onDeleteClick={() => {
+                                setShowActions(false)
+                                setShowDeleteModal(true)
+                            }}
+                            onChangeClick={() => {
+                                setShowActions(false)
+                                setShowChangeModal(true)
+                            }}
+                        />
+                    </div>
+                )}
+                <div className="space-y-2 cursor-pointer" onDoubleClick={() => setShowActions(true)}>
                     <div className="flex justify-between items-start">
-                        <span className="text-gray-400 text-xs">DESCRIPTION</span>
-                        <p className="text-white text-sm font-medium text-right max-w-[60%] wrap-break-word">
-                            {props.data.title}
+                        <span className="text-gray-400 text-xs">DATE</span>
+                        <p className="text-white text-sm font-medium">{props.data.date}</p>
+                    </div>
+                    <div className="space-y-1 mt-3">
+                        <div className="flex justify-between items-start">
+                            <span className="text-gray-400 text-xs">DESCRIPTION</span>
+                            <p className="text-white text-sm font-medium text-right max-w-[60%] wrap-break-words">
+                                {props.data.title}
+                            </p>
+                        </div>
+                        {props.data.description && (
+                            <p className="text-gray-500 text-xs text-right pl-[30%]">
+                                {props.data.description}
+                            </p>
+                        )}
+                    </div>
+                    <div className="flex justify-between items-center mt-3">
+                        <span className="text-gray-400 text-xs">CATEGORY</span>
+                        <p className="text-white/70 text-sm">{props.data.category}</p>
+                    </div>
+                    <div className="flex justify-between items-center pt-2 border-t border-[#2a2a2a]">
+                        <span className="text-gray-400 text-xs">AMOUNT</span>
+                        <p className="text-white font-mono text-lg font-bold">
+                            {props.data.amount}
                         </p>
                     </div>
-                    {props.data.description && (
-                        <p className="text-gray-500 text-xs text-right pl-[30%]">
-                            {props.data.description}
-                        </p>
-                    )}
-                </div>
-                <div className="flex justify-between items-center mt-3">
-                    <span className="text-gray-400 text-xs">CATEGORY</span>
-                    <p className="text-white/70 text-sm">{props.data.category}</p>
-                </div>
-                <div className="flex justify-between items-center pt-2 border-t border-[#2a2a2a]">
-                    <span className="text-gray-400 text-xs">AMOUNT</span>
-                    <p className="text-white font-mono text-lg font-bold">
-                        {props.data.amount}
-                    </p>
                 </div>
             </div>
 
             {/* desktop */}
             <div
-                className="hidden relative sm:grid sm:grid-cols-[1fr_2fr_1.2fr_1fr] items-center py-3 px-2 cursor-pointer"
+                className="hidden sm:relative sm:grid sm:grid-cols-[1fr_2fr_1.2fr_1fr] items-center py-3 px-2 cursor-pointer"
                 onDoubleClick={() => setShowActions(true)}
             >
                 {showActions && (
-                    <ButtonsChangeAndRemoveTransaction
-                        actions={() => setShowActions(false)}
-                        onDeleteClick={() => {
-                            setShowActions(false)
-                            setShowDeleteModal(true)
-                        }}
-                        onChangeClick={() => {
-                            setShowActions(false)
-                            setShowChangeModal(true)
-                        }}
-                    />
+                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center gap-4 rounded-lg z-10">
+                        <ButtonsChangeAndRemoveTransaction
+                            actions={() => setShowActions(false)}
+                            onDeleteClick={() => {
+                                setShowActions(false)
+                                setShowDeleteModal(true)
+                            }}
+                            onChangeClick={() => {
+                                setShowActions(false)
+                                setShowChangeModal(true)
+                            }}
+                        />
+                    </div>
                 )}
                 <p className="text-white text-sm truncate">
                     {props.data.date}
@@ -104,3 +137,5 @@ export function ExpensesItem(props: Props) {
         </div>
     )
 }
+
+
