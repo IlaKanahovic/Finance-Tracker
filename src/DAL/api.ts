@@ -6,7 +6,7 @@ export type GetTransactions = {
     description: string
     category: string
     currency: string
-    amount: string
+    amount: string 
 }
 
 export const getTransactions = () => {

@@ -2,21 +2,21 @@
   "transactions": [
     {
       "date": "15/05/2026",
-      "title": "sdgs",
-      "description": "dsgsdg",
-      "category": "🎁 Income - Gift",
+      "title": "hhhhhhhhhhhh",
+      "description": "Sports events basketball buy banner",
+      "category": "⚽ Sports Events",
       "currency": "USD",
-      "amount": "$+41424",
-      "id": "0IUlyfs4488"
+      "amount": "$+245",
+      "id": "nlE6aWv1T-U"
     },
     {
-      "date": "15/05/2026",
-      "title": "asfas",
-      "description": "asfe4ggwr",
-      "category": "💼 Income - Freelance",
-      "currency": "RUB",
-      "amount": "₽+9888",
-      "id": "9JBzx0nzVfE"
+      "date": "18/05/2026",
+      "title": "sfagf",
+      "description": "asfasfasf",
+      "category": "📈 Income - Investment",
+      "currency": "EUR",
+      "amount": "€+54",
+      "id": "coFWqX7ofw8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

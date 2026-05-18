@@ -24,7 +24,7 @@ export default function ExpensesItemList() {
         <div className="divide-y divide-[#2a2a2a]">
             {dataTransactions.map((data) => {
                 return (
-                    <ExpensesItem data={data} />
+                    <ExpensesItem data={data} key={data.id}/>
                 )
             })}
         </div>
