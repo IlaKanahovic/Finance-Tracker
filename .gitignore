@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 .env
+imgMaket
+САМОЛЕТ
 
 # Editor directories and files
 .vscode/*

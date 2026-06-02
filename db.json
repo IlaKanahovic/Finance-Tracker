@@ -1,22 +1,49 @@
 {
   "transactions": [
     {
-      "date": "15/05/2026",
-      "title": "hhhhhhhhhhhh",
-      "description": "Sports events basketball buy banner",
+      "date": "19/05/2026",
+      "title": "sport",
+      "description": "spoort event",
       "category": "⚽ Sports Events",
-      "currency": "USD",
-      "amount": "$+245",
-      "id": "nlE6aWv1T-U"
+      "currency": "RUB",
+      "amount": "₽+9542",
+      "id": "c-jmQ9mg2To"
     },
     {
-      "date": "18/05/2026",
-      "title": "sfagf",
-      "description": "asfasfasf",
+      "date": "19/05/2026",
+      "title": "kk",
+      "description": "gg",
       "category": "📈 Income - Investment",
+      "currency": "USD",
+      "amount": "$+89",
+      "id": "oY6pMVlvryc"
+    },
+    {
+      "date": "19/05/2026",
+      "title": "m",
+      "description": ";",
+      "category": "💰 Income - Salary",
       "currency": "EUR",
-      "amount": "€+54",
-      "id": "coFWqX7ofw8"
+      "amount": "€+12",
+      "id": "2qh8AoAwTUU"
+    },
+    {
+      "date": "19/05/2026",
+      "title": "twregrw",
+      "description": "dgsg",
+      "category": "🎁 Income - Gift",
+      "currency": "JPY",
+      "amount": "¥-90",
+      "id": "o0mtREAMPlQ"
+    },
+    {
+      "date": "02/06/2026",
+      "title": "аыа",
+      "description": "фыаафыпа",
+      "category": "🎁 Income - Gift",
+      "currency": "JPY",
+      "amount": "¥-21222",
+      "id": "BbZ_nNDlXLc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -1,11 +1,10 @@
 import { CardCurrentBalanceDashboard } from "./Dashboard-Cards/CardCurrentBalanceDashboard";
-import { CardAvailableDashboard } from "./Dashboard-Cards/CardAvailableDashboard";
+import { CardAvailableDashboard } from "./Dashboard-Cards/CardTopCategoryDashboard";
 import { CardMonthlyChangeDashboard } from "./Dashboard-Cards/CardMonthlyChangeDashboard";
-import { DashboardHeader } from "./Utils/DashboardHeader";
+import { DashboardHeader } from "./Dashboard-Header/DashboardHeader";
 import { Filters } from "./Filters/Filters";
 import { ExpensesMenu } from "./Dashboard-Menu-Expenses/ExpensesMenu";
 import { ButtonAddTransition } from "./Utils/ButtonAddTransaction";
-import { getActualCurrency } from "../../DAL/getCurrencyAPI";
 
 export function Dashboard() {
 
@@ -22,7 +21,6 @@ export function Dashboard() {
             <Filters />
             <ExpensesMenu />
             <ButtonAddTransition />
-            <button className="border border-red-700 p-10 cursor-pointer" onClick={getActualCurrency}>pizdaaaaa</button>
         </div>
     )
 }
