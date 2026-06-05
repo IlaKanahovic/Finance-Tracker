@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useCurrencyStore } from "../store/currencyStore";
+import { useCurrencyStore } from "../../store/currencyStore";
 
 export function useUpdatedTimeAPIRequastCurrency() {
     const rates = useCurrencyStore((state) => state.rates)

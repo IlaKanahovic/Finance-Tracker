@@ -1,6 +1,6 @@
 import { getCurrencySymbol } from "../assets/static-files/getCurrencySymbol";
-import type { TransactionFormData } from "../BLL/useChangeTransactionForm";
-import type { GetTransactions } from "./api";
+import type { TransactionFormData } from "../BLL/transactions/useFormTransations";
+import { getTokenToLS, type GetTransactions } from "./api";
 
 export const handleChange = (
     transactionsValueForm: TransactionFormData,
@@ -28,7 +28,10 @@ export const handleChange = (
 
         fetch(`http://localhost:3001/transactions/${data.id}`, {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + getTokenToLS()
+            },
             body: JSON.stringify(changeTransaction)
         })
             .then(res => res.json())

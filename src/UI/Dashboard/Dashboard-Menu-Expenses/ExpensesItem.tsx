@@ -1,10 +1,10 @@
 import type { GetTransactions } from "../../../DAL/api"
 import { ButtonsChangeAndRemoveTransaction } from "../../Modals/ModalAddTransaction/ButtonsChangeAndRemoveTransaction"
 import { ModalDeleteTransaction } from "../../Modals/ModalDeleteTransaction/ModalDeleteTransaction"
-import { useShowActions } from "../../../BLL/useShowActions"
-import { useShowDeleteModal } from "../../../BLL/useShowDeleteModal"
+import { useShowActions } from "../../../BLL/ui/useShowActions"
+import { useShowDeleteModal } from "../../../BLL/ui/useShowDeleteModal"
 import { ModalChangeTransaction } from "../../Modals/ModalChangeTransaction/ModalChangeTransaction"
-import { useShowChangeModal } from "../../../BLL/useShowChangeModal"
+import { useShowChangeModal } from "../../../BLL/ui/useShowChangeModal"
 import { useEffect, useRef } from "react"
 
 type Props = {

@@ -3,10 +3,10 @@ import { ModalChangeDescInput } from "./ModalChangeInputsTransaction/ModalChange
 import { ModalChangeCategotyInput } from "./ModalChangeInputsTransaction/ModalChangeCategoryInput";
 import { ModalChangeAmountInput } from "./ModalChangeInputsTransaction/ModalChangeAmountInput";
 import { ModalChangeButtonsForm } from "./ModalChangeInputsTransaction/ModalChangeButtonsForm";
-import { useChangeTransationsForm } from "../../../BLL/useChangeTransactionForm";
 import { handleChange } from "../../../DAL/changeTransaction";
 import type { GetTransactions } from "../../../DAL/api";
 import { ModalChangeCurrencyInput } from "./ModalChangeInputsTransaction/ModalChangeCurrencyInput";
+import { useChangeTransationsForm } from "../../../BLL/forms/useChangeTransactionForm";
 
 type ModalDeleteTransactionProps = {
     data: GetTransactions

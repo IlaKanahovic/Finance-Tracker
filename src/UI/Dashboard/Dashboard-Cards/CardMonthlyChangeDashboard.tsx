@@ -1,4 +1,5 @@
-import { useTransactions } from "../../../BLL/useTransactions"
+import { useTransactions } from "../../../BLL/transactions/useTransactions"
+
 
 export function CardMonthlyChangeDashboard() {
     const { dataTransactions } = useTransactions()

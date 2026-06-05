@@ -1,50 +1,46 @@
 {
-  "transactions": [
+  "users": [
     {
-      "date": "19/05/2026",
-      "title": "sport",
-      "description": "spoort event",
-      "category": "⚽ Sports Events",
-      "currency": "RUB",
-      "amount": "₽+9542",
-      "id": "c-jmQ9mg2To"
+      "email": "ilakanahovic@gmai.com",
+      "password": "$2a$10$hukg72Yr3wJs/czCLR1YFuiNE6ijVJBiQKnGLWr2anfiuGIsmfuju",
+      "userName": "ilakakashka",
+      "id": 1
     },
     {
-      "date": "19/05/2026",
-      "title": "kk",
-      "description": "gg",
-      "category": "📈 Income - Investment",
-      "currency": "USD",
-      "amount": "$+89",
-      "id": "oY6pMVlvryc"
+      "email": "ilaknahovic@gmail.com",
+      "password": "$2a$10$5sN/hyMNsiCtM6KI.JE5U..hMRWdgpL20BGT3l49ldnVY4DcTJXGW",
+      "userName": "ilaBob",
+      "id": 2
     },
     {
-      "date": "19/05/2026",
-      "title": "m",
-      "description": ";",
-      "category": "💰 Income - Salary",
-      "currency": "EUR",
-      "amount": "€+12",
-      "id": "2qh8AoAwTUU"
+      "email": "dlklll@gmail.com",
+      "password": "$2a$10$LjcCTM8dhFyvXn2hw1T0ku2jCnuasWAdd2L/.GVdPZjZrFfW8W3Sy",
+      "userName": "iss",
+      "id": 3
     },
     {
-      "date": "19/05/2026",
-      "title": "twregrw",
-      "description": "dgsg",
-      "category": "🎁 Income - Gift",
-      "currency": "JPY",
-      "amount": "¥-90",
-      "id": "o0mtREAMPlQ"
+      "email": "ila@fa.com",
+      "password": "$2a$10$Dm.0nsjTZCVD0liB1yWoIeabEyrrYFQCL1NfvXpD.TcKgZdN/gtdS",
+      "userName": "asd",
+      "id": 4
     },
     {
-      "date": "02/06/2026",
-      "title": "аыа",
-      "description": "фыаафыпа",
-      "category": "🎁 Income - Gift",
-      "currency": "JPY",
-      "amount": "¥-21222",
-      "id": "BbZ_nNDlXLc"
+      "email": "asf@faf.com",
+      "password": "$2a$10$nv/w3FKX3R8DlGRbmvROQeDp/SY6WF7GgFLidNfFJ9lA7WcXxqDAe",
+      "userName": "iii",
+      "id": 5
     }
   ],
-  "$schema": "./node_modules/json-server/schema.json"
+  "transactions": [
+    {
+      "date": "06/06/2026",
+      "title": "ывыв",
+      "description": "ывфыв",
+      "category": "☁️ Cloud Storage",
+      "currency": "USD",
+      "amount": "$+33",
+      "userId": 5,
+      "id": 1
+    }
+  ]
 }

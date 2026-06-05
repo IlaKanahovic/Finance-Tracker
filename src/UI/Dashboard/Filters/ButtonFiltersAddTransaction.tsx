@@ -1,4 +1,4 @@
-import { useButtonTransaction } from "../../../BLL/useButtonAddTransaction"
+import { useButtonTransaction } from "../../../BLL/ui/useButtonAddTransaction"
 import { ModalAddTransaction } from "../../Modals/ModalAddTransaction/ModalAddTransaction"
 
 export function ButtonFiltersAddTransaction() {

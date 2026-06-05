@@ -1,5 +1,7 @@
 import { getCurrencySymbol } from "../assets/static-files/getCurrencySymbol";
-import type { TransactionFormData } from "../BLL/useFormTransations";
+import type { TransactionFormData } from "../BLL/transactions/useFormTransations";
+import { useAuthStore } from "../store/authStore";
+import { getTokenToLS } from "./api";
 
 export const handleSubmit = (
     transactionsValueForm: TransactionFormData,
@@ -13,7 +15,7 @@ export const handleSubmit = (
             return ind > 0 ? '+' : '';
         }
 
-        const currencySymbol  = getCurrencySymbol(transactionsValueForm.handleCurrencyChange)
+        const currencySymbol = getCurrencySymbol(transactionsValueForm.handleCurrencyChange)
 
         const date = new Date();
         const formattedDate = date.toLocaleDateString('en-GB', {
@@ -22,6 +24,8 @@ export const handleSubmit = (
             day: '2-digit'
         })
 
+        const userId = useAuthStore.getState().user?.id
+
         const newTransaction = {
             date: formattedDate,
             title: transactionsValueForm.handleTitleChange,
@@ -29,11 +33,15 @@ export const handleSubmit = (
             category: transactionsValueForm.handleCategoryChange,
             currency: transactionsValueForm.handleCurrencyChange,
             amount: currencySymbol + indicator() + transactionsValueForm.handleAmountChange,
+            userId: userId
         }
 
         fetch('http://localhost:3001/transactions', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + getTokenToLS()
+            },
             body: JSON.stringify(newTransaction)
         })
             .then(res => res.json())

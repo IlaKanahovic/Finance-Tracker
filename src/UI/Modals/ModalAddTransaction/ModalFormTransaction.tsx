@@ -1,4 +1,4 @@
-import { useFormTransations } from "../../../BLL/useFormTransations"
+import { useFormTransations } from "../../../BLL/transactions/useFormTransations"
 import { handleSubmit } from "../../../DAL/submitTransaction"
 import { ModalAmountInput } from "./Modal-Inputs-Form/ModalAmountInput"
 import { ModalCategoryListInput } from "./Modal-Inputs-Form/ModalCategoryListInput"

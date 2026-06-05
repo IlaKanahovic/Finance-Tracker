@@ -1,4 +1,5 @@
-import { useTransactions } from "../../../BLL/useTransactions";
+
+import { useTransactions } from "../../../BLL/transactions/useTransactions";
 import { ExpensesItem } from "./ExpensesItem";
 
 export default function ExpensesItemList() {
