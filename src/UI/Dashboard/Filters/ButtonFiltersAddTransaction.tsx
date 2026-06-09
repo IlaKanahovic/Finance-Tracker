@@ -1,8 +1,10 @@
 import { useButtonTransaction } from "../../../BLL/ui/useButtonAddTransaction"
+import { useTransactionsStore } from "../../../store/transactionsStore"
 import { ModalAddTransaction } from "../../Modals/ModalAddTransaction/ModalAddTransaction"
 
 export function ButtonFiltersAddTransaction() {
     const { openModalAddTransaction, setOpenModalAddTransaction } = useButtonTransaction()
+    const { loadTransactions } = useTransactionsStore()
 
     return (
         <div>
@@ -17,6 +19,7 @@ export function ButtonFiltersAddTransaction() {
             {openModalAddTransaction && <ModalAddTransaction
                 isOpen={openModalAddTransaction}
                 onClose={() => setOpenModalAddTransaction(false)}
+                refreshTransactions={loadTransactions}
             />}
         </div>
     )
