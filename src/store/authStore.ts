@@ -6,7 +6,6 @@ type User = {
     id: number
     email: string
     userName: string
-    password: string
 }
 
 interface IInitialState {
@@ -30,40 +29,48 @@ const initialState: IInitialState = {
 const authStore: StateCreator<IAuthState> = ((set) => ({
     ...initialState,
     register: async (email, userName, password) => {
-        const reg = await registerRequest(email, userName, password) 
+        try {
+            const reg = await registerRequest(email, userName, password)
 
-        if (reg.accessToken) {
-            set({
-                user: reg.user,
-                token: reg.accessToken
-            })
-        } 
-    },
-    login: async (email, password) => {
-        const log = await loginRequest(email, password)
-
-        if (log.accessToken) {
-            set({
-                user: log.user,
-                token: log.accessToken
-            })
+            if (reg.token) {
+                set({
+                    user: reg.user,
+                    token: reg.token
+                })
+            }
+        } catch (error) {
+            console.error('Register failed:', error)
         }
     },
-    logout: () => set({user: null, token: null}),
+    login: async (email, password) => {
+        try {
+            const log = await loginRequest(email, password)
+
+            if (log.token) {
+                set({
+                    user: log.user,
+                    token: log.token
+                })
+            }
+        } catch (error) {
+            console.error('Login failed:', error)
+        }
+    },
+    logout: () => set({ user: null, token: null }),
 }))
 
 export const useAuthStore = create<IAuthState>()(
     persist(authStore, {
         name: 'auth-storage',
         storage: createJSONStorage(() => localStorage),
-        partialize: (state) => ({user: state.user, token: state.token})
+        partialize: (state) => ({ user: state.user, token: state.token })
     })
 )
 
-export const register = (email: string, userName: string, password: string) => 
+export const register = (email: string, userName: string, password: string) =>
     useAuthStore.getState().register(email, userName, password)
 
-export const login = (email: string, password: string) => 
+export const login = (email: string, password: string) =>
     useAuthStore.getState().login(email, password)
 
 export const logout = () => useAuthStore.getState().logout()

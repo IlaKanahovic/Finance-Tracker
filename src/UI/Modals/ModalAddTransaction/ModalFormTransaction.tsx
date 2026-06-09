@@ -5,14 +5,19 @@ import { ModalCategoryListInput } from "./Modal-Inputs-Form/ModalCategoryListInp
 import { ModalCurrencyInput } from "./Modal-Inputs-Form/ModalCurrencyInput"
 import { ModalDescriptionInput } from "./Modal-Inputs-Form/ModalDescriptionInput"
 import { ModalTitleInput } from "./Modal-Inputs-Form/ModalTitleInput"
-import { ModalButtonsForm, type Props } from "./ModalButtonsForm"
+import { ModalButtonsForm} from "./ModalButtonsForm"
 
+type Props = {
+    isOpen: boolean
+    onClose: () => void
+    refreshTransactions: () => void 
+}
 
 export function ModalFormTransaction(props: Props) {
     const transactionsValueForm = useFormTransations()
 
     return (
-        <form className="space-y-6" onSubmit={handleSubmit(transactionsValueForm, props.onClose)}>
+        <form className="space-y-6" onSubmit={handleSubmit(transactionsValueForm, props.onClose, props.refreshTransactions)}>
             <ModalTitleInput setTitle={transactionsValueForm.setHandleTitleChange} />
             <ModalDescriptionInput setDesc={transactionsValueForm.setHandleDescriptionChange} />
             <ModalCategoryListInput setCategory={transactionsValueForm.setHandleCategoryChange} />

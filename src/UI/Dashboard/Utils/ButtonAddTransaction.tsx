@@ -1,9 +1,11 @@
 import { FaPlus } from "react-icons/fa6";
 import { useButtonTransaction } from "../../../BLL/ui/useButtonAddTransaction";
 import { ModalAddTransaction } from "../../Modals/ModalAddTransaction/ModalAddTransaction";
+import { useTransactionsStore } from "../../../store/transactionsStore";
 
 export function ButtonAddTransition() {
     const { openModalAddTransaction, setOpenModalAddTransaction } = useButtonTransaction()
+    const { loadTransactions } = useTransactionsStore()
 
     return (
         <div>
@@ -19,6 +21,7 @@ export function ButtonAddTransition() {
             {openModalAddTransaction && <ModalAddTransaction
                 isOpen={openModalAddTransaction}
                 onClose={() => setOpenModalAddTransaction(false)}
+                refreshTransactions={loadTransactions}
             />}
         </div>
     )

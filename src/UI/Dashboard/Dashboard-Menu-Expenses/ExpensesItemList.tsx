@@ -1,33 +1,26 @@
-
-import { useTransactions } from "../../../BLL/transactions/useTransactions";
-import { ExpensesItem } from "./ExpensesItem";
+import { useEffect } from 'react'
+import { useTransactionsStore } from '../../../store/transactionsStore'
+import { ExpensesItem } from './ExpensesItem'
 
 export default function ExpensesItemList() {
-    const { dataTransactions } = useTransactions()
+    const { transactions, loading, loadTransactions } = useTransactionsStore()
 
-    if (!dataTransactions) {
-        return (
-            <div className="p-20 flex items-center justify-center">
-                <h1 className="text-white font-medium text-3xl">loading...</h1>
-            </div>
-        )
-    }
+    useEffect(() => {
+        loadTransactions()
+    }, [])
 
-    if (dataTransactions.length === 0) {
-        return (
-            <div className="p-20 flex items-center justify-center">
-                <h1 className="text-white font-medium text-3xl">No transactions(</h1>
-            </div>
-        )
-    }
+    if (loading) return <div className='flex items-center justify-center py-15 text-2xl'>loading...</div>
+    if (!transactions || transactions.length === 0) return <div className='flex items-center justify-center py-15 text-2xl'>No transactions(</div>
 
     return (
         <div className="divide-y divide-[#2a2a2a]">
-            {dataTransactions.map((data) => {
-                return (
-                    <ExpensesItem data={data} key={data.id} />
-                )
-            })}
+            {transactions.map((data) => (
+                <ExpensesItem
+                    key={data.id}
+                    data={data}
+                    refreshTransaction={loadTransactions}
+                />
+            ))}
         </div>
     )
 }

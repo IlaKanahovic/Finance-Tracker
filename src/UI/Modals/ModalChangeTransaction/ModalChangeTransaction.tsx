@@ -11,6 +11,7 @@ import { useChangeTransationsForm } from "../../../BLL/forms/useChangeTransactio
 type ModalDeleteTransactionProps = {
     data: GetTransactions
     onClose: () => void
+    refreshTransactions: () => void
 }
 
 export function ModalChangeTransaction(props: ModalDeleteTransactionProps) {
@@ -21,7 +22,7 @@ export function ModalChangeTransaction(props: ModalDeleteTransactionProps) {
             <div className="bg-[#0A0A0A] border border-[#333333] rounded-2xl p-8 w-full max-w-2xl shadow-2xl">
                 <div>
                     <h1 className="text-2xl text-white mb-8">Сhange the transaction</h1>
-                    <form onSubmit={handleChange(transactionsValueForm, props.data, props.onClose)}>
+                    <form onSubmit={handleChange(transactionsValueForm, props.data, props.onClose, props.refreshTransactions)}>
                         <ModalChangeTitleInput setTitle={transactionsValueForm.setHandleTitleChange} title={transactionsValueForm.handleTitleChange}/>
                         <ModalChangeDescInput setDesc={transactionsValueForm.setHandleDescriptionChange} description={transactionsValueForm.handleDescriptionChange}/>
                         <ModalChangeCategotyInput setCategory={transactionsValueForm.setHandleCategoryChange} category={transactionsValueForm.handleCategoryChange}/>

@@ -5,7 +5,8 @@ import { getTokenToLS, type GetTransactions } from "./api";
 export const handleChange = (
     transactionsValueForm: TransactionFormData,
     data: GetTransactions,
-    onClose: () => void
+    onClose: () => void,
+    refreshTransactions: () => void 
 ) => {
     return (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -26,7 +27,7 @@ export const handleChange = (
             amount: currencySymbol + indicator() + transactionsValueForm.handleAmountChange,
         }
 
-        fetch(`http://localhost:3001/transactions/${data.id}`, {
+        fetch(`http://localhost:3001/api/transactions/${data.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,6 +38,7 @@ export const handleChange = (
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                refreshTransactions()
                 onClose()
             })
             .catch(er => console.log('ERROR CHANGE', er))

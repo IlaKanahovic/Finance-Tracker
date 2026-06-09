@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { getTransactions, type GetTransactions } from "../../DAL/api";
-
 
 export function useTransactions() {
     const [dataTransactions, setDataTransactions] = useState<GetTransactions[] | null>(null)
 
-    useEffect(() => {
+    const loadTransactions = useCallback(() => {
         console.log('transactions')
-
         getTransactions()
             .then(json => {
                 if (Array.isArray(json)) {
@@ -22,5 +20,9 @@ export function useTransactions() {
             })
     }, [])
 
-    return { dataTransactions }
+    useEffect(() => {
+        loadTransactions()
+    }, [loadTransactions])
+
+    return { dataTransactions, refreshTransactions: loadTransactions }
 }

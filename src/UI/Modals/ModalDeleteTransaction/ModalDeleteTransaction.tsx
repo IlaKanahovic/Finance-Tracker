@@ -4,6 +4,7 @@ import { handleDeleteTransaction } from "../../../DAL/deleteTransaction"
 type ModalDeleteTransactionProps = {
     dataId: string
     onClose: () => void
+    refreshTransactions: () => void
 } 
 
 export function ModalDeleteTransaction(props: ModalDeleteTransactionProps ) {
@@ -22,7 +23,7 @@ export function ModalDeleteTransaction(props: ModalDeleteTransactionProps ) {
                         </button>
                         <button
                             onClick={() => {
-                                handleDeleteTransaction(props.dataId)
+                                handleDeleteTransaction(props.dataId, props.refreshTransactions)
                                 props.onClose()
                             }}
                             className="cursor-pointer bg-white text-black text-base font-medium p-3 px-15 rounded-lg hover:bg-gray-200 transition-all"

@@ -20,7 +20,7 @@ export const getTokenToLS = () => {
 }
 
 export const getTransactions = () => {
-    const promise: Promise<GetTransactions[]> = fetch('http://localhost:3001/transactions', {
+    const promise: Promise<GetTransactions[]> = fetch('http://localhost:3001/api/transactions', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

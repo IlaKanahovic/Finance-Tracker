@@ -1,5 +1,5 @@
 import { useState } from "react"
-import type { GetTransactions } from "../DAL/api"
+import type { GetTransactions } from "../../DAL/api"
 
 export type TransactionFormData = {
     handleTitleChange: string

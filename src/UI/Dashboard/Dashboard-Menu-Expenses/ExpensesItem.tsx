@@ -9,6 +9,7 @@ import { useEffect, useRef } from "react"
 
 type Props = {
     data: GetTransactions
+    refreshTransaction: () => void
 }
 
 export function ExpensesItem(props: Props) {
@@ -125,6 +126,7 @@ export function ExpensesItem(props: Props) {
                 <ModalDeleteTransaction
                     dataId={props.data.id}
                     onClose={() => setShowDeleteModal(false)}
+                    refreshTransactions={props.refreshTransaction}
                 />
             )}
 
@@ -132,6 +134,7 @@ export function ExpensesItem(props: Props) {
                 <ModalChangeTransaction
                     data={props.data}
                     onClose={() => setShowChangeModal(false)}
+                    refreshTransactions={props.refreshTransaction}
                 />
             )}
         </div>

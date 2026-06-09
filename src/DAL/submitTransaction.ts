@@ -1,11 +1,11 @@
 import { getCurrencySymbol } from "../assets/static-files/getCurrencySymbol";
 import type { TransactionFormData } from "../BLL/transactions/useFormTransations";
-import { useAuthStore } from "../store/authStore";
 import { getTokenToLS } from "./api";
 
 export const handleSubmit = (
     transactionsValueForm: TransactionFormData,
-    onClose: () => void
+    onClose: () => void,
+    refreshTransactions: () => void 
 ) => {
     return (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -24,19 +24,16 @@ export const handleSubmit = (
             day: '2-digit'
         })
 
-        const userId = useAuthStore.getState().user?.id
-
         const newTransaction = {
             date: formattedDate,
             title: transactionsValueForm.handleTitleChange,
             description: transactionsValueForm.handleDescriptionChange,
             category: transactionsValueForm.handleCategoryChange,
             currency: transactionsValueForm.handleCurrencyChange,
-            amount: currencySymbol + indicator() + transactionsValueForm.handleAmountChange,
-            userId: userId
+            amount: currencySymbol + indicator() + transactionsValueForm.handleAmountChange
         }
 
-        fetch('http://localhost:3001/transactions', {
+        fetch('http://localhost:3001/api/transactions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -47,6 +44,7 @@ export const handleSubmit = (
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                refreshTransactions() 
                 onClose()
             })
             .catch(er => console.error('Error submit:', er))

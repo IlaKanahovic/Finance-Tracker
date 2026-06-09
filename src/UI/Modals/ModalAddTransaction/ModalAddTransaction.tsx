@@ -1,7 +1,11 @@
 import { FaBookOpen } from "react-icons/fa";
 import { ModalFormTransaction } from "./ModalFormTransaction";
-import type { Props } from "./ModalButtonsForm";
 
+type Props = {
+    isOpen: boolean
+    onClose: () => void
+    refreshTransactions: () => void
+}
 
 export function ModalAddTransaction(props: Props) {
     return (
@@ -17,6 +21,7 @@ export function ModalAddTransaction(props: Props) {
                 <ModalFormTransaction
                     isOpen={props.isOpen}
                     onClose={props.onClose}
+                    refreshTransactions={props.refreshTransactions}
                 />
             </div>
         </div>

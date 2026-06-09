@@ -7,7 +7,7 @@ export const registerRequest = async (email: string, userName: string, password:
         password: password
     }
 
-    const register = await fetch('http://localhost:3001/register', {
+    const register = await fetch('http://localhost:3001/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newClient)
@@ -22,7 +22,7 @@ export const loginRequest = async (email: string, password: string) => {
         password: password
     }
 
-    const login = await fetch('http://localhost:3001/login', {
+    const login = await fetch('http://localhost:3001/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(checkClient)
