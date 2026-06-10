@@ -11,7 +11,11 @@ export type GetTransactions = {
 
 export const getTokenToLS = () => {
     const data = localStorage.getItem('auth-storage')
+    if (!data) return null
+
     const parseData = data ? JSON.parse(data) : null
+    if (!parseData?.state?.token) return null
+
     const token = parseData.state.token
 
     if (!token) return null
