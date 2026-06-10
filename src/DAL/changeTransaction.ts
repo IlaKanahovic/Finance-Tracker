@@ -27,7 +27,7 @@ export const handleChange = (
             amount: currencySymbol + indicator() + transactionsValueForm.handleAmountChange,
         }
 
-        fetch(`http://localhost:3001/api/transactions/${data.id}`, {
+        fetch(`https://finance-tracker-backend-production-12f1.up.railway.app/api/transactions/${data.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

@@ -4,7 +4,7 @@ export const handleDeleteTransaction = async (
     idTransaction: string,
     refreshTransactions: () => void
 ) => {
-    await fetch(`http://localhost:3001/api/transactions/${idTransaction}`, {
+    await fetch(`https://finance-tracker-backend-production-12f1.up.railway.app/api/transactions/${idTransaction}`, {
         method: 'DELETE',
         headers: { 'Authorization': 'Bearer ' + getTokenToLS() }
     })

@@ -20,7 +20,7 @@ export const getTokenToLS = () => {
 }
 
 export const getTransactions = () => {
-    const promise: Promise<GetTransactions[]> = fetch('http://localhost:3001/api/transactions', {
+    const promise: Promise<GetTransactions[]> = fetch('https://finance-tracker-backend-production-12f1.up.railway.app/api/transactions', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

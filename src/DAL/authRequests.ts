@@ -7,7 +7,7 @@ export const registerRequest = async (email: string, userName: string, password:
         password: password
     }
 
-    const register = await fetch('http://localhost:3001/api/register', {
+    const register = await fetch('https://finance-tracker-backend-production-12f1.up.railway.app/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newClient)
@@ -22,7 +22,7 @@ export const loginRequest = async (email: string, password: string) => {
         password: password
     }
 
-    const login = await fetch('http://localhost:3001/api/login', {
+    const login = await fetch('https://finance-tracker-backend-production-12f1.up.railway.app/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(checkClient)

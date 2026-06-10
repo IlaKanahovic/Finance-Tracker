@@ -5,7 +5,7 @@ import { getTokenToLS } from "./api";
 export const handleSubmit = (
     transactionsValueForm: TransactionFormData,
     onClose: () => void,
-    refreshTransactions: () => void 
+    refreshTransactions: () => void
 ) => {
     return (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -33,7 +33,7 @@ export const handleSubmit = (
             amount: currencySymbol + indicator() + transactionsValueForm.handleAmountChange
         }
 
-        fetch('http://localhost:3001/api/transactions', {
+        fetch('https://finance-tracker-backend-production-12f1.up.railway.app/api/transactions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ export const handleSubmit = (
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                refreshTransactions() 
+                refreshTransactions()
                 onClose()
             })
             .catch(er => console.error('Error submit:', er))

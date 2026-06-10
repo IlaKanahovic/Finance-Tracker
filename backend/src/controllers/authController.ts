@@ -60,7 +60,7 @@ export const login = async (req: Request, res: Response) => {
             user: {
                 id: user.id,
                 email: user.email,
-                userNmae: user.userName
+                userName: user.userName
             }
         })
 
