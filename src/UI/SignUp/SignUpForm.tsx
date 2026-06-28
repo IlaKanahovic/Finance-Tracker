@@ -1,5 +1,5 @@
 import { useSignUpForm } from "../../BLL/forms/useSignUpForm"
-import { register } from "../../store/authStore"
+import { register, login } from "../../store/authStore"
 import { useNavigate } from "react-router-dom"
 
 export function SignUpForm() {
@@ -8,7 +8,7 @@ export function SignUpForm() {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        signUpValueForm.submitForm(register, navigate)
+        signUpValueForm.submitForm(register, login, navigate)
     }
 
     return (
@@ -22,8 +22,8 @@ export function SignUpForm() {
                     placeholder="John Doe"
                     value={signUpValueForm.fullName}
                     className={`w-full bg-black border ${signUpValueForm.errors.fullName && signUpValueForm.touched?.fullName
-                            ? 'border-red-500'
-                            : 'border-gray-700'
+                        ? 'border-red-500'
+                        : 'border-gray-700'
                         } rounded-md px-3 sm:px-4 py-2.5 sm:py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-0 transition-all duration-300 hover:border-white focus:border-white text-sm sm:text-base`}
                     onChange={(event) => signUpValueForm.setHandleName(event.target.value)}
                     onBlur={() => signUpValueForm.handleBlur('fullName')}
@@ -42,8 +42,8 @@ export function SignUpForm() {
                     placeholder="you@example.com"
                     value={signUpValueForm.email}
                     className={`w-full bg-black border ${signUpValueForm.errors.email && signUpValueForm.touched?.email
-                            ? 'border-red-500'
-                            : 'border-gray-700'
+                        ? 'border-red-500'
+                        : 'border-gray-700'
                         } rounded-md px-3 sm:px-4 py-2.5 sm:py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-0 transition-all duration-300 hover:border-white focus:border-white text-sm sm:text-base`}
                     onChange={(event) => signUpValueForm.setHandleEmail(event.target.value)}
                     onBlur={() => signUpValueForm.handleBlur('email')}
@@ -62,8 +62,8 @@ export function SignUpForm() {
                     placeholder="username"
                     value={signUpValueForm.userName}
                     className={`w-full bg-black border ${signUpValueForm.errors.userName && signUpValueForm.touched?.userName
-                            ? 'border-red-500'
-                            : 'border-gray-700'
+                        ? 'border-red-500'
+                        : 'border-gray-700'
                         } rounded-md px-3 sm:px-4 py-2.5 sm:py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-0 transition-all duration-300 hover:border-white focus:border-white text-sm sm:text-base`}
                     onChange={(event) => signUpValueForm.setHandleUserName(event.target.value)}
                     onBlur={() => signUpValueForm.handleBlur('userName')}
@@ -82,8 +82,8 @@ export function SignUpForm() {
                     placeholder="Create a password"
                     value={signUpValueForm.password}
                     className={`w-full bg-black border ${signUpValueForm.errors.password && signUpValueForm.touched?.password
-                            ? 'border-red-500'
-                            : 'border-gray-700'
+                        ? 'border-red-500'
+                        : 'border-gray-700'
                         } rounded-md px-3 sm:px-4 py-2.5 sm:py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-0 transition-all duration-300 hover:border-white focus:border-white text-sm sm:text-base`}
                     onChange={(event) => signUpValueForm.setHandlePassword(event.target.value)}
                     onBlur={() => signUpValueForm.handleBlur('password')}
@@ -103,8 +103,8 @@ export function SignUpForm() {
                     placeholder="Confirm your password"
                     value={signUpValueForm.confirmPassword}
                     className={`w-full bg-black border ${signUpValueForm.errors.confirmPassword && signUpValueForm.touched?.confirmPassword
-                            ? 'border-red-500'
-                            : 'border-gray-700'
+                        ? 'border-red-500'
+                        : 'border-gray-700'
                         } rounded-md px-3 sm:px-4 py-2.5 sm:py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-0 transition-all duration-300 hover:border-white focus:border-white text-sm sm:text-base`}
                     onChange={(event) => signUpValueForm.setHandleConfirmPassword(event.target.value)}
                     onBlur={() => signUpValueForm.handleBlur('confirmPassword')}

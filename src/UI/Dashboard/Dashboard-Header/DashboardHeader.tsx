@@ -3,13 +3,12 @@ import { FaMoon } from "react-icons/fa6";
 import { MdAccountCircle } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { MdNoAccounts } from "react-icons/md";
+import { useAuthStore } from "../../../store/authStore";
 
 export function DashboardHeader() {
     const navigate = useNavigate()
     const btnHeader = "p-1.5 ml-2 border border-mist-900 duration-200 hover:border-white cursor-pointer"
-    const [handleValue, setHandleValue] = useState(false)
+    const { token } = useAuthStore()
 
     return (
         <header className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
@@ -25,15 +24,16 @@ export function DashboardHeader() {
                 </button>
                 <button
                     onClick={() => {
-                        navigate(handleValue ? 'signIn' : 'signUp')
-                        setHandleValue(!handleValue)
+                        {token ? navigate('profile') : navigate('signIn')}
                     }}
                     className={btnHeader}
                 >
-                    { handleValue ? <MdNoAccounts /> : <MdAccountCircle />}
+                    <MdAccountCircle />
                 </button>
                 <button
-                    onClick={() => navigate('/settings')}
+                    onClick={() => {
+                        {token ? navigate('settings') : navigate('signIn')}
+                    }}
                     className={btnHeader}
                 >
                     <IoSettingsOutline />
