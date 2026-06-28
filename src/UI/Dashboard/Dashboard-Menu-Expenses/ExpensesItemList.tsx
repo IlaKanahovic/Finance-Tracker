@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
-import { useTransactionsStore } from '../../../store/transactionsStore'
 import { ExpensesItem } from './ExpensesItem'
 import { useAuthStore } from '../../../store/authStore'
+import { useTransactionsStore } from '../../../store/transactionsStore'
+import { useFilteredTransactions } from '../../../BLL/transactions/useFiltereddTransactions'
 
 export default function ExpensesItemList() {
     const { transactions, loading, loadTransactions } = useTransactionsStore()
+    const filteredTransactions = useFilteredTransactions()
     const { token } = useAuthStore()
 
     useEffect(() => {
@@ -20,7 +22,7 @@ export default function ExpensesItemList() {
 
     return (
         <div className="divide-y divide-[#2a2a2a]">
-            {transactions.map((data) => (
+            {filteredTransactions.map((data) => (
                 <ExpensesItem
                     key={data.id}
                     data={data}

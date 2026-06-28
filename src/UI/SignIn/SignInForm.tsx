@@ -15,11 +15,11 @@ export function SignInForm() {
         <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-2">
                 <label className="block text-xs font-medium uppercase tracking-wider text-gray-400">
-                    Email or Username <span className="text-red-500">*</span>
+                    Email <span className="text-red-500">*</span>
                 </label>
                 <input
                     type="text"
-                    placeholder="you@domain.com or username"
+                    placeholder="you@domain.com"
                     value={signInValueForm.emailOrUsername}
                     className={`w-full bg-black border ${signInValueForm.errors.emailOrUsername && signInValueForm.touched?.emailOrUsername
                             ? 'border-red-500'
