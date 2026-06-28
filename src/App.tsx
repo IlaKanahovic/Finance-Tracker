@@ -5,15 +5,10 @@ import { SignInMain } from "./UI/SignIn/SignInMain";
 import { SignUpMain } from "./UI/SignUp/SignUpMain";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Profile } from "./UI/Profile/Profile";
-import { useCurrencyStore } from "./store/currencyStore";
-import { useEffect } from "react";
+import { useUpdatedTimeAPIRequastCurrency } from "./BLL/currency/useUpdatedTimeAPIRequastCurrency";
 
 export function App() {
-  const setRates = useCurrencyStore((state) => state.setRates)
-
-  useEffect(() => {
-    setRates()
-  }, [setRates])
+  useUpdatedTimeAPIRequastCurrency()
 
   return (
     <Routes>
