@@ -1,4 +1,3 @@
-// BLL/forms/useSignUpForm.ts
 import { useState } from 'react'
 
 interface FormErrors {
@@ -139,7 +138,7 @@ export function useSignUpForm() {
     const submitForm = async (
         registerFn: (email: string, userName: string, password: string) => void | Promise<void>,
         loginFn: (email: string, password: string) => void | Promise<void>,
-        navigate: (delta: number) => void
+        navigate: (delta: string) => void
     ) => {
         setSubmitError(null)
 
@@ -157,7 +156,7 @@ export function useSignUpForm() {
         try {
             await registerFn(email, userName, password)
             await loginFn(email, password)
-            navigate(-1)
+            navigate('/')
             return true
         } catch (error) {
             setSubmitError('Ошибка при регистрации или входе. Попробуйте позже.')
