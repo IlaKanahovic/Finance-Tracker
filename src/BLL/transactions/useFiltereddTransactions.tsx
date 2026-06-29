@@ -1,15 +1,17 @@
 import { parse, startOfDay, endOfDay, isWithinInterval, subDays } from 'date-fns'
-import { useFilterStore } from '../../store/filterStore'
 import { useMemo } from 'react'
 import { useTransactionsStore } from '../../store/transactionsStore'
+import { useFilterStore } from '../../store/filterStore'
 
 
 export function useFilteredTransactions() {
     const { transactions } = useTransactionsStore()
-    
+
     const searchTransaction = useFilterStore((state) => state.searchFilter)
     const categoryTransaction = useFilterStore((state) => state.categoryFilter)
     const dataFilter = useFilterStore((state) => state.dataFilter)
+    const dateFrom = useFilterStore((state) => state.datefrom)
+    const dateTo = useFilterStore((state) => state.dateTo)
 
     const filteredTransactions = useMemo(() => {
 
@@ -40,7 +42,14 @@ export function useFilteredTransactions() {
                 const date = parse(t.date, 'dd/MM/yyyy', new Date())
                 return isWithinInterval(date, { start, end })
             })
-        } else if (dataFilter === 'custom') { }
+        } else if (dataFilter === 'custom' && dateFrom && dateTo) {
+            const start = new Date(dateFrom)
+            const end = new Date(dateTo)
+            filtered = filtered.filter(t => {
+                const date = new Date(t.date) 
+                return date >= start && date <= end
+            })
+        }
 
         if (categoryTransaction && categoryTransaction !== 'All') {
             filtered = filtered.filter(transaction =>
@@ -56,7 +65,7 @@ export function useFilteredTransactions() {
         }
 
         return filtered
-    }, [transactions, dataFilter, categoryTransaction, searchTransaction])
+    }, [transactions, dataFilter, dateFrom, dateTo, categoryTransaction, searchTransaction])
 
     return filteredTransactions
 }

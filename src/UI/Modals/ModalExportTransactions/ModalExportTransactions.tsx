@@ -1,0 +1,84 @@
+import { useState } from "react";
+import { useTransactionsStore } from "../../../store/transactionsStore";
+import { useExportTransactions } from "../../../BLL/transactions/useExportTransactions";
+
+type Props = {
+    onClose: () => void
+}
+
+export function ModalExportTransactions(props: Props) {
+    const [selectedType, setSelectedType] = useState('CSV');
+    const { transactions } = useTransactionsStore()
+    const exportTransactions = useExportTransactions(transactions, selectedType)
+
+    return (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+            <div className="bg-[#0A0A0A] border border-[#333333] rounded-2xl px-15 pt-10 pb-15 w-full max-w-2xl shadow-2xl">
+                <div className="w-full">
+                    <h1 className="text-2xl text-white text-center">Select the export type</h1>
+
+                    <div className="mt-8 space-y-4">
+                        <div
+                            className="flex items-center justify-between border border-[#333333] rounded-lg px-6 py-4 hover:border-gray-100 transition-all duration-300 cursor-pointer"
+                            onClick={() => setSelectedType('CSV')}
+                        >
+                            <span className="text-white text-base font-medium">CSV</span>
+                            <div className={`w-5 h-5 rounded-full border transition-all duration-300 flex items-center justify-center ${selectedType === "CSV" ? "border-blue-600 bg-blue-600" : "border-gray-600 bg-[#0A0A0A]"}`}>
+                                {selectedType === "CSV" && (
+                                    <div className="w-2 h-2 rounded-full bg-white"></div>
+                                )}
+                            </div>
+                        </div>
+
+                        <div
+                            className="flex items-center justify-between border border-[#333333] rounded-lg px-6 py-4 hover:border-gray-100 transition-all duration-300 cursor-pointer"
+                            onClick={() => setSelectedType('PDF')}
+                        >
+                            <span className="text-white text-base font-medium">PDF</span>
+                            <div className={`w-5 h-5 rounded-full border transition-all duration-300 flex items-center justify-center ${selectedType === "PDF" ? "border-blue-600 bg-blue-600" : "border-gray-600 bg-[#0A0A0A]"}`}>
+                                {selectedType === "PDF" && (
+                                    <div className="w-2 h-2 rounded-full bg-white"></div>
+                                )}
+                            </div>
+                        </div>
+
+                        <div
+                            className="flex items-center justify-between border border-[#333333] rounded-lg px-6 py-4 hover:border-gray-100 transition-all duration-300 cursor-pointer"
+                            onClick={() => setSelectedType('Excel')}
+                        >
+                            <span className="text-white text-base font-medium">Excel</span>
+                            <div className={`w-5 h-5 rounded-full border transition-all duration-300 flex items-center justify-center ${selectedType === "Excel" ? "border-blue-600 bg-blue-600" : "border-gray-600 bg-[#0A0A0A]"}`}>
+                                {selectedType === "Excel" && (
+                                    <div className="w-2 h-2 rounded-full bg-white"></div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="mt-8 flex justify-center items-center gap-4">
+                        <button
+                            type="button"
+                            className="cursor-pointer bg-transparent border border-[#333333] text-white text-base font-medium p-3 px-15 rounded-lg hover:border-white hover:bg-white/5 transition-all"
+                            onClick={() => props.onClose()}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            type="button"
+                            className="cursor-pointer bg-white text-black text-base font-medium p-3 px-15 rounded-lg hover:bg-gray-200 transition-all"
+                            onClick={() => {
+                                props.onClose()
+                                if (!exportTransactions) {
+                                    return
+                                }
+                                exportTransactions()
+                            }}
+                        >
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}

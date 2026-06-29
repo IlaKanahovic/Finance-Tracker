@@ -5,6 +5,7 @@ import { ButtonSearchFilter } from "./ButtonSearchFilter";
 import { ButtonFilterCategory } from "./ButtonFilterCategory";
 import type { DateFilterType } from "../../../assets/types/filterTypes";
 import { filterByData, useFilterStore } from "../../../store/filterStore";
+import { ButtonFiltersCustomDate } from "./ButtonFilterCustomDate";
 
 export function Filters() {
     const dataFilter = useFilterStore((state) => state.dataFilter)
@@ -44,7 +45,7 @@ export function Filters() {
                             label="30d"
                             isActive={dataFilter === '30d'}
                             onClick={handleFilterClick} />
-                        <ButtonFiltersDays
+                        <ButtonFiltersCustomDate 
                             value="custom"
                             label="Custom"
                             isActive={dataFilter === 'custom'}

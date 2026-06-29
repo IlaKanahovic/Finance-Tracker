@@ -45,7 +45,7 @@ export const useFilterStore = create<IFilterStore>()(
 )
 
 export const dataFilter = () => useFilterStore((state) => state.dataFilter)
-export const datefrom = () => useFilterStore((state) => state.datefrom)
+export const dateFrom = () => useFilterStore((state) => state.datefrom)
 export const dateTo = () => useFilterStore((state) => state.dateTo)
 export const categoryFilter = () => useFilterStore((state) => state.categoryFilter)
 export const searchFilter = () => useFilterStore((state) => state.searchFilter)
