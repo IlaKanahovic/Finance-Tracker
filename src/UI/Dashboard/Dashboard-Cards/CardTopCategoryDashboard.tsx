@@ -12,10 +12,21 @@ export function CardAvailableDashboard() {
     if (!topCategory) {
         return <li className="p-4 bg-(--card-bg) rounded-lg">
             <p className="text-[#A0A0A0] text-xs mb-1">TOP CATEGORY</p>
-            <p className="text-2xl font-semibold"> ERROR </p>
+            <p className="text-2xl font-semibold"> Loading... </p>
             <div className="flex flex-wrap justify-between items-center gap-x-4">
                 <p className="text-[#A0A0A0] text-xs">Top category: </p>
-                <p className="text-[#A0A0A0] text-xs"> ERRORR </p>
+                <p className="text-[#A0A0A0] text-xs"> </p>
+            </div>
+        </li>
+    }
+
+    if (!transactions || transactions.length === 0) {
+        return <li className="p-4 bg-(--card-bg) rounded-lg">
+            <p className="text-[#A0A0A0] text-xs mb-1">TOP CATEGORY</p>
+            <p className="text-2xl font-semibold"> 0</p>
+            <div className="flex flex-wrap justify-between items-center gap-x-4">
+                <p className="text-[#A0A0A0] text-xs">Top category: </p>
+                <p className="text-[#A0A0A0] text-xs">  </p>
             </div>
         </li>
     }
