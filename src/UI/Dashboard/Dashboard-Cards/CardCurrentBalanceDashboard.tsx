@@ -1,17 +1,15 @@
-import { getCurrencySymbol } from "../../../assets/static-files/getCurrencySymbol"
 import { useCurrentBalanceCard } from "../../../BLL/transactions/useCurrentBalanceCard"
 import { useTransactionsStore } from "../../../store/transactionsStore"
-import { convertCurrency } from "../../../store/currencyStore"
 import { targetCurrency } from "../../../store/settingsStore"
 import { useAuthStore } from "../../../store/authStore"
+import { useGetSymbolNumberCerrency } from "../../../BLL/currency/useGetSymbolNumberCerrency"
 
 export function CardCurrentBalanceDashboard() {
     const { transactions } = useTransactionsStore()
     const currency = targetCurrency()
     const { token } = useAuthStore()
+    const { balance, symbol } = useGetSymbolNumberCerrency(transactions, currency)
 
-    let balance = 0
-    let symbol = ""
     const lastUpdateTime = useCurrentBalanceCard(transactions)
 
     if (!token) {
@@ -51,19 +49,6 @@ export function CardCurrentBalanceDashboard() {
                 </div>
             </li>
         )
-    }
-
-    if (transactions) {
-        symbol = getCurrencySymbol(currency)
-        for (let id in transactions) {
-            let data = transactions[id]
-            const amount = data.amount
-            if (typeof amount !== 'string') {
-                continue
-            }
-            const converted = convertCurrency(Number(data.amount.replace(/[^\d.-]/g, '')), data.currency, currency)
-            balance += Number(converted)
-        }
     }
 
     return (

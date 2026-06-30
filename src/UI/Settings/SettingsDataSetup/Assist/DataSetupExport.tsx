@@ -10,10 +10,10 @@ export function DataSetupExport() {
                     CSV
                 </button>
                 <button className="px-4 py-1.5 text-sm border border-gray-600 rounded-md text-gray-200 transition-all duration-300 cursor-pointer hover:border-white hover:text-white">
-                    Excel
+                    PDF
                 </button>
                 <button className="px-4 py-1.5 text-sm border border-gray-600 rounded-md text-gray-200 transition-all duration-300 cursor-pointer hover:border-white hover:text-white">
-                    JSON
+                    Excel
                 </button>
             </div>
         </div>
