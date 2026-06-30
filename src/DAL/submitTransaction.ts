@@ -43,7 +43,6 @@ export const handleSubmit = (
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 refreshTransactions()
                 onClose()
             })

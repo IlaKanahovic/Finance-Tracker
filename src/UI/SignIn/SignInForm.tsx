@@ -22,8 +22,8 @@ export function SignInForm() {
                     placeholder="you@domain.com"
                     value={signInValueForm.emailOrUsername}
                     className={`w-full bg-black border ${signInValueForm.errors.emailOrUsername && signInValueForm.touched?.emailOrUsername
-                            ? 'border-red-500'
-                            : 'border-gray-700'
+                        ? 'border-red-500'
+                        : 'border-gray-700'
                         } rounded-md px-3 sm:px-4 py-2.5 sm:py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-0 transition-all duration-300 hover:border-white focus:border-white text-sm sm:text-base`}
                     onChange={(event) => signInValueForm.setHandleEmailOrUsername(event.target.value)}
                     onBlur={() => signInValueForm.handleBlur('emailOrUsername')}
@@ -42,8 +42,8 @@ export function SignInForm() {
                     placeholder="Enter your password"
                     value={signInValueForm.password}
                     className={`w-full bg-black border ${signInValueForm.errors.password && signInValueForm.touched?.password
-                            ? 'border-red-500'
-                            : 'border-gray-700'
+                        ? 'border-red-500'
+                        : 'border-gray-700'
                         } rounded-md px-3 sm:px-4 py-2.5 sm:py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-0 transition-all duration-300 hover:border-white focus:border-white text-sm sm:text-base`}
                     onChange={(event) => signInValueForm.setHandlePassword(event.target.value)}
                     onBlur={() => signInValueForm.handleBlur('password')}

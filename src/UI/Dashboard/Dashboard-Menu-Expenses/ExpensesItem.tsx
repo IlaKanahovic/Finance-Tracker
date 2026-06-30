@@ -50,7 +50,7 @@ export function ExpensesItem(props: Props) {
                         />
                     </div>
                 )}
-                <div className="space-y-2 cursor-pointer" onDoubleClick={() => setShowActions(true)}>
+                <div className="space-y-2 cursor-pointer" onClick={() => setShowActions(true)}>
                     <div className="flex justify-between items-start">
                         <span className="text-gray-400 text-xs">DATE</span>
                         <p className="text-white text-sm font-medium">{props.data.date}</p>
@@ -83,8 +83,8 @@ export function ExpensesItem(props: Props) {
 
             {/* desktop */}
             <div
-                className="hidden sm:relative sm:grid sm:grid-cols-[1fr_2fr_1.2fr_1fr] items-center py-3 px-2 cursor-pointer"
-                onDoubleClick={() => setShowActions(true)}
+                className="hidden sm:relative sm:grid sm:grid-cols-[1fr_2fr_1.2fr_1fr] items-center py-3 px-2 border-0 cursor-pointer duration-300 hover:bg-[#1c1c1c]"
+                onClick={() => setShowActions(true)}
             >
                 {showActions && (
                     <div className="absolute inset-0 bg-black/50 flex items-center justify-center gap-4 rounded-lg z-10">

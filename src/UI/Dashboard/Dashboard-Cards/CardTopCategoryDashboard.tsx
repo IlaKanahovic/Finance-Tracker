@@ -11,22 +11,33 @@ export function CardAvailableDashboard() {
 
     if (!topCategory) {
         return <li className="p-4 bg-(--card-bg) rounded-lg">
-            <p className="text-[#A0A0A0] text-xs mb-1">TOP CATEGORY</p>
+            <p className="text-[#A0A0A0] text-xs mb-1">THE MOST EXPENSIVE CATEGORYE</p>
             <p className="text-2xl font-semibold"> Loading... </p>
             <div className="flex flex-wrap justify-between items-center gap-x-4">
-                <p className="text-[#A0A0A0] text-xs">Top category: </p>
-                <p className="text-[#A0A0A0] text-xs"> </p>
+                <p className="text-[#A0A0A0] text-xs"> Biggest expense сategory: </p>
+                <p className="text-[#A0A0A0] text-xs"> Loading... </p>
+            </div>
+        </li>
+    }
+
+    if (topCategory.filteredTransactions.length === 0) {
+        return <li className="p-4 bg-(--card-bg) rounded-lg">
+            <p className="text-[#A0A0A0] text-xs mb-1">THE MOST EXPENSIVE CATEGORY</p>
+            <p className="text-2xl font-semibold"> No spending yet </p>
+            <div className="flex flex-wrap justify-between items-center gap-x-4">
+                <p className="text-[#A0A0A0] text-xs"> Biggest expense сategory: </p>
+                <p className="text-[#A0A0A0] text-xs"> no expenses </p>
             </div>
         </li>
     }
 
     if (!transactions || transactions.length === 0) {
         return <li className="p-4 bg-(--card-bg) rounded-lg">
-            <p className="text-[#A0A0A0] text-xs mb-1">TOP CATEGORY</p>
-            <p className="text-2xl font-semibold"> 0</p>
+            <p className="text-[#A0A0A0] text-xs mb-1">THE MOST EXPENSIVE CATEGORY</p>
+            <p className="text-2xl font-semibold"> 0 </p>
             <div className="flex flex-wrap justify-between items-center gap-x-4">
-                <p className="text-[#A0A0A0] text-xs">Top category: </p>
-                <p className="text-[#A0A0A0] text-xs">  </p>
+                <p className="text-[#A0A0A0] text-xs"> Biggest expense сategory: </p>
+                <p className="text-[#A0A0A0] text-xs"> No expenses </p>
             </div>
         </li>
     }
@@ -35,11 +46,11 @@ export function CardAvailableDashboard() {
 
     return (
         <li className="p-4 bg-(--card-bg) rounded-lg">
-            <p className="text-[#A0A0A0] text-xs mb-1">TOP CATEGORY</p>
+            <p className="text-[#A0A0A0] text-xs mb-1">THE MOST EXPENSIVE CATEGORY</p>
             <p className="text-2xl font-semibold"> {symbol + topCategory.bigAmount.toFixed(2)} </p>
             <div className="flex flex-wrap justify-between items-center gap-x-4">
-                <p className="text-[#A0A0A0] text-xs">Top category: </p>
-                <p className="text-[#A0A0A0] text-xs"> {topCategory?.topCategory} </p>
+                <p className="text-[#A0A0A0] text-xs"> Biggest expense сategory: </p>
+                <p className="text-[#A0A0A0] text-xs"> {topCategory.topCategory} </p>
             </div>
         </li>
     )

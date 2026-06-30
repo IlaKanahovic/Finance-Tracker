@@ -62,7 +62,7 @@ export function useSignInForm() {
         }
     }
 
-    const submitForm = (loginFn: (emailOrUsername: string, password: string) => void, navigate: (path: string) => void) => {
+    const submitForm = async (loginFn: (emailOrUsername: string, password: string) => void, navigate: (path: string) => void) => {
         setSubmitError(null)
 
         if (!validateForm()) {
@@ -74,7 +74,7 @@ export function useSignInForm() {
         setIsSubmitting(true)
 
         try {
-            loginFn(emailOrUsername, password)
+            await loginFn(emailOrUsername, password)
             navigate('/')
         } catch (error) {
             setSubmitError('Ошибка при входе. Проверьте данные или попробуйте позже.')

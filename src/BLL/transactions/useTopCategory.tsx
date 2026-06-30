@@ -12,6 +12,7 @@ export function useTopCategory(transactions: GetTransactions[] | null) {
         const numericValue = parseFloat(amountStr)
         return numericValue < 0
     })
+
     const categories: Record<string, number> = {}
 
     for (const t of filteredTransactions) {
@@ -28,6 +29,6 @@ export function useTopCategory(transactions: GetTransactions[] | null) {
 
     const bigAmount = Math.max(...Object.values(categories))
     const topCategory = Object.keys(categories).find(key => categories[key] === bigAmount)
-
+    
     return { topCategory, filteredTransactions, bigAmount }
 }
