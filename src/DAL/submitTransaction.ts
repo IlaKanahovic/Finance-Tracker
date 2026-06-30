@@ -44,6 +44,7 @@ export const handleSubmit = (
             .then(res => res.json())
             .then(data => {
                 refreshTransactions()
+                console.log(data)
                 onClose()
             })
             .catch(er => console.error('Error submit:', er))
