@@ -10,7 +10,7 @@ export type GetTransactions = {
 
 const API_BASE = 'https://finance-tracker-backend-production-12f1.up.railway.app/api'
 
-const getTokenFromLS = (): string | null => {
+export const getTokenToLS = (): string | null => {
     try {
         const data = localStorage.getItem('auth-storage')
         if (!data) return null
@@ -31,7 +31,7 @@ const request = async <T>(
     endpoint: string,
     options: RequestInit = {}
 ): Promise<T> => {
-    const token = getTokenFromLS()
+    const token = getTokenToLS()
 
     const res = await fetch(`${API_BASE}${endpoint}`, {
         ...options,
