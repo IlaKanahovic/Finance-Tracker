@@ -1,4 +1,3 @@
-
 export type GetTransactions = {
     id: string
     date: string
@@ -9,28 +8,53 @@ export type GetTransactions = {
     amount: string
 }
 
-export const getTokenToLS = () => {
-    const data = localStorage.getItem('auth-storage')
-    if (!data) return null
+const API_BASE = 'https://finance-tracker-backend-production-12f1.up.railway.app/api'
 
-    const parseData = data ? JSON.parse(data) : null
-    if (!parseData?.state?.token) return null
+const getTokenFromLS = (): string | null => {
+    try {
+        const data = localStorage.getItem('auth-storage')
+        if (!data) return null
 
-    const token = parseData.state.token
-
-    if (!token) return null
-
-    return token
+        const parsed = JSON.parse(data)
+        return parsed?.state?.token || null
+    } catch {
+        return null
+    }
 }
 
-export const getTransactions = () => {
-    const promise: Promise<GetTransactions[]> = fetch('https://finance-tracker-backend-production-12f1.up.railway.app/api/transactions', {
-        method: 'GET',
+const handleUnauthorized = () => {
+    localStorage.removeItem('auth-storage')
+    window.location.href = '/signIn'
+}
+
+const request = async <T>(
+    endpoint: string,
+    options: RequestInit = {}
+): Promise<T> => {
+    const token = getTokenFromLS()
+
+    const res = await fetch(`${API_BASE}${endpoint}`, {
+        ...options,
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + getTokenToLS()
-        }
-    }).then(res => res.json())
+            ...(token && { Authorization: `Bearer ${token}` }),
+            ...options.headers,
+        },
+    })
 
-    return promise
+    if (res.status === 401 || res.status === 403) {
+        handleUnauthorized()
+        throw new Error('Unauthorized')
+    }
+
+    if (!res.ok) {
+        const errorText = await res.text()
+        throw new Error(errorText || 'Request failed')
+    }
+
+    return res.json()
+}
+
+export const getTransactions = (): Promise<GetTransactions[]> => {
+    return request<GetTransactions[]>('/transactions')
 }
