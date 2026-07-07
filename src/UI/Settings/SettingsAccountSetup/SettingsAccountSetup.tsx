@@ -2,6 +2,7 @@ import { AccountSetupNameInput } from "./Assist/AccountSetupNameInput";
 import { AccountSetupEmailInput } from "./Assist/AcoountSetupEmailInput";
 
 export function SettingsAccountSetup() {
+
     return (
         <div className="max-w-2xl mx-auto text-gray-100 mt-8">
             <div className="mb-6">

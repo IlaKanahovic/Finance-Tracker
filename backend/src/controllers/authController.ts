@@ -11,7 +11,7 @@ export const register = async (reg: Request, res: Response) => {
             where: { email }
         })
 
-        if (existingUser) return res.status(400).json({ message: "Пользователя с таким email уже существует" })
+        if (existingUser) return res.status(400).json({ message: "Пользователь с таким email уже существует" })
 
         const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -47,12 +47,9 @@ export const login = async (req: Request, res: Response) => {
         })
 
         if (!user) return res.status(401).json({ message: 'Пароль или email неверный, поменяй' })
-
         const isPasswordValid = await bcrypt.compare(password, user.password)
 
         if (!isPasswordValid) return res.status(401).json({ message: 'Пароль или email неверный, поменяй' })
-
-
         const token = generateToken(user.id, user.email)
 
         res.json({

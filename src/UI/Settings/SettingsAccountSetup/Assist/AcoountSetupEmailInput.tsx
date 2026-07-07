@@ -1,29 +1,78 @@
-
+import { useState } from "react"
+import { ModalCheckPassword } from "../../../Modals/ModalCheckPassword/ModalCheckPassword"
+import { validateEmail } from "../../../../assets/static-files/validateEmail"
+import { useStatusStore } from "../../../../store/statusStore"
 
 export function AccountSetupEmailInput() {
+    const [openModal, setOpenModal] = useState(false)
+    const [email, setEmail] = useState(() => {
+        const data = localStorage.getItem('auth-storage')
+        if (!data) return ''
+        const parsed = JSON.parse(data)
+        return parsed?.state?.user?.email || ''
+    })
+    const [emailError, setEmailError] = useState("")
+
+    const { status } = useStatusStore()
+
+    const handleOpenModal = () => {
+        if (email.length > 0) {
+            setOpenModal(true)
+        }
+    }
+
     return (
         <div className="space-y-2">
             <label className="text-xs font-medium uppercase tracking-wider text-gray-400 sm:hidden">Email</label>
+
             <input
                 type="email"
-                placeholder="@email.com"
-                className="w-full bg-black border border-gray-700 rounded-md px-3 py-2 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-0 transition-all duration-300 cursor-pointer hover:border-white hover:placeholder-white focus:border-white focus:placeholder-white"
+                autoComplete="off"
+                value={email}
+                className={`w-full bg-black border rounded-md px-3 py-2 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-0 transition-all duration-300 cursor-pointer hover:border-white hover:placeholder-white focus:border-white focus:placeholder-white ${emailError ? 'border-red-500 focus:border-red-500 hover:border-red-500' : 'border-gray-700'}`}
+                onChange={(event) => {
+                    setEmail(event.target.value)
+                    const error = validateEmail(event.target.value)
+                    setEmailError(error)
+                }}
             />
+            {emailError && (
+                <p className="text-red-400 text-xs mt-1 animate-in fade-in duration-200">
+                    {emailError}
+                </p>
+            )}
+
+            {status && (
+                <div className={`
+        text-sm font-medium px-3 py-1.5 rounded-lg transition-all duration-300 animate-in fade-in 
+        ${status === 'Успешно' && 'text-green-400 border border-green-400/30 bg-green-400/10'}
+        ${status === 'Неверный пароль' && 'text-red-400 border border-red-400/30 bg-red-400/10'}
+        ${status === 'Пользователь не найден' && 'text-orange-400 border border-orange-400/30 bg-orange-400/10'}
+        ${status === 'Пользователь с таким email уже существует' && 'text-red-400 border border-red-400/30 bg-red-400/10'}
+        ${status === 'Пароль обязателен' && 'text-yellow-400 border border-yellow-400/30 bg-yellow-400/10'}
+        ${status === 'Email обязателен' && 'text-yellow-400 border border-yellow-400/30 bg-yellow-400/10'}
+        ${status === 'Новый email совпадает с текущим' && 'text-yellow-400 border border-yellow-400/30 bg-yellow-400/10'}
+    `}>
+                    {status}
+                </div>
+            )}
+
             <label className="block text-xs text-gray-500">
                 Main email address.
             </label>
+            {openModal && email.length > 0 && (
+                <ModalCheckPassword
+                    onClose={() => setOpenModal(false)}
+                    email={email}
+                />
+            )}
             <div className="flex flex-wrap gap-3 pt-2">
                 <button
                     type="button"
+                    onClick={() => handleOpenModal()}
                     className="px-4 py-1.5 text-sm border border-gray-600 rounded-md text-gray-200 transition-all duration-300 cursor-pointer hover:border-white hover:text-white"
                 >
                     Edit email
-                </button>
-                <button
-                    type="button"
-                    className="px-4 py-1.5 text-sm text-blue-400 transition-all duration-300 cursor-pointer hover:text-white"
-                >
-                    Verify email
                 </button>
             </div>
         </div>
