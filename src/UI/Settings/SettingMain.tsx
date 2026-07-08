@@ -7,8 +7,18 @@ import { SettingsNotificationsSetup } from "./SettingsNotificationsSetup/Setting
 import { SettingsDataSetup } from "./SettingsDataSetup/SettingsDataSetup";
 import { SettingsAboutSetup } from "./SettingsAboutSetup/SettingsAboutSetup";
 import { SettingsFooterSetup } from "./SettingsFooterSetup/SettingsFooterSetup";
+import { useEffect } from "react";
+import { useStatusStore } from "../../store/statusStore";
 
 export function SettingsMain() {
+    const setStatus = useStatusStore((state) => state.setStatus)
+    useEffect(() => {
+        setStatus('')
+        return () => {
+            setStatus('')
+        }
+    }, [setStatus])
+
     return (
         <div >
             <SettingsHeader />

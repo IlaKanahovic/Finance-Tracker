@@ -47,11 +47,24 @@ export const editUserName = async (name: string) => {
 export const editEmail = async (email: string, password: string) => {
     const edit = await fetch(`https://finance-tracker-backend-production-12f1.up.railway.app/api/email`, {
         method: 'PATCH',
-                headers: {
+        headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + getTokenToLS()
         },
-        body: JSON.stringify({ email: email, password: password})
+        body: JSON.stringify({ email: email, password: password })
+    })
+
+    return edit
+}
+
+export const editPassword = async (currentPassword: string, newPassword: string) => {
+    const edit = await fetch(`https://finance-tracker-backend-production-12f1.up.railway.app/api/password`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + getTokenToLS()
+        },
+        body: JSON.stringify({ currentPassword: currentPassword, newPassword: newPassword })
     })
 
     return edit
