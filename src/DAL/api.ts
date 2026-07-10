@@ -8,7 +8,7 @@ export type GetTransactions = {
     amount: string
 }
 
-const API_BASE = 'https://finance-tracker-backend-production-12f1.up.railway.app/api'
+const API_BASE = 'https://finance-tracker-backend-production-e1c9.up.railway.app'
 
 export const getTokenToLS = (): string | null => {
     try {

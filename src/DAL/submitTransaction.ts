@@ -33,7 +33,7 @@ export const handleSubmit = (
             amount: currencySymbol + indicator() + transactionsValueForm.handleAmountChange
         }
 
-        fetch('https://finance-tracker-backend-production-12f1.up.railway.app/api/transactions', {
+        fetch('https://finance-tracker-backend-production-e1c9.up.railway.app/transactions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
