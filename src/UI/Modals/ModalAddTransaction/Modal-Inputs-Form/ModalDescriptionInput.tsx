@@ -1,12 +1,15 @@
+import { useTranslation } from "react-i18next"
 
 
-export function ModalDescriptionInput(props: { setDesc: (value: string) => void } ) {
+export function ModalDescriptionInput(props: { setDesc: (value: string) => void }) {
+    const { t } = useTranslation()
+
     return (
         <div>
             <label
                 htmlFor="description"
                 className="text-xl text-white font-medium block mb-2"
-            > Description
+            > {t('description')}
             </label>
             <input
                 type="text"

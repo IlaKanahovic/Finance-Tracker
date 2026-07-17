@@ -6,6 +6,7 @@ import { useShowDeleteModal } from "../../../BLL/ui/useShowDeleteModal"
 import { ModalChangeTransaction } from "../../Modals/ModalChangeTransaction/ModalChangeTransaction"
 import { useShowChangeModal } from "../../../BLL/ui/useShowChangeModal"
 import { useEffect, useRef } from "react"
+import { useTranslation } from "react-i18next"
 
 type Props = {
     data: GetTransactions
@@ -16,6 +17,7 @@ export function ExpensesItem(props: Props) {
     const { showActions, setShowActions } = useShowActions()
     const { showDeleteModal, setShowDeleteModal } = useShowDeleteModal()
     const { showChangeModal, setShowChangeModal } = useShowChangeModal()
+    const { t } = useTranslation()
 
     const refContainer = useRef<HTMLDivElement>(null)
 
@@ -52,12 +54,12 @@ export function ExpensesItem(props: Props) {
                 )}
                 <div className="space-y-2 cursor-pointer" onClick={() => setShowActions(true)}>
                     <div className="flex justify-between items-start">
-                        <span className="text-gray-400 text-xs">DATE</span>
+                        <span className="text-gray-400 text-xs">{t("date")}</span>
                         <p className="text-white text-sm font-medium">{props.data.date}</p>
                     </div>
                     <div className="space-y-1 mt-3">
                         <div className="flex justify-between items-start">
-                            <span className="text-gray-400 text-xs">DESCRIPTION</span>
+                            <span className="text-gray-400 text-xs">{t("description")}</span>
                             <p className="text-white text-sm font-medium text-right max-w-[60%] wrap-break-words">
                                 {props.data.title}
                             </p>
@@ -69,11 +71,11 @@ export function ExpensesItem(props: Props) {
                         )}
                     </div>
                     <div className="flex justify-between items-center mt-3">
-                        <span className="text-gray-400 text-xs">CATEGORY</span>
+                        <span className="text-gray-400 text-xs">{t("category")}</span>
                         <p className="text-white/70 text-sm">{props.data.category}</p>
                     </div>
                     <div className="flex justify-between items-center pt-2 border-t border-[#2a2a2a]">
-                        <span className="text-gray-400 text-xs">AMOUNT</span>
+                        <span className="text-gray-400 text-xs">{t("amount")}</span>
                         <p className="text-white font-mono text-lg font-bold">
                             {props.data.amount}
                         </p>

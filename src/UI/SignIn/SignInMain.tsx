@@ -1,9 +1,11 @@
 import { FaBookOpen } from 'react-icons/fa';
 import { SignInForm } from './SignInForm';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export function SignInMain() {
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
     return (
         <div className="min-h-screen bg-black flex flex-col">
@@ -14,11 +16,11 @@ export function SignInMain() {
                         <span>Monochrome Ledger</span>
                     </a>
                     <div className="flex flex-col">
-                        <p className="text-xs sm:text-sm font-medium text-white">Sign in to continue</p>
+                        <p className="text-xs sm:text-sm font-medium text-white">{t('sign_continue')}</p>
                         <div className="flex items-center gap-1 text-xs text-gray-400">
                             <span>Monochrome Ledger</span>
                             <span>/</span>
-                            <span>Sign In</span>
+                            <span>{t('sign_in')}</span>
                         </div>
                     </div>
                 </div>
@@ -28,10 +30,10 @@ export function SignInMain() {
                 <div className="w-full max-w-md">
                     <div className="mb-8 sm:mb-10 text-center sm:text-left">
                         <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">
-                            Sign In
+                            {t('sign_in')}
                         </h1>
                         <p className="mt-3 text-xs sm:text-sm text-gray-400 border-l-2 border-gray-700 pl-3">
-                            Access your Dashboard, Transactions, Quick Transfers and Preferences from one secure place.
+                            {t('create_account_info')}
                         </p>
                     </div>
                     <SignInForm />
@@ -40,7 +42,7 @@ export function SignInMain() {
             <footer className="px-4 sm:px-6 lg:px-8 py-4 border-t border-gray-800">
                 <div className="max-w-md mx-auto text-center">
                     <p className="text-[10px] sm:text-xs text-gray-500">
-                        © {new Date().getFullYear()} Monochrome Ledger. All rights reserved.
+                        © {new Date().getFullYear()} Monochrome Ledger. {t('all_rights')}.
                     </p>
                 </div>
             </footer>

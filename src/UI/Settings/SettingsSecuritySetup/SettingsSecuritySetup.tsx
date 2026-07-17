@@ -2,12 +2,14 @@ import { useState } from "react"
 import { usePasswordValidation } from "../../../BLL/valid/usePasswordValidation"
 import { SettingSecurityTwoAuth } from "./Assist/SettingSecurityTwoAuth"
 import { editPassword } from "../../../DAL/authRequests"
+import { useTranslation } from "react-i18next"
 
 export function SettingsSecuritySetup() {
     const [currentPas, setCurrentPas] = useState('')
     const [confirmPas, setConfirmPas] = useState('')
     const [newPas, setNewPas] = useState('')
     const [status, setStatus] = useState('')
+    const { t } = useTranslation()
 
     const {
         currentPassword,
@@ -42,21 +44,21 @@ export function SettingsSecuritySetup() {
     return (
         <div className="max-w-2xl mx-auto text-gray-100 mt-8">
             <div className="mb-6">
-                <h1 className="text-2xl font-semibold tracking-tight text-white">Security</h1>
+                <h1 className="text-2xl font-semibold tracking-tight text-white">{t('security')}</h1>
                 <p className="text-sm text-gray-400 mt-1 border-l-2 border-gray-700 pl-3">
-                    Keep your account secure. Manage password and multi-factor authentication.
+                    {t('keep_your_account')}
                 </p>
             </div>
             <div className="space-y-8">
                 <div>
                     <div className="mb-2 pb-1 border-gray-800">
-                        <span className="text-xs font-medium uppercase tracking-wider text-gray-400">Change password</span>
+                        <span className="text-xs font-medium uppercase tracking-wider text-gray-400">{t('change_password')}</span>
                     </div>
                     <div className="space-y-4 max-w-md">
                         <div>
                             <input
                                 type="password"
-                                placeholder="Current password"
+                                placeholder={t('current_password')}
                                 value={currentPassword}
                                 onChange={(e) => {
                                     handleCurrentPasswordChange(e.target.value)
@@ -73,7 +75,7 @@ export function SettingsSecuritySetup() {
                         <div>
                             <input
                                 type="password"
-                                placeholder="New password"
+                                placeholder={t('new_password')}
                                 value={newPassword}
                                 onChange={(e) => {
                                     handleNewPasswordChange(e.target.value)
@@ -90,7 +92,7 @@ export function SettingsSecuritySetup() {
                         <div>
                             <input
                                 type="password"
-                                placeholder="Confirm new password"
+                                placeholder={t('confirm_new_password')}
                                 value={confirmPassword}
                                 onChange={(e) => {
                                     handleConfirmPasswordChange(e.target.value)
@@ -111,13 +113,13 @@ export function SettingsSecuritySetup() {
                                 onClick={() => handleEditPassword(currentPas, newPas)}
                                 className={`px-4 py-1.5 text-sm border rounded-md transition-all duration-300 cursor-pointer ${isPasswordFormValid() ? 'border-gray-600 text-gray-200 hover:border-white hover:text-white' : 'border-gray-800 text-gray-600 cursor-not-allowed opacity-50'}`}
                             >
-                                Update password
+                                {t('update_password')}
                             </button>
                             <button
                                 type="button"
                                 className="px-4 py-1.5 text-sm text-blue-400 transition-all duration-300 cursor-pointer hover:text-white"
                             >
-                                Reset password  - coming soon
+                                {t('reset_password')}
                             </button>
                         </div>
                         {status && (

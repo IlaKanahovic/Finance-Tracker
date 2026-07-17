@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next"
 import { useButtonTransaction } from "../../../BLL/ui/useButtonAddTransaction"
 import { useTransactionsStore } from "../../../store/transactionsStore"
 import { ModalAddTransaction } from "../../Modals/ModalAddTransaction/ModalAddTransaction"
@@ -5,6 +6,7 @@ import { ModalAddTransaction } from "../../Modals/ModalAddTransaction/ModalAddTr
 export function ButtonFiltersAddTransaction() {
     const { openModalAddTransaction, setOpenModalAddTransaction } = useButtonTransaction()
     const { loadTransactions } = useTransactionsStore()
+    const { t } = useTranslation()
 
     return (
         <div>
@@ -14,7 +16,7 @@ export function ButtonFiltersAddTransaction() {
                     setOpenModalAddTransaction(true)
                 }}
             >
-                New Transaction
+                {t('new_transaction')}
             </div>
             {openModalAddTransaction && <ModalAddTransaction
                 isOpen={openModalAddTransaction}

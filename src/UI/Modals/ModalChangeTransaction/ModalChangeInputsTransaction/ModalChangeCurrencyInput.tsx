@@ -1,6 +1,7 @@
 import Select, { type SingleValue } from "react-select";
-import { currencyList } from "../../../../assets/static-files/categoryOptions";
+import { currencyList, currencyListRu } from "../../../../assets/static-files/categoryOptions";
 import { customStylesForReactSelect } from "../../../../assets/static-files/customStylesForReactSelect";
+import { useTranslation } from "react-i18next";
 
 type CurrencyOption = {
     value: string;
@@ -18,25 +19,32 @@ type ModalChangeCurrencyInputType = {
 }
 
 export function ModalChangeCurrencyInput(props: ModalChangeCurrencyInputType) {
+    const { t, i18n } = useTranslation()
+
+    const targetLnCategory = () => {
+        if (i18n.language === 'ru') return currencyListRu
+        if (i18n.language === 'ru') return currencyList
+    }
+
     const selectedOption = currencyList
         .flatMap(group => group.options)
-        .find(option => option.value === props.currency);
+        .find(option => option.value === props.currency)
 
     const handleChange = (selectedOption: SingleValue<CurrencyOption>) => {
-        props.setCurrency(selectedOption?.value || '');
-    };
+        props.setCurrency(selectedOption?.value || '')
+    }
 
     return (
         <div className='mt-4'>
             <label
                 htmlFor="currency"
                 className="text-xl text-white font-medium block mb-2"
-            > Currency
+            > {t('currency')}
             </label>
             <Select<CurrencyOption, false, GroupedOption>
-                options={currencyList}
+                options={targetLnCategory()}
                 styles={customStylesForReactSelect}
-                placeholder="Select currency..."
+                placeholder={t('select_currency')}
                 id="currency"
                 instanceId="currency-select"
                 required

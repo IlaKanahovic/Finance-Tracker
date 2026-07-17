@@ -1,12 +1,15 @@
+import { useTranslation } from "react-i18next"
 
 
-export function ModalAmountInput(props: { setAmount: (value: string) => void } ) {
+export function ModalAmountInput(props: { setAmount: (value: string) => void }) {
+    const { t } = useTranslation()
+
     return (
         <div>
             <label
                 htmlFor="amount"
                 className="text-xl text-white font-medium block mb-2"
-            > Amount
+            > {t('amount')}
             </label>
             <input
                 type="number"

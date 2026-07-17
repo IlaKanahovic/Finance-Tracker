@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next"
 
 type ModalChangeTitleInputType = {
     setTitle: (value: string) => void
@@ -5,12 +6,14 @@ type ModalChangeTitleInputType = {
 }
 
 export function ModalChangeTitleInput(props: ModalChangeTitleInputType) {
+    const { t } = useTranslation()
+
     return (
         <div className='mt-4'>
             <label
                 htmlFor="title"
                 className="text-xl text-white font-medium block mb-2"
-            > Title
+            > {t('title')}
             </label>
             <input
                 type="text"

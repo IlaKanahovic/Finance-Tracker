@@ -1,15 +1,18 @@
+import { useTranslation } from "react-i18next"
 
 export function SettingSecurityTwoAuth() {
+    const { t } = useTranslation()
+
     return (
         <div>
             <div className="mb-2 pb-1  border-gray-800">
-                <span className="text-xs font-medium uppercase tracking-wider text-gray-400">Two-factor auth (2FA)</span>
+                <span className="text-xs font-medium uppercase tracking-wider text-gray-400">{t('two_factor')}</span>
             </div>
             <div className="space-y-4">
                 <div className="flex items-center justify-between max-w-md">
                     <div>
-                        <span className="text-sm text-gray-300">Status:</span>
-                        <span className="text-sm text-green-400 ml-2">Enabled</span>
+                        <span className="text-sm text-gray-300">{t('status')}:</span>
+                        <span className="text-sm text-green-400 ml-2">{t('enabled')}</span>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" className="sr-only peer" defaultChecked />
@@ -17,14 +20,14 @@ export function SettingSecurityTwoAuth() {
                     </label>
                 </div>
                 <p className="text-xs text-gray-500">
-                    2FA adds an extra layer of protection. Use authenticator apps for best security.
+                    {t('2FA_adds')}
                 </p>
                 <div className="pt-2">
                     <button
                         type="button"
                         className="px-4 py-1.5 text-sm border border-gray-600 rounded-md text-gray-200 transition-all duration-300 cursor-pointer hover:border-white hover:text-white"
                     >
-                        Configure 2FA (QR code)
+                        {t('qr_code_2FA')}
                     </button>
                 </div>
             </div>

@@ -115,7 +115,6 @@ export const deleteTransaction = async (
                 userId
             }
         })
-
         if (!existingTransaction) return res.status(404).json({ message: 'Транзакция не найдена' })
 
         await prisma.transaction.delete({
@@ -125,6 +124,26 @@ export const deleteTransaction = async (
         res.status(204).send()
     } catch (error) {
         console.error('Delete transaction error:', error)
+        res.status(500).json({ message: 'Ошибка сервера' })
+    }
+}
+
+export const deleteAllTransactions = async (req: Request, res: Response) => {
+    try {
+        const userId = (req as any).userId
+        if (!userId) return res.status(401).json({ message: 'Ноу авторизейшен пользователь' })
+
+        const transactions = await prisma.transaction.findMany({
+            where: { userId: userId }
+        })
+
+        const deleteTransactions = await prisma.transaction.deleteMany({
+            where: { userId: userId }
+        })
+
+        res.json({ deleteTransactions: deleteTransactions })
+    } catch (error) {
+        console.error('Delete all transactions error:', error)
         res.status(500).json({ message: 'Ошибка сервера' })
     }
 }

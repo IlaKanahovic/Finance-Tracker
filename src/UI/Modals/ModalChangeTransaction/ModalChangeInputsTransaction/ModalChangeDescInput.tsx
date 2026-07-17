@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next"
 
 type ModalChangeDescInputType = {
     setDesc: (value: string) => void
@@ -5,12 +6,14 @@ type ModalChangeDescInputType = {
 }
 
 export function ModalChangeDescInput(props: ModalChangeDescInputType) {
+    const { t } = useTranslation()
+
     return (
         <div className='mt-4'>
             <label
                 htmlFor="description"
                 className="text-xl text-white font-medium block mb-2"
-            > Description
+            > {t('description')}
             </label>
             <input
                 type="text"

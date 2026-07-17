@@ -2,6 +2,7 @@ import { useState } from "react"
 import { ModalCheckPassword } from "../../../Modals/ModalCheckPassword/ModalCheckPassword"
 import { validateEmail } from "../../../../assets/static-files/validateEmail"
 import { useStatusStore } from "../../../../store/statusStore"
+import { useTranslation } from "react-i18next"
 
 export function AccountSetupEmailInput() {
     const [openModal, setOpenModal] = useState(false)
@@ -21,9 +22,11 @@ export function AccountSetupEmailInput() {
         }
     }
 
+    const { t } = useTranslation()
+
     return (
         <div className="space-y-2">
-            <label className="text-xs font-medium uppercase tracking-wider text-gray-400 sm:hidden">Email</label>
+            <label className="text-xs font-medium uppercase tracking-wider text-gray-400 sm:hidden">{t('email')}</label>
 
             <input
                 type="email"
@@ -58,7 +61,7 @@ export function AccountSetupEmailInput() {
             )}
 
             <label className="block text-xs text-gray-500">
-                Main email address.
+                {t('main_email')}
             </label>
             {openModal && email.length > 0 && (
                 <ModalCheckPassword
@@ -72,7 +75,7 @@ export function AccountSetupEmailInput() {
                     onClick={() => handleOpenModal()}
                     className="px-4 py-1.5 text-sm border border-gray-600 rounded-md text-gray-200 transition-all duration-300 cursor-pointer hover:border-white hover:text-white"
                 >
-                    Edit email
+                    {t('edit_email')}
                 </button>
             </div>
         </div>

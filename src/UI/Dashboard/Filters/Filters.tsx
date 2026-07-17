@@ -32,7 +32,7 @@ export function Filters() {
                     <div className="flex border border-[#2a2a2a]">
                         <ButtonFiltersDays
                             value="today"
-                            label="Today"
+                            label="today"
                             isActive={dataFilter === 'today'}
                             onClick={handleFilterClick} />
                         <ButtonFiltersDays
@@ -47,7 +47,7 @@ export function Filters() {
                             onClick={handleFilterClick} />
                         <ButtonFiltersCustomDate 
                             value="custom"
-                            label="Custom"
+                            label="custom"
                             isActive={dataFilter === 'custom'}
                             onClick={handleFilterClick} />
                     </div>

@@ -1,5 +1,5 @@
 import { useFormTransations } from "../../../BLL/transactions/useFormTransations"
-import { handleSubmit } from "../../../DAL/submitTransaction"
+import { handleSubmit } from "../../../DAL/transactions/submitTransaction"
 import { ModalAmountInput } from "./Modal-Inputs-Form/ModalAmountInput"
 import { ModalCategoryListInput } from "./Modal-Inputs-Form/ModalCategoryListInput"
 import { ModalCurrencyInput } from "./Modal-Inputs-Form/ModalCurrencyInput"

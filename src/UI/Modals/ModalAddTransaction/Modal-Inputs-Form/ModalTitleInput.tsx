@@ -1,10 +1,14 @@
+import { useTranslation } from "react-i18next"
+
 export function ModalTitleInput(props: { setTitle: (value: string) => void }) {
+    const { t } = useTranslation()
+
     return (
         <div>
             <label
                 htmlFor="title"
                 className="text-xl text-white font-medium block mb-2"
-            > Title 
+            > {t('title')}
             </label>
             <input
                 type="text"

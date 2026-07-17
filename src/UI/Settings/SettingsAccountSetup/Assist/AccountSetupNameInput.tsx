@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { editUserName } from "../../../../DAL/authRequests"
+import { useTranslation } from "react-i18next"
 
 export function AccountSetupNameInput() {
     const [name, setName] = useState(() => {
@@ -31,9 +32,11 @@ export function AccountSetupNameInput() {
         }
     }
 
+    const { t } = useTranslation()
+
     return (
         <div className="space-y-2">
-            <label className="text-xs font-medium uppercase tracking-wider text-gray-400 sm:hidden">User name</label>
+            <label className="text-xs font-medium uppercase tracking-wider text-gray-400 sm:hidden">{t('username')}</label>
             <input
                 type="text"
                 autoComplete="off"
@@ -57,7 +60,7 @@ export function AccountSetupNameInput() {
                 </div>
             )}
             <label className="block text-xs text-gray-500">
-                Your username
+                {t('your_username')}
             </label>
             <div className="pt-2">
                 <button
@@ -69,7 +72,7 @@ export function AccountSetupNameInput() {
                         localStorage.setItem('auth-storage', JSON.stringify(dataValue))
                     }}
                 >
-                    Edit user name
+                    {t('edit_usernmame')}
                 </button>
             </div>
         </div>

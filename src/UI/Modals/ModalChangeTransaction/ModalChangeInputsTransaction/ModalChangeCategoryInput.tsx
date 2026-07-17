@@ -1,6 +1,7 @@
 import Select, { type SingleValue } from "react-select";
-import { categoryOptions } from "../../../../assets/static-files/categoryOptions";
+import { categoryOptions, categoryOptionsRu } from "../../../../assets/static-files/categoryOptions";
 import { customStylesForReactSelect } from "../../../../assets/static-files/customStylesForReactSelect";
+import { useTranslation } from "react-i18next";
 
 type CategoryOption = {
     value: string;
@@ -13,23 +14,29 @@ type ModalChangeCategotyInputType = {
 }
 
 export function ModalChangeCategotyInput(props: ModalChangeCategotyInputType) {
-    const selectedOption = categoryOptions.find(option => option.value === props.category);
+    const { t, i18n } = useTranslation()
 
+    const selectedOption = categoryOptions.find(option => option.value === props.category)
     const handleChange = (selectedOption: SingleValue<CategoryOption>) => {
-        props.setCategory(selectedOption?.value || '');
-    };
+        props.setCategory(selectedOption?.value || '')
+    }
+
+    const targetLnCategory = () => {
+        if (i18n.language === 'ru') return categoryOptionsRu
+        if (i18n.language === 'ru') return categoryOptions
+    }
 
     return (
         <div className='mt-4'>
             <label
                 htmlFor="category"
                 className="text-xl text-white font-medium block mb-2"
-            > Category
+            > {t('category')}
             </label>
             <Select<CategoryOption>
-                options={categoryOptions}
+                options={targetLnCategory()}
                 styles={customStylesForReactSelect}
-                placeholder="Select category..."
+                placeholder={t('select_category')}
                 id="category"
                 instanceId="category-select"
                 required

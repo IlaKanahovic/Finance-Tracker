@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next"
 import type { DateFilterType } from "../../../assets/types/filterTypes"
 
 type Props = {
@@ -8,6 +9,8 @@ type Props = {
 }
 
 export function ButtonFiltersDays({ value, label, isActive, onClick }: Props) {
+    const { t } = useTranslation()
+
     return (
         <button
             className={`
@@ -17,7 +20,7 @@ export function ButtonFiltersDays({ value, label, isActive, onClick }: Props) {
             `}
             onClick={() => onClick(value)}
         >
-            {label}
+            {t(`${label}`)}
         </button>
     )
 }

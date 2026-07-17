@@ -1,8 +1,10 @@
+import { useTranslation } from "react-i18next";
 import { useFilterButtonExport } from "../../../BLL/filters/useFilterButtonExport";
 import { ModalExportTransactions } from "../../Modals/ModalExportTransactions/ModalExportTransactions";
 
 export function ButtonFiltersExport() {
     const { openModalExport, setOpenModalExport } = useFilterButtonExport()
+    const { t } = useTranslation()
 
     return (
         <div>
@@ -11,7 +13,7 @@ export function ButtonFiltersExport() {
         text-gray-700 hover:text-white hover:border-gray-100 cursor-pointer"
                 onClick={() => setOpenModalExport(true)}
             >
-                Export
+                {t('export')}
             </button>
             {
                 openModalExport && <ModalExportTransactions

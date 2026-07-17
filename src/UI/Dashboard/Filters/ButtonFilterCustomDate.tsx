@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next"
 import type { DateFilterType } from "../../../assets/types/filterTypes"
 import { useFilterButtonCustomDate } from "../../../BLL/filters/useFilterButtonCustomDate"
 import { ModalDateInputs } from "../../Modals/ModalDateInputs/ModalDateInputs"
@@ -11,6 +12,7 @@ type Props = {
 
 export function ButtonFiltersCustomDate({ value, label, isActive, onClick }: Props) {
     const { openModalDateInputs, setOpenModalDateInputs } = useFilterButtonCustomDate()
+    const { t } = useTranslation()
 
     return (
         <div>
@@ -27,7 +29,7 @@ export function ButtonFiltersCustomDate({ value, label, isActive, onClick }: Pro
                     }
                 }}
             >
-                {label}
+                {t(`${label}`)}
             </button>
             {openModalDateInputs && <ModalDateInputs
                 onClose={() => setOpenModalDateInputs(false)}

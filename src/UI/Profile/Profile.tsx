@@ -28,7 +28,7 @@ export function Profile() {
                     <div className="space-y-5">
                         <div className="space-y-2">
                             <label className="block text-xs font-medium uppercase tracking-wider text-gray-400">
-                                Full Name
+                                User name
                             </label>
                             <input
                                 type="text"

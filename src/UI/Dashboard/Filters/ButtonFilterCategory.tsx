@@ -1,16 +1,23 @@
 import { useRef } from "react"
 import Select from "react-select"
-import { categoryOptions } from "../../../assets/static-files/categoryOptions"
+import { categoryOptions, categoryOptionsRu } from "../../../assets/static-files/categoryOptions"
 import { customStylesForReactSelectForFilter } from "../../../assets/static-files/customStylesForReactSelect"
 import { filterByCategory } from "../../../store/filterStore"
+import { useTranslation } from "react-i18next"
 
 export function ButtonFilterCategory() {
+  const { t, i18n } = useTranslation()
   const selectRef = useRef<any>(null)
 
   const handleReset = () => {
     if (selectRef.current) {
       selectRef.current.clearValue()
     }
+  }
+
+  const targetLnCategory = () => {
+    if (i18n.language === 'ru') return categoryOptionsRu
+    if (i18n.language === 'ru') return categoryOptions
   }
 
   return (
@@ -20,12 +27,12 @@ export function ButtonFilterCategory() {
         className="font-medium text-sm px-3 py-1.5 whitespace-nowrap cursor-pointer"
         onClick={handleReset}
       >
-        Category
+        {t('category')}
       </label>
       <div className="flex-1 min-w-35">
         <Select
           ref={selectRef}
-          options={categoryOptions}
+          options={targetLnCategory()}
           styles={customStylesForReactSelectForFilter}
           placeholder=""
           id="category"

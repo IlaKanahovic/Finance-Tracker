@@ -1,6 +1,7 @@
 import { IoCalendarOutline } from "react-icons/io5";
 import { filterByData } from "../../../store/filterStore";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 type Props = {
     onClose: () => void
@@ -9,15 +10,16 @@ type Props = {
 export function ModalDateInputs(props: Props) {
     const [dateFrom, setDateFrom] = useState('')
     const [dateTo, setDateTo] = useState('')
+    const { t } = useTranslation()
 
     return (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
             <div className="bg-[#0A0A0A] border border-[#333333] rounded-2xl px-15 pt-10 pb-15 w-full max-w-2xl shadow-2xl flex justify-center items-center">
                 <div className="w-full">
-                    <h1 className="text-2xl text-white text-center">Select a date range</h1>
+                    <h1 className="text-2xl text-white text-center">{t('select_date_range')}</h1>
                     <div className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-6">
                         <div className="w-full sm:w-auto relative">
-                            <label className="block text-sm text-gray-400 mb-2">Date from</label>
+                            <label className="block text-sm text-gray-400 mb-2">{t('date_from')}</label>
                             <div className="relative">
                                 <input
                                     type="date"
@@ -30,7 +32,7 @@ export function ModalDateInputs(props: Props) {
                             </div>
                         </div>
                         <div className="w-full sm:w-auto relative">
-                            <label className="block text-sm text-gray-400 mb-2">Date to</label>
+                            <label className="block text-sm text-gray-400 mb-2">{t('date_to')}</label>
                             <div className="relative">
                                 <input
                                     type="date"
@@ -49,7 +51,7 @@ export function ModalDateInputs(props: Props) {
                             onClick={() => { props.onClose() }}
                             className="cursor-pointer bg-transparent border border-[#333333] text-white text-base font-medium p-3 px-15 rounded-lg hover:border-white hover:bg-white/5 transition-all"
                         >
-                            Cancel
+                            {t('cancel')}
                         </button>
                         <button
                             type="button"
@@ -63,7 +65,7 @@ export function ModalDateInputs(props: Props) {
                             }}
                             className="cursor-pointer bg-white text-black text-base font-medium p-3 px-15 rounded-lg hover:bg-gray-200 transition-all"
                         >
-                            Apply
+                            {t('confirm')}
                         </button>
                     </div>
                 </div>

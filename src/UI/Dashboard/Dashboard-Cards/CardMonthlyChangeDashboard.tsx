@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useGetSymbolNumberCerrency } from "../../../BLL/currency/useGetSymbolNumberCerrency"
 import { useMonthlyChange } from "../../../BLL/transactions/useMonthlyChange"
 import { targetCurrency } from "../../../store/settingsStore"
@@ -10,16 +11,17 @@ export function CardMonthlyChangeDashboard() {
     const currency = targetCurrency()
     const monthlyChange = useMonthlyChange(transactions)
     const { symbol } = useGetSymbolNumberCerrency(transactions, currency)
+    const { t } = useTranslation()
 
     if (monthlyChange === 'bob') {
         return (
             <li className="p-4 bg-(--card-bg) rounded-lg">
-                <p className="text-[#A0A0A0] text-xs mb-1">MONTHLY CHANGE</p>
+                <p className="text-[#A0A0A0] text-xs mb-1">{t('monthly_change')}</p>
                 <div className="flex flex-wrap justify-between items-center gap-x-4">
                     <div className="text-2xl font-semibold flex"> 0 </div>
                     <div className="flex justify-between items-center w-full">
-                        <p className="text-[#A0A0A0] text-xs">I his mounth vs last</p>
-                        <p className="text-[#A0A0A0] text-xs"> No transaction </p>
+                        <p className="text-[#A0A0A0] text-xs">{t('month_vs_last')}</p>
+                        <p className="text-[#A0A0A0] text-xs">{t('no_transactions')}</p>
                     </div>
                 </div>
             </li >
@@ -29,12 +31,12 @@ export function CardMonthlyChangeDashboard() {
     if (!monthlyChange) {
         return (
             <li className="p-4 bg-(--card-bg) rounded-lg">
-                <p className="text-[#A0A0A0] text-xs mb-1">MONTHLY CHANGE</p>
+                <p className="text-[#A0A0A0] text-xs mb-1">{t('monthly_change')}</p>
                 <div className="flex flex-wrap justify-between items-center gap-x-4">
-                    <div className="text-2xl font-semibold flex"> Loading... </div>
+                    <div className="text-2xl font-semibold flex"> {t('loading')} </div>
                     <div className="flex justify-between items-center w-full">
-                        <p className="text-[#A0A0A0] text-xs">I his mounth vs last</p>
-                        <p className="text-[#A0A0A0] text-xs"> Loading... </p>
+                        <p className="text-[#A0A0A0] text-xs">{t('month_vs_last')}</p>
+                        <p className="text-[#A0A0A0] text-xs"> {t('loading')} </p>
                     </div>
                 </div>
             </li >
@@ -43,7 +45,7 @@ export function CardMonthlyChangeDashboard() {
 
     return (
         <li className="p-4 bg-(--card-bg) rounded-lg">
-            <p className="text-[#A0A0A0] text-xs mb-1">MONTHLY CHANGE</p>
+            <p className="text-[#A0A0A0] text-xs mb-1">{t('monthly_change')}</p>
             <div className="flex flex-wrap justify-between items-center gap-x-4">
                 <div className="text-2xl font-semibold flex">
                     <div>{!monthlyChange ? 0 : symbol + monthlyChange.toFixed(2)}</div>
@@ -58,10 +60,10 @@ export function CardMonthlyChangeDashboard() {
                     </div>
                 </div>
                 <div className="flex justify-between items-center w-full">
-                    <p className="text-[#A0A0A0] text-xs">I his mounth vs last</p>
+                    <p className="text-[#A0A0A0] text-xs">{t('month_vs_last')}</p>
                     {transactions === null
-                        ? <p className="text-[#A0A0A0] text-xs"> No transaction </p>
-                        : <p className="text-[#A0A0A0] text-xs"> {transactions.length} transactions</p>}
+                        ? <p className="text-[#A0A0A0] text-xs"> {t('no_transactions')} </p>
+                        : <p className="text-[#A0A0A0] text-xs"> {transactions.length} {t('transaction')}</p>}
                 </div>
             </div>
         </li >

@@ -1,9 +1,12 @@
+import { useTranslation } from "react-i18next"
 
 type ModalChangeButtonFormType = {
     onClose: () => void
 }
 
 export function ModalChangeButtonsForm(props: ModalChangeButtonFormType) {
+    const { t } = useTranslation()
+
     return (
         <div className="mt-8 flex justify-center items-center">
             <button
@@ -14,13 +17,13 @@ export function ModalChangeButtonsForm(props: ModalChangeButtonFormType) {
                     props.onClose()
                 }}
             >
-                Cancel
+                {t('cancel')}
             </button>
             <button
                 className="cursor-pointer bg-white text-black text-base font-medium p-3 px-15 rounded-lg hover:bg-gray-200 transition-all"
                 type="submit"
             >
-                Change
+                {t('edit')}
             </button>
         </div>
     )

@@ -1,8 +1,10 @@
+import { useTranslation } from "react-i18next";
 import { FaBookOpen } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 export function SettingsHeader() {
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
     return (
         <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0">
@@ -12,11 +14,11 @@ export function SettingsHeader() {
                     <span>Monochrome Ledger</span>
                 </a>
                 <div className="flex flex-col">
-                    <p className="text-sm font-medium text-white">Profile & Preferences</p>
+                    <p className="text-sm font-medium text-white">{t('prof_preferences')}</p>
                     <div className="flex items-center gap-1 text-xs text-gray-400">
-                        <span>Settings</span>
+                        <span>{t('settings')}</span>
                         <span>/</span>
-                        <span>Profile & Preferences</span>
+                        <span>{t('prof_preferences')}</span>
                     </div>
                 </div>
             </div>

@@ -3,10 +3,11 @@ import './index.css'
 import { App } from './App.tsx'
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import './i18n'
 
 createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter basename="/Finance-Tracker">  
+    <BrowserRouter basename="/Finance-Tracker">
       <App />
     </BrowserRouter>
   </React.StrictMode>

@@ -1,6 +1,6 @@
-import { getCurrencySymbol } from "../assets/static-files/getCurrencySymbol";
-import type { TransactionFormData } from "../BLL/transactions/useFormTransations";
-import { getTokenToLS } from "./api";
+import { getCurrencySymbol } from "../../assets/static-files/getCurrencySymbol";
+import type { TransactionFormData } from "../../BLL/transactions/useFormTransations";
+import { getTokenToLS } from "../api";
 
 export const handleSubmit = (
     transactionsValueForm: TransactionFormData,
@@ -33,7 +33,7 @@ export const handleSubmit = (
             amount: currencySymbol + indicator() + transactionsValueForm.handleAmountChange
         }
 
-        fetch('https://finance-tracker-backend-production-e1c9.up.railway.app/transactions', {
+        fetch('https://finance-tracker-backend-production-e1c9.up.railway.app/api/transactions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

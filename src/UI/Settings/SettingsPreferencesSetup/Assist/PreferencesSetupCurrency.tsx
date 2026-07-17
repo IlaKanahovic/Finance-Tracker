@@ -1,7 +1,8 @@
 import Select from "react-select";
 import { customStylesForReactSelectForSettings } from "../../../../assets/static-files/customStylesForReactSelect";
-import { currencyList } from "../../../../assets/static-files/categoryOptions";
+import { currencyList, currencyListRu } from "../../../../assets/static-files/categoryOptions";
 import { setTargetCurrency } from "../../../../store/settingsStore";
+import { useTranslation } from "react-i18next";
 
 type CurrencyOption = {
     value: string;
@@ -14,15 +15,22 @@ type GroupedOption = {
 }
 
 export function PreferencesSetupCurrency() {
+    const { t, i18n } = useTranslation()
+
+    const targetLnCategory = () => {
+        if (i18n.language === 'ru') return currencyListRu
+        if (i18n.language === 'ru') return currencyList
+    }
+
     return (
         <div>
             <div className="mb-3 pb-1 border-b border-gray-800">
-                <span className="text-xs font-medium uppercase tracking-wider text-gray-400">Primary currency</span>
+                <span className="text-xs font-medium uppercase tracking-wider text-gray-400">{t('primary_currency')}</span>
             </div>
             <Select<CurrencyOption, false, GroupedOption>
-                options={currencyList}
+                options={targetLnCategory()}
                 styles={customStylesForReactSelectForSettings}
-                placeholder="Select currency..."
+                placeholder={t('select_currency')}
                 id="currency"
                 instanceId="currency-select"
                 required

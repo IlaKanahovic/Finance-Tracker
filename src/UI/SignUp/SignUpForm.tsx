@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next"
 import { useSignUpForm } from "../../BLL/forms/useSignUpForm"
 import { register, login } from "../../store/authStore"
 import { useNavigate } from "react-router-dom"
@@ -5,6 +6,7 @@ import { useNavigate } from "react-router-dom"
 export function SignUpForm() {
     const signUpValueForm = useSignUpForm()
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -15,7 +17,7 @@ export function SignUpForm() {
         <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-2">
                 <label className="block text-xs font-medium uppercase tracking-wider text-gray-400">
-                    Full Name <span className="text-red-500">*</span>
+                    {t('full_name')} <span className="text-red-500">*</span>
                 </label>
                 <input
                     type="text"
@@ -35,7 +37,7 @@ export function SignUpForm() {
 
             <div className="space-y-2">
                 <label className="block text-xs font-medium uppercase tracking-wider text-gray-400">
-                    Email <span className="text-red-500">*</span>
+                    {t('email')} <span className="text-red-500">*</span>
                 </label>
                 <input
                     type="email"
@@ -55,7 +57,7 @@ export function SignUpForm() {
 
             <div className="space-y-2">
                 <label className="block text-xs font-medium uppercase tracking-wider text-gray-400">
-                    Username <span className="text-red-500">*</span>
+                    {t('username')} <span className="text-red-500">*</span>
                 </label>
                 <input
                     type="text"
@@ -75,11 +77,11 @@ export function SignUpForm() {
 
             <div className="space-y-2">
                 <label className="block text-xs font-medium uppercase tracking-wider text-gray-400">
-                    Password <span className="text-red-500">*</span>
+                    {t('password')} <span className="text-red-500">*</span>
                 </label>
                 <input
                     type="password"
-                    placeholder="Create a password"
+                    placeholder={t('create_password')}
                     value={signUpValueForm.password}
                     className={`w-full bg-black border ${signUpValueForm.errors.password && signUpValueForm.touched?.password
                         ? 'border-red-500'
@@ -91,16 +93,16 @@ export function SignUpForm() {
                 {signUpValueForm.errors.password && signUpValueForm.touched?.password && (
                     <p className="text-red-500 text-xs mt-1">{signUpValueForm.errors.password}</p>
                 )}
-                <p className="text-gray-500 text-xs">Минимум 6 символов, 1 заглавная буква и 1 цифра</p>
+                <p className="text-gray-500 text-xs">{t('min_dep_password')}</p>
             </div>
 
             <div className="space-y-2">
                 <label className="block text-xs font-medium uppercase tracking-wider text-gray-400">
-                    Confirm Password <span className="text-red-500">*</span>
+                    {t('confirm_password')} <span className="text-red-500">*</span>
                 </label>
                 <input
                     type="password"
-                    placeholder="Confirm your password"
+                    placeholder={t('confirm_your_password')}
                     value={signUpValueForm.confirmPassword}
                     className={`w-full bg-black border ${signUpValueForm.errors.confirmPassword && signUpValueForm.touched?.confirmPassword
                         ? 'border-red-500'
@@ -130,7 +132,7 @@ export function SignUpForm() {
                         </svg>
                     </div>
                     <span className="text-xs sm:text-sm text-gray-300 group-hover:text-white transition-colors duration-300">
-                        I agree to the Terms of Service and Privacy Policy <span className="text-red-500">*</span>
+                        {t('i_agree_privacy_policy')} <span className="text-red-500">*</span>
                     </span>
                 </label>
             </div>
@@ -146,27 +148,27 @@ export function SignUpForm() {
                 disabled={signUpValueForm.isSubmitting}
                 className="w-full px-4 py-2.5 sm:py-3 text-sm sm:text-base font-medium border border-gray-600 rounded-md text-gray-200 transition-all duration-300 hover:border-white hover:text-white hover:bg-white/5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
-                {signUpValueForm.isSubmitting ? 'Создание аккаунта...' : 'Create Account'}
+                {signUpValueForm.isSubmitting ? t('account_creation') : t('create_account')}
             </button>
 
             <div className="text-center pt-2">
                 <p className="text-xs sm:text-sm text-gray-400">
-                    Already have an account?{' '}
+                    {t('alredy_account')} {' '}
                     <a onClick={() => navigate('/signIn')} className="text-blue-400 transition-all duration-300 hover:text-white cursor-pointer">
-                        Sign In
+                        {t('sign_in')}
                     </a>
                 </p>
             </div>
             <p className="text-[10px] sm:text-xs text-gray-500 text-center border-t border-gray-800 mt-6 pt-4">
-                By creating an account you agree to the{' '}
+                {t('by_creating')} {' '}
                 <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
-                    Terms of Service
+                    {t('terms_of_service')}
                 </a>
-                {' '}and{' '}
+                {' '} {t('and')} {' '}
                 <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
-                    Privacy Policy
+                    {t('privacy_policy')}
                 </a>
-                {' '}of Monochrome Ledger.
+                {' '} {t('of_monochrome')}
             </p>
         </form>
     )

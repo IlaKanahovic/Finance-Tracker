@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTransactionsStore } from "../../../store/transactionsStore";
 import { useExportTransactions } from "../../../BLL/transactions/useExportTransactions";
+import { useTranslation } from "react-i18next";
 
 type Props = {
     onClose: () => void
@@ -10,12 +11,13 @@ export function ModalExportTransactions(props: Props) {
     const [selectedType, setSelectedType] = useState('CSV');
     const { transactions } = useTransactionsStore()
     const exportTransactions = useExportTransactions(transactions, selectedType)
+    const { t } = useTranslation()
 
     return (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
             <div className="bg-[#0A0A0A] border border-[#333333] rounded-2xl px-15 pt-10 pb-15 w-full max-w-2xl shadow-2xl">
                 <div className="w-full">
-                    <h1 className="text-2xl text-white text-center">Select the export type</h1>
+                    <h1 className="text-2xl text-white text-center">{t('select_export_type')}</h1>
 
                     <div className="mt-8 space-y-4">
                         <div
@@ -61,7 +63,7 @@ export function ModalExportTransactions(props: Props) {
                             className="cursor-pointer bg-transparent border border-[#333333] text-white text-base font-medium p-3 px-15 rounded-lg hover:border-white hover:bg-white/5 transition-all"
                             onClick={() => props.onClose()}
                         >
-                            Cancel
+                            {t('cancel')}
                         </button>
                         <button
                             type="button"
@@ -74,7 +76,7 @@ export function ModalExportTransactions(props: Props) {
                                 exportTransactions()
                             }}
                         >
-                            Save
+                            {t('save')}
                         </button>
                     </div>
                 </div>
