@@ -1,7 +1,8 @@
-import { parse, startOfDay, endOfDay, isWithinInterval, subDays } from 'date-fns'
+import { parse, startOfDay, endOfDay, isWithinInterval, subDays, startOfWeek } from 'date-fns'
 import { useMemo } from 'react'
 import { useTransactionsStore } from '../../store/transactionsStore'
 import { useFilterStore } from '../../store/filterStore'
+import { useSettingsStore } from '../../store/settingsStore'
 
 
 export function useFilteredTransactions() {
@@ -12,6 +13,8 @@ export function useFilteredTransactions() {
     const dataFilter = useFilterStore((state) => state.dataFilter)
     const dateFrom = useFilterStore((state) => state.datefrom)
     const dateTo = useFilterStore((state) => state.dateTo)
+
+    const weekStart = useSettingsStore((state) => state.weekStart)
 
     const filteredTransactions = useMemo(() => {
 
@@ -29,7 +32,7 @@ export function useFilteredTransactions() {
                 return isWithinInterval(date, { start, end })
             })
         } else if (dataFilter === '7d') {
-            const start = startOfDay(subDays(new Date(), 7))
+            const start = startOfDay(startOfWeek(new Date(), { weekStartsOn: weekStart === 'Monday' ? 1 : 0 }))
             const end = endOfDay(new Date())
             filtered = filtered.filter(t => {
                 const date = parse(t.date, 'dd/MM/yyyy', new Date())
@@ -46,7 +49,7 @@ export function useFilteredTransactions() {
             const start = new Date(dateFrom)
             const end = new Date(dateTo)
             filtered = filtered.filter(t => {
-                const date = new Date(t.date) 
+                const date = new Date(t.date)
                 return date >= start && date <= end
             })
         }

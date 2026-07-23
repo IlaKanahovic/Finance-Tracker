@@ -2,15 +2,64 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
 :root {
-  --bg: #0a0a0a;
-  --card-bg: #1a1a1a;
-  --text-main: #ffffff;
+    --bg: #0a0a0a;
+    --card-bg: #1a1a1a;
+    --text-main: #ffffff;
 }
 
 body {
-  background: var(--bg);
-  color: var(--text-main);
-  font-family: "Source Code Pro", monospace;
-  padding: 30px;
-  padding-top: 20px;
+    background: var(--bg);
+    color: var(--text-main);
+    font-family: "Source Code Pro", monospace;
+    padding: 30px;
+    padding-top: 20px;
+}
+
+@keyframes softAppear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.animate-soft {
+    animation: softAppear 0.6s ease forwards;
+}
+
+@keyframes toastFade {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes toastSlide {
+    0% { opacity: 0; transform: translateX(30px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes toastBounce {
+    0% { opacity: 0; transform: scale(0.8); }
+    50% { transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes toastZoom {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.toast-fade {
+    animation: toastFade 0.4s ease-out forwards;
+}
+
+.toast-slide {
+    animation: toastSlide 0.4s ease-out forwards;
+}
+
+.toast-bounce {
+    animation: toastBounce 0.4s ease-out forwards;
+}
+
+.toast-zoom {
+    animation: toastZoom 0.4s ease-out forwards;
 }

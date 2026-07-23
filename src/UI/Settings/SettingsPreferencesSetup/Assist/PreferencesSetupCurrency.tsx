@@ -19,7 +19,7 @@ export function PreferencesSetupCurrency() {
 
     const targetLnCategory = () => {
         if (i18n.language === 'ru') return currencyListRu
-        if (i18n.language === 'ru') return currencyList
+        if (i18n.language === 'en') return currencyList
     }
 
     return (

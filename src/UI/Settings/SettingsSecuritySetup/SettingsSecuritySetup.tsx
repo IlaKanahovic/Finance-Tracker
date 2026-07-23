@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { usePasswordValidation } from "../../../BLL/valid/usePasswordValidation"
-import { SettingSecurityTwoAuth } from "./Assist/SettingSecurityTwoAuth"
 import { editPassword } from "../../../DAL/authRequests"
 import { useTranslation } from "react-i18next"
+import toast from "react-hot-toast"
 
 export function SettingsSecuritySetup() {
     const [currentPas, setCurrentPas] = useState('')
@@ -31,13 +31,19 @@ export function SettingsSecuritySetup() {
             setConfirmPas('')
             setNewPas('')
             setStatus('Успешно')
+            toast.success(t('toast_password_updated'))
         } else if (edit.status === 400) {
             const data = await edit.json()
             setStatus(data.message)
+            toast.error(data.message || toast.error(t('toast_password_error')))
         } else if (edit.status === 401) {
             setStatus('Неверный пароль')
+            toast.error(t('toast_password_incorrect'))
         } else if (edit.status === 404) {
             setStatus('Пользователь не найден')
+            toast.error(t('toast_user_not_found'))
+        } else if (edit.status === 500) {
+            toast.error(t('toast_server_error'))
         }
     }
 
@@ -115,12 +121,6 @@ export function SettingsSecuritySetup() {
                             >
                                 {t('update_password')}
                             </button>
-                            <button
-                                type="button"
-                                className="px-4 py-1.5 text-sm text-blue-400 transition-all duration-300 cursor-pointer hover:text-white"
-                            >
-                                {t('reset_password')}
-                            </button>
                         </div>
                         {status && (
                             <div className={`
@@ -138,7 +138,6 @@ export function SettingsSecuritySetup() {
                     </div>
                 </div>
                 <div className="opacity-0"> {confirmPas} </div>
-                <SettingSecurityTwoAuth />
             </div>
         </div>
     )

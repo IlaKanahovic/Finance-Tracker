@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { deleteAllTransactions } from "../../../DAL/transactions/deleteAllTransactions"
 import { useTranslation } from "react-i18next"
+import toast from "react-hot-toast"
 
 type Props = {
     onClose: () => void
@@ -11,9 +12,14 @@ export function ModalDeleteAllTransactions(props: Props) {
     const { t } = useTranslation()
 
     const handleDeleteTransactions = async () => {
-        await deleteAllTransactions()
-        props.onClose()
-        navigate('/')
+        try {
+            await deleteAllTransactions()
+            toast.success(t('toast_all_deleted'))
+            props.onClose()
+            navigate('/')
+        } catch {
+            toast.error(t('toast_all_delete_error'))
+        }
     }
 
     return (

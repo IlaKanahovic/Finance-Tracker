@@ -8,7 +8,7 @@ type Props = {
 }
 
 export function ModalExportTransactions(props: Props) {
-    const [selectedType, setSelectedType] = useState('CSV');
+    const [selectedType, setSelectedType] = useState('CSV')
     const { transactions } = useTransactionsStore()
     const exportTransactions = useExportTransactions(transactions, selectedType)
     const { t } = useTranslation()

@@ -1,12 +1,13 @@
 import { getCurrencySymbol } from "../../assets/static-files/getCurrencySymbol";
 import type { TransactionFormData } from "../../BLL/transactions/useFormTransations";
 import { getTokenToLS, type GetTransactions } from "../api";
+import toast from "react-hot-toast";
 
 export const handleChange = (
     transactionsValueForm: TransactionFormData,
     data: GetTransactions,
     onClose: () => void,
-    refreshTransactions: () => void 
+    refreshTransactions: () => void
 ) => {
     return (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -35,12 +36,21 @@ export const handleChange = (
             },
             body: JSON.stringify(changeTransaction)
         })
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(err => { throw err })
+                }
+                return res.json()
+            })
             .then(data => {
                 console.log(data)
+                toast.success('Транзакция обновлена')
                 refreshTransactions()
                 onClose()
             })
-            .catch(er => console.log('ERROR CHANGE', er))
+            .catch(er => {
+                console.log('ERROR CHANGE', er)
+                toast.error(er.message || 'Ошибка при обновлении транзакции')
+            })
     }
 }

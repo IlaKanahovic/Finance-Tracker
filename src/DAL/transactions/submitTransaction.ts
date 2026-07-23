@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { getCurrencySymbol } from "../../assets/static-files/getCurrencySymbol";
 import type { TransactionFormData } from "../../BLL/transactions/useFormTransations";
 import { getTokenToLS } from "../api";
@@ -45,6 +46,7 @@ export const handleSubmit = (
             .then(data => {
                 refreshTransactions()
                 console.log(data)
+                toast.success('Transaction add')
                 onClose()
             })
             .catch(er => console.error('Error submit:', er))

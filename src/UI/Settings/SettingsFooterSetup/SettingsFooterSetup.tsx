@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { logout } from "../../../store/authStore"
 import { useTranslation } from "react-i18next"
+import toast from "react-hot-toast"
 
 export function SettingsFooterSetup() {
     const navigate = useNavigate()
@@ -8,6 +9,7 @@ export function SettingsFooterSetup() {
 
     const handleSubmit = () => {
         logout()
+        toast.success('Вы вышли из аккаунта')
         navigate(-1)
     }
 
@@ -20,7 +22,7 @@ export function SettingsFooterSetup() {
                 <button className="px-4 py-1.5 text-sm border border-gray-600 rounded-md text-gray-200 transition-all duration-300 cursor-pointer hover:border-white hover:text-white">
                     {t('reset_default')}
                 </button>
-                <button onClick={() => {handleSubmit()}} className="px-4 py-1.5 text-sm border border-red-600 rounded-md text-red-400 transition-all duration-300 cursor-pointer hover:border-red-400 hover:text-red-300">
+                <button onClick={() => { handleSubmit() }} className="px-4 py-1.5 text-sm border border-red-600 rounded-md text-red-400 transition-all duration-300 cursor-pointer hover:border-red-400 hover:text-red-300">
                     {t('sign_out')}
                 </button>
                 <button className="px-4 py-1.5 text-sm border border-red-600 rounded-md text-red-400 transition-all duration-300 cursor-pointer hover:border-red-400 hover:text-red-300">

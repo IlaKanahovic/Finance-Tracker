@@ -17,7 +17,7 @@ export function ButtonFilterCategory() {
 
   const targetLnCategory = () => {
     if (i18n.language === 'ru') return categoryOptionsRu
-    if (i18n.language === 'ru') return categoryOptions
+    if (i18n.language === 'en') return categoryOptions
   }
 
   return (

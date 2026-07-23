@@ -2,6 +2,7 @@ import { useState } from "react"
 import { editEmail } from "../../../DAL/authRequests"
 import { useStatusStore } from "../../../store/statusStore"
 import { useTranslation } from "react-i18next"
+import toast from "react-hot-toast"
 
 type Props = {
     onClose: () => void
@@ -21,15 +22,20 @@ export function ModalCheckPassword(props: Props) {
         const edit = await editEmail(email, password)
         if (edit.status === 200) {
             setStatus('Успешно')
+            toast.success(t('toast_email_updated'))
         } else if (edit.status === 400) {
             const data = await edit.json()
             setStatus(data.message)
+            toast.error(data.message)
         } else if (edit.status === 401) {
             setStatus('Неверный пароль')
+            toast.error(t('toast_password_incorrect'))
         } else if (edit.status === 404) {
             setStatus('Пользователь не найден')
+            toast.error(t('toast_user_not_found'))
         } else if (edit.status === 409) {
             setStatus('Пользователь с таким email уже существует')
+            toast.error(t('toast_email_taken'))
         }
     }
 

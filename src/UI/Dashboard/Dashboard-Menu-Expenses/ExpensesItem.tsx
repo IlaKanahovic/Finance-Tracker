@@ -7,6 +7,7 @@ import { ModalChangeTransaction } from "../../Modals/ModalChangeTransaction/Moda
 import { useShowChangeModal } from "../../../BLL/ui/useShowChangeModal"
 import { useEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
+import { useFormattedDate } from "../../../BLL/ui/useFormattedDate"
 
 type Props = {
     data: GetTransactions
@@ -32,8 +33,13 @@ export function ExpensesItem(props: Props) {
         return () => document.removeEventListener('click', handleClick)
     }, [])
 
+
     return (
-        <div key={props.data.id} ref={refContainer} className="relative p-4 sm:p-0">
+        <div
+            key={props.data.id}
+            ref={refContainer}
+            className="relative p-4 sm:p-0 animate-fade-slide-up"
+        >
 
             {/* mobile */}
             <div className="block sm:hidden relative">
@@ -55,7 +61,7 @@ export function ExpensesItem(props: Props) {
                 <div className="space-y-2 cursor-pointer" onClick={() => setShowActions(true)}>
                     <div className="flex justify-between items-start">
                         <span className="text-gray-400 text-xs">{t("date")}</span>
-                        <p className="text-white text-sm font-medium">{props.data.date}</p>
+                        <p className="text-white text-sm font-medium"> {useFormattedDate(props.data.date)} </p>
                     </div>
                     <div className="space-y-1 mt-3">
                         <div className="flex justify-between items-start">
@@ -104,7 +110,7 @@ export function ExpensesItem(props: Props) {
                     </div>
                 )}
                 <p className="text-white text-sm truncate">
-                    {props.data.date}
+                    {useFormattedDate(props.data.date)}
                 </p>
                 <div className="min-w-0">
                     <p className="text-white font-medium text-sm md:text-base truncate">

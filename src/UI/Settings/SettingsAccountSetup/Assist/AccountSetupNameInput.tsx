@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { editUserName } from "../../../../DAL/authRequests"
 import { useTranslation } from "react-i18next"
+import toast from "react-hot-toast"
 
 export function AccountSetupNameInput() {
     const [name, setName] = useState(() => {
@@ -19,16 +20,22 @@ export function AccountSetupNameInput() {
         const edit = await editUserName(name)
         if (edit.status === 200) {
             setStatus('Успешно')
+            toast.success(t('toast_name_updated'))
         } else if (edit.status === 400) {
             setStatus('Введите корректное имя')
+            toast.error(t('toast_name_invalid'))
         } else if (edit.status === 401) {
             setStatus('Вы не авторизованы')
+            toast.error(t('toast_name_taken'))
         } else if (edit.status === 404) {
             setStatus('Пользователь не найден')
+            toast.error(t('toast_name_unauthorized'))
         } else if (edit.status === 409) {
             setStatus('Имя занято')
+            toast.error('Имя занято')
         } else if (edit.status === 422) {
             setStatus('Имя некорректно')
+            toast.error('Имя некорректно')
         }
     }
 
