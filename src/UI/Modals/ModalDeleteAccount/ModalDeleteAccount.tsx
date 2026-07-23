@@ -1,6 +1,7 @@
 import toast from "react-hot-toast"
 import { useTranslation } from "react-i18next"
 import { deleteAccount } from "../../../DAL/authRequests"
+import { logout } from "../../../store/authStore"
 
 type Props = {
     onClose: () => void
@@ -11,6 +12,7 @@ export function ModalDeleteAccount(props: Props) {
 
     const handleDeleteAccount = async () => {
         await deleteAccount()
+        logout()
         toast.success('Аккаунт удален')
     }
 
