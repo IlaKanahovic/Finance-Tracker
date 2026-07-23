@@ -108,3 +108,23 @@ export const changePassword = async (req: Request, res: Response) => {
         res.status(500).json({ message: 'Ошибка сервера' })
     }
 }
+
+export const deleteAccount = async (req: Request, res: Response) => {
+    try {
+        const userId = (req as any).userId
+        if (!userId) return res.status(401).json({ message: 'Пользователь не авторизован' })
+
+        await prisma.transaction.deleteMany({
+            where: { userId: userId }
+        })
+
+        await prisma.user.delete({
+            where: { id: userId }
+        })
+
+        res.json({ message: 'Аккаунт удалён' })
+    } catch (error) {
+        console.error('Delete account error:', error)
+        res.status(500).json({ message: 'Ошибка сервера' })
+    }
+}

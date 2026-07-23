@@ -2,8 +2,11 @@ import { useNavigate } from "react-router-dom"
 import { logout } from "../../../store/authStore"
 import { useTranslation } from "react-i18next"
 import toast from "react-hot-toast"
+import { useState } from "react"
+import { ModalDeleteAccount } from "../../Modals/ModalDeleteAccount/ModalDeleteAccount"
 
 export function SettingsFooterSetup() {
+    const [openModalDeleteAccount, setOpenModalDeleteAccount] = useState(false)
     const navigate = useNavigate()
     const { t } = useTranslation()
 
@@ -25,11 +28,12 @@ export function SettingsFooterSetup() {
                 <button onClick={() => { handleSubmit() }} className="px-4 py-1.5 text-sm border border-red-600 rounded-md text-red-400 transition-all duration-300 cursor-pointer hover:border-red-400 hover:text-red-300">
                     {t('sign_out')}
                 </button>
-                <button className="px-4 py-1.5 text-sm border border-red-600 rounded-md text-red-400 transition-all duration-300 cursor-pointer hover:border-red-400 hover:text-red-300">
+                <button onClick={() => setOpenModalDeleteAccount(!openModalDeleteAccount)} className="px-4 py-1.5 text-sm border border-red-600 rounded-md text-red-400 transition-all duration-300 cursor-pointer hover:border-red-400 hover:text-red-300">
                     {t('delete_account')}
                 </button>
             </div>
             <p className="text-xs text-gray-500 mt-3"> {t('deleting_account_requuires')} </p>
+            {openModalDeleteAccount && <ModalDeleteAccount onClose={() => setOpenModalDeleteAccount(false)} />}
         </div>
     )
 }

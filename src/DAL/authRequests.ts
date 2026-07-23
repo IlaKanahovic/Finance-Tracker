@@ -69,3 +69,12 @@ export const editPassword = async (currentPassword: string, newPassword: string)
 
     return edit
 }
+
+export const deleteAccount = async () => {
+    const deleteAccount = await fetch(`https://finance-tracker-backend-production-e1c9.up.railway.app/api/accountdelete`, {
+        method: 'DELETE',
+        headers: { 'Authorization': 'Bearer ' + getTokenToLS() }
+    })
+
+    return deleteAccount
+}

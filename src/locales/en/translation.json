@@ -182,5 +182,6 @@
     "toast_export_excel_error": "Error creating Excel",
     "toast_logout_success": "You have been logged out",
     "toast_toast_enabled": "Notifications enabled",
-    "toast_toast_disabled": "Notifications disabled"
+    "toast_toast_disabled": "Notifications disabled",
+    "delete_account_info": "Are you sure you want to delete your account? This action is permanent and cannot be undone. All your data, transactions, and settings will be lost forever."
 }
