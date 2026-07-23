@@ -1,15 +1,16 @@
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { languageFormat, setLanguageFormat } from "../../../../store/settingsStore";
+import { useEffect } from "react";
 
 export function PreferencesSetupLanguage() {
     const { t, i18n } = useTranslation()
-    const [activeLanguage, setActiveLanguage] = useState(i18n.language || 'en')
+    const language = languageFormat()
 
-    const changeLanguage = (lng: string) => {
-        i18n.changeLanguage(lng)
-        localStorage.setItem('preferredLanguage', lng)
-        setActiveLanguage(lng)
-    }
+    useEffect(() => {
+        i18n.changeLanguage(language)
+        localStorage.setItem('preferredLanguage', language)
+    }, [language])
+
 
     return (
         <div>
@@ -18,19 +19,19 @@ export function PreferencesSetupLanguage() {
             </div>
             <div className="flex flex-wrap gap-3">
                 <button
-                    className={`px-4 py-1.5 text-sm border rounded-md transition-all duration-300 cursor-pointer ${activeLanguage === 'en'
+                    className={`px-4 py-1.5 text-sm border rounded-md transition-all duration-300 cursor-pointer ${language === 'en'
                         ? 'border-white text-white bg-white/5'
                         : 'border-gray-600 text-gray-200 hover:border-white hover:text-white'
                         }`}
-                    onClick={() => changeLanguage('en')}>
+                    onClick={() => setLanguageFormat('en')}>
                     {t('english')}
                 </button>
                 <button
-                    className={`px-4 py-1.5 text-sm border rounded-md transition-all duration-300 cursor-pointer ${activeLanguage === 'ru'
+                    className={`px-4 py-1.5 text-sm border rounded-md transition-all duration-300 cursor-pointer ${language === 'ru'
                         ? 'border-white text-white bg-white/5'
                         : 'border-gray-600 text-gray-200 hover:border-white hover:text-white'
                         }`}
-                    onClick={() => changeLanguage('ru')}>
+                    onClick={() => setLanguageFormat('ru')}>
                     {t('russian')}
                 </button>
             </div>

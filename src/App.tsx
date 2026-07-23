@@ -43,7 +43,7 @@ export function App() {
         <Toaster
           position={notificPosition}
           toastOptions={{
-            duration: 4000,
+            duration: 2000,
             className: `toast-${notificAnimation}`,
             style: {
               background: '#1A1A1A',

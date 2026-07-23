@@ -52,7 +52,7 @@ export function CardAvailableDashboard() {
             <p className="text-2xl font-semibold"> {symbol + topCategory.bigAmount.toFixed(2)} </p>
             <div className="flex flex-wrap justify-between items-center gap-x-4">
                 <p className="text-[#A0A0A0] text-xs"> {t('biggestExpenseLabel')}  </p>
-                <p className="text-[#A0A0A0] text-xs"> {topCategory.topCategory} </p>
+                <p className="text-[#A0A0A0] text-xs"> {t(`${topCategory.topCategory}`)} </p>
             </div>
         </li>
     )

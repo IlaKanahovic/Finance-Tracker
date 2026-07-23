@@ -78,7 +78,7 @@ export function ExpensesItem(props: Props) {
                     </div>
                     <div className="flex justify-between items-center mt-3">
                         <span className="text-gray-400 text-xs">{t("category")}</span>
-                        <p className="text-white/70 text-sm">{props.data.category}</p>
+                        <p className="text-white/70 text-sm">{t(`${props.data.category}`)}</p>
                     </div>
                     <div className="flex justify-between items-center pt-2 border-t border-[#2a2a2a]">
                         <span className="text-gray-400 text-xs">{t("amount")}</span>
@@ -123,7 +123,7 @@ export function ExpensesItem(props: Props) {
                     )}
                 </div>
                 <p className="text-white/80 text-sm truncate">
-                    {props.data.category}
+                    {t(`${props.data.category}`)}
                 </p>
                 <p className="text-white font-mono text-sm truncate text-right justify-self-end">
                     {props.data.amount}

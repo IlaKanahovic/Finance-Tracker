@@ -22,7 +22,6 @@ export function SettingsHeader() {
                     </div>
                 </div>
             </div>
-            <a onClick={() => navigate('profile')} className="p-5 rounded-full border border-gray-600 cursor-pointer hover:border-white transition-all duration-300"></a>
         </header>
     )
 }

@@ -46,7 +46,7 @@ export const handleSubmit = (
             .then(data => {
                 refreshTransactions()
                 console.log(data)
-                toast.success('Transaction add')
+                toast.success('Транзакция добавлена')
                 onClose()
             })
             .catch(er => console.error('Error submit:', er))
