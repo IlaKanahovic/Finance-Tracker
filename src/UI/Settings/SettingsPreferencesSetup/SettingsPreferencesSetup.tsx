@@ -10,10 +10,10 @@ export function SettingsPreferencesSetup() {
     const { t } = useTranslation()
 
     return (
-        <div className="max-w-2xl mx-auto text-gray-100 mt-8">
+        <div className="max-w-2xl mx-auto text-(--text-main) mt-8">
             <div className="mb-6">
-                <h1 className="text-2xl font-semibold tracking-tight text-white">{t('preferences')}</h1>
-                <p className="text-sm text-gray-400 mt-1 border-l-2 border-gray-700 pl-3">
+                <h1 className="text-2xl font-semibold tracking-tight text-(--text-main)">{t('preferences')}</h1>
+                <p className="text-sm text-(--text-secondary) mt-1 border-l-2 border-(--border-header-buttons) pl-3">
                     {t('customaize_application')}
                 </p>
             </div>

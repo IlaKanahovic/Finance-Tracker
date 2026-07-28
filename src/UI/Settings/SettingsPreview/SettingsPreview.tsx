@@ -5,8 +5,8 @@ export function SettingsPreview() {
 
     return (
         <div className="mt-18">
-            <h1 className="text-2xl">{t('prof_preferences')}</h1>
-            <p className="mt-4 text-xs text-gray-400">{t('description_settings')}</p>
+            <h1 className="text-2xl text-(--text-main)">{t('prof_preferences')}</h1>
+            <p className="mt-4 text-xs text-(--text-secondary)">{t('description_settings')}</p>
         </div>
     )
 }

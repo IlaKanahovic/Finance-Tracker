@@ -6,10 +6,10 @@ import { SignUpMain } from "./UI/SignUp/SignUpMain";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Profile } from "./UI/Profile/Profile";
 import { useUpdatedTimeAPIRequastCurrency } from "./BLL/currency/useUpdatedTimeAPIRequastCurrency";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Toaster } from 'react-hot-toast';
-import { notificationsAnimation, notificationsPosition, notificationsSwitch } from "./store/settingsStore";
+import { notificationsAnimation, notificationsPosition, notificationsSwitch, targetTheme } from "./store/settingsStore";
 
 export function App() {
   useUpdatedTimeAPIRequastCurrency()
@@ -17,6 +17,16 @@ export function App() {
   const notificEnabled = notificationsSwitch()
   const notificPosition = notificationsPosition()
   const notificAnimation = notificationsAnimation()
+
+  const theme = targetTheme()
+  useEffect(() => {
+    const root = document.documentElement
+    if (theme === 'Light') {
+      root.classList.add('light')
+    } else {
+      root.classList.remove('light')
+    }
+  }, [theme])
 
   return (
     <Suspense fallback={<div>{t('loading')}</div>}>

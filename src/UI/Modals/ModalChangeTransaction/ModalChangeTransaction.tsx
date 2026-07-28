@@ -20,10 +20,10 @@ export function ModalChangeTransaction(props: ModalDeleteTransactionProps) {
     const { t } = useTranslation()
 
     return (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
-            <div className="bg-[#0A0A0A] border border-[#333333] rounded-2xl p-8 w-full max-w-2xl shadow-2xl">
+        <div className="fixed inset-0 bg-(--bg)/80 flex items-center justify-center z-50">
+            <div className="bg-(--bg)  border border-[#333333] rounded-2xl p-8 w-full max-w-2xl shadow-2xl">
                 <div>
-                    <h1 className="text-2xl text-white mb-8"> {t('change_transaction')} </h1>
+                    <h1 className="text-2xl text-(--text-main) mb-8"> {t('change_transaction')} </h1>
                     <form onSubmit={handleChange(transactionsValueForm, props.data, props.onClose, props.refreshTransactions)}>
                         <ModalChangeTitleInput setTitle={transactionsValueForm.setHandleTitleChange} title={transactionsValueForm.handleTitleChange} />
                         <ModalChangeDescInput setDesc={transactionsValueForm.setHandleDescriptionChange} description={transactionsValueForm.handleDescriptionChange} />

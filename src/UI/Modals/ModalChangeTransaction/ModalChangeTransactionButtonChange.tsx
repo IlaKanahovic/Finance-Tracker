@@ -8,11 +8,10 @@ export function ModalDeleteTransactionButtonChange(props: ModalDeleteTransaction
     return (
         <button
             type="button"
-            className="border border-gray-600 p-1.5 duration-300 hover:bg-gray-800 hover:border-white 
-        cursor-pointer"
+            className="group border border-[#333333] p-6 rounded-lg duration-300 hover:border-(--border-header-buttons-hover) hover:bg-(--text-expenses-item-hover) cursor-pointer transition-all"
             onClick={props.onChangeClick}
         >
-            <FaPen />
+            <FaPen className="w5 h-5 text-gray-400 group-hover:text-(--border-header-buttons-hover) transition-colors" />
         </button>
     )
 }

@@ -1,9 +1,10 @@
 import { useRef } from "react"
 import Select from "react-select"
 import { categoryOptions, categoryOptionsRu } from "../../../assets/static-files/categoryOptions"
-import { customStylesForReactSelectForFilter } from "../../../assets/static-files/customStylesForReactSelect"
+import { customStylesForReactSelectForFilter, customStylesForReactSelectForFilterLight } from "../../../assets/static-files/customStylesForReactSelect"
 import { filterByCategory } from "../../../store/filterStore"
 import { useTranslation } from "react-i18next"
+import { targetTheme } from "../../../store/settingsStore"
 
 export function ButtonFilterCategory() {
   const { t, i18n } = useTranslation()
@@ -20,8 +21,15 @@ export function ButtonFilterCategory() {
     if (i18n.language === 'en') return categoryOptions
   }
 
+  const theme = targetTheme()
+
+  const selectStyleForReactSelectTheme = () => {
+    if (theme === 'Dark') return customStylesForReactSelectForFilter
+    if (theme === 'Light') return customStylesForReactSelectForFilterLight
+  }
+
   return (
-    <div className="flex items-center border border-[#333333] bg-[#0A0A0A] group hover:border-gray-100 transition-all duration-300 text-gray-700 hover:text-white">
+    <div className="flex items-center border border-(--border-filter-buttons) group hover:border-(--black-ili-white) transition-all duration-300 text-gray-700 hover:text-(--black-ili-white)">
       <label
         htmlFor="category"
         className="font-medium text-sm px-3 py-1.5 whitespace-nowrap cursor-pointer"
@@ -33,7 +41,7 @@ export function ButtonFilterCategory() {
         <Select
           ref={selectRef}
           options={targetLnCategory()}
-          styles={customStylesForReactSelectForFilter}
+          styles={selectStyleForReactSelectTheme()}
           placeholder=""
           id="category"
           instanceId="category-select"

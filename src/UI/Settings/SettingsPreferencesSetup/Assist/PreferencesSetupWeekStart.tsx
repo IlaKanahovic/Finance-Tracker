@@ -8,23 +8,23 @@ export function PreferencesSetupWeekStart() {
 
     return (
         <div>
-            <div className="mb-3 pb-1 border-b border-gray-800">
-                <span className="text-xs font-medium uppercase tracking-wider text-gray-400"> {t('week_start')} </span>
+            <div className="mb-3 pb-1 border-b border-(--border-header-buttons)">
+                <span className="text-xs font-medium uppercase tracking-wider text-(--text-secondary)"> {t('week_start')} </span>
             </div>
             <div className="flex flex-wrap gap-3">
-                <button className={`px-4 py-1.5 text-sm border border-gray-600 rounded-md text-gray-200 transition-all duration-300 cursor-pointer
-                        hover:border-white hover:text-white ${dayStartWeek === 'Monday'
-                        ? 'border-white text-white bg-white/5'
-                        : 'border-gray-600 text-gray-200 hover:border-white hover:text-white'
+                <button className={`px-4 py-1.5 text-sm border rounded-md transition-all duration-300 cursor-pointer
+                        hover:border-(--border-header-buttons-hover) hover:text-(--text-main) ${dayStartWeek === 'Monday'
+                        ? 'border-(--border-header-buttons-hover) text-(--text-main) bg-(--text-expenses-item-hover)'
+                        : 'border-(--border-header-buttons) text-(--text-secondary) hover:border-(--border-header-buttons-hover) hover:text-(--text-main)'
                     }`}
                     onClick={() => setWeekStart('Monday')}
                 >
                     {t('monday')}
                 </button>
-                <button className={`px-4 py-1.5 text-sm border border-gray-600 rounded-md text-gray-200 transition-all duration-300 cursor-pointer
-                        hover:border-white hover:text-white ${dayStartWeek === 'Sunday'
-                        ? 'border-white text-white bg-white/5'
-                        : 'border-gray-600 text-gray-200 hover:border-white hover:text-white'
+                <button className={`px-4 py-1.5 text-sm border rounded-md transition-all duration-300 cursor-pointer
+                        hover:border-(--border-header-buttons-hover) hover:text-(--text-main) ${dayStartWeek === 'Sunday'
+                        ? 'border-(--border-header-buttons-hover) text-(--text-main) bg-(--text-expenses-item-hover)'
+                        : 'border-(--border-header-buttons) text-(--text-secondary) hover:border-(--border-header-buttons-hover) hover:text-(--text-main)'
                     }`}
                     onClick={() => setWeekStart('Sunday')}
                 >

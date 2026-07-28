@@ -2,9 +2,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
 :root {
-    --bg: #0a0a0a;
-    --card-bg: #1a1a1a;
-    --text-main: #ffffff;
+  --bg: #0a0a0a;
+  --card-bg: #1a1a1a;
+  --text-main: #ffffff;
+  --text-secondary: #A0A0A0;
+  --border-header-buttons: #333333;
+  --border-header-buttons-hover: white;
+  --text-expenses-menu: gray;
+  --text-expenses-item: white;
+  --text-expenses-item-hover: #1c1c1c;
+  --black-ili-white: white;
+  --border-filter-buttons: #2a2a2a;
+  --text-placeholder: #666666;
+}
+
+.light {
+  --bg: #F5F5F5;
+  --card-bg: #FFFFFF;
+  --text-main: #000000;
+  --text-secondary: #666666;
+  --border-header-buttons: #ababab;
+  --border-header-buttons-hover: black;
+  --text-expenses-menu: #000000;
+  --text-expenses-item: black;
+  --text-expenses-item-hover: #c9c9c9;
+  --black-ili-white: black;
+  --border-filter-buttons: #808080;
+  --text-placeholder: #666666;
 }
 
 body {
@@ -63,3 +87,13 @@ body {
 .toast-zoom {
     animation: toastZoom 0.4s ease-out forwards;
 }
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE и Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+

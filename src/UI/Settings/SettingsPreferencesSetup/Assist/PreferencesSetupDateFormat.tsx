@@ -8,15 +8,15 @@ export function PreferencesSetupDateFormat() {
 
     return (
         <div>
-            <div className="mb-3 pb-1 border-b border-gray-800">
-                <span className="text-xs font-medium uppercase tracking-wider text-gray-400">{t('date_format')}</span>
+            <div className="mb-3 pb-1 border-b border-(--border-header-buttons)">
+                <span className="text-xs font-medium uppercase tracking-wider text-(--text-secondary)">{t('date_format')}</span>
             </div>
             <div className="flex flex-wrap gap-3">
                 <button
-                    className={`px-4 py-1.5 text-sm border border-gray-600 rounded-md text-gray-200 transition-all duration-300 cursor-pointer
-                        hover:border-white hover:text-white ${format === 'DD.MM.YYYY'
-                            ? 'border-white text-white bg-white/5'
-                            : 'border-gray-600 text-gray-200 hover:border-white hover:text-white'
+                    className={`px-4 py-1.5 text-sm border rounded-md transition-all duration-300 cursor-pointer
+                        hover:border-(--border-header-buttons-hover) hover:text-(--text-main) ${format === 'DD.MM.YYYY'
+                            ? 'border-(--border-header-buttons-hover) text-(--text-main) bg-(--text-expenses-item-hover)'
+                            : 'border-(--border-header-buttons) text-(--text-secondary) hover:border-(--border-header-buttons-hover) hover:text-(--text-main)'
                         }`}
                     onClick={() => {
                         setFormatDate('DD.MM.YYYY')
@@ -25,10 +25,10 @@ export function PreferencesSetupDateFormat() {
                     {t('date_format_DD.MM.YYYY')}
                 </button>
                 <button
-                    className={`px-4 py-1.5 text-sm border border-gray-600 rounded-md text-gray-200 transition-all duration-300 cursor-pointer
-                        hover:border-white hover:text-white ${format === 'MM/DD/YYYY'
-                            ? 'border-white text-white bg-white/5'
-                            : 'border-gray-600 text-gray-200 hover:border-white hover:text-white'
+                    className={`px-4 py-1.5 text-sm border rounded-md transition-all duration-300 cursor-pointer
+                        hover:border-(--border-header-buttons-hover) hover:text-(--text-main) ${format === 'MM/DD/YYYY'
+                            ? 'border-(--border-header-buttons-hover) text-(--text-main) bg-(--text-expenses-item-hover)'
+                            : 'border-(--border-header-buttons) text-(--text-secondary) hover:border-(--border-header-buttons-hover) hover:text-(--text-main)'
                         }`}
                     onClick={() => {
                         setFormatDate('MM/DD/YYYY')
@@ -37,10 +37,10 @@ export function PreferencesSetupDateFormat() {
                     {t('date_format_MM/DD/YYYY')}
                 </button>
                 <button
-                    className={`px-4 py-1.5 text-sm border border-gray-600 rounded-md text-gray-200 transition-all duration-300 cursor-pointer
-                        hover:border-white hover:text-white ${format === 'YYYY-MM-DD'
-                            ? 'border-white text-white bg-white/5'
-                            : 'border-gray-600 text-gray-200 hover:border-white hover:text-white'
+                    className={`px-4 py-1.5 text-sm border rounded-md transition-all duration-300 cursor-pointer
+                        hover:border-(--border-header-buttons-hover) hover:text-(--text-main) ${format === 'YYYY-MM-DD'
+                            ? 'border-(--border-header-buttons-hover) text-(--text-main) bg-(--text-expenses-item-hover)'
+                            : 'border-(--border-header-buttons) text-(--text-secondary) hover:border-(--border-header-buttons-hover) hover:text-(--text-main)'
                         }`}
                     onClick={() => {
                         setFormatDate('YYYY-MM-DD')

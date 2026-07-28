@@ -23,18 +23,18 @@ export function ModalDeleteAllTransactions(props: Props) {
     }
 
     return (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
-            <div className="bg-[#0A0A0A] border border-[#333333] rounded-2xl px-15 pt-10 pb-15 w-full max-w-2xl shadow-2xl">
+        <div className="fixed inset-0 bg-(--bg)/80 flex items-center justify-center z-50">
+            <div className="bg-(--bg) border border-(--border-header-buttons) rounded-2xl px-15 pt-10 pb-15 w-full max-w-2xl shadow-2xl">
                 <div className="w-full">
-                    <h1 className="text-2xl text-white text-center">{t('delete_all_transactions')}</h1>
-                    <p className="text-sm text-gray-400 text-center mt-4 border-l-2 border-gray-700 pl-3 max-w-md mx-auto">
+                    <h1 className="text-2xl text-(--text-main) text-center">{t('delete_all_transactions')}</h1>
+                    <p className="text-sm text-(--text-main) text-center mt-4 border-l-2 border-(--border-header-buttons) pl-3 max-w-md mx-auto">
                         {t('all_delete_question')}
                     </p>
                     <div className="mt-8 flex justify-center items-center gap-4">
                         <button
                             type="button"
                             onClick={() => props.onClose()}
-                            className="cursor-pointer bg-transparent border border-[#333333] text-white text-base font-medium p-3 px-15 rounded-lg hover:border-white hover:bg-white/5 transition-all"
+                            className="cursor-pointer bg-transparent border border-(--border-header-buttons) text-(--text-main) text-base font-medium p-3 px-15 rounded-lg hover:border-(--border-header-buttons-hover) hover:bg-(--text-expenses-item-hover) transition-all"
                         >
                             {t('cancel')}
                         </button>

@@ -11,11 +11,11 @@ export function ButtonSearchFilter() {
                 type="text"
                 placeholder={t('search_placeholder')}
                 className="w-full px-3 py-1.5 pl-8 text-sm duration-300 text-gray-700
-                                    border border-[#2a2a2a] focus:outline-none focus:ring-1
-                                    focus:ring-white focus:border-white hover:border-white 
+                                    border border-(--border-filter-buttons) focus:outline-none focus:ring-1
+                                    focus:ring-(--black-ili-white) focus:border-(--black-ili-white) hover:border-(--black-ili-white) 
                                     transition-colors placeholder:text-gray-700
-                                    focus:placeholder:text-white focus:text-white
-                                    hover:placeholder:text-white cursor-pointerА"
+                                    focus:placeholder:text-(--black-ili-white) focus:text-(--black-ili-white)
+                                    hover:placeholder:text-(--black-ili-white) cursor-pointer"
                 onChange={(event) => filterBySearch(event.target.value)}
             />
             <FaSearch className="absolute left-2.5 w-4 h-4 text-gray-400" />

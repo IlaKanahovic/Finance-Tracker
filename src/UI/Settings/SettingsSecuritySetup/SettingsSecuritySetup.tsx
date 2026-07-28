@@ -35,7 +35,7 @@ export function SettingsSecuritySetup() {
         } else if (edit.status === 400) {
             const data = await edit.json()
             setStatus(data.message)
-            toast.error(data.message || toast.error(t('toast_password_error')))
+            toast.error(data.message || t('toast_password_error'))
         } else if (edit.status === 401) {
             setStatus('Неверный пароль')
             toast.error(t('toast_password_incorrect'))
@@ -48,17 +48,17 @@ export function SettingsSecuritySetup() {
     }
 
     return (
-        <div className="max-w-2xl mx-auto text-gray-100 mt-8">
+        <div className="max-w-2xl mx-auto text-(--text-main) mt-8">
             <div className="mb-6">
-                <h1 className="text-2xl font-semibold tracking-tight text-white">{t('security')}</h1>
-                <p className="text-sm text-gray-400 mt-1 border-l-2 border-gray-700 pl-3">
+                <h1 className="text-2xl font-semibold tracking-tight text-(--text-main)">{t('security')}</h1>
+                <p className="text-sm text-(--text-secondary) mt-1 border-l-2 border-(--border-header-buttons) pl-3">
                     {t('keep_your_account')}
                 </p>
             </div>
             <div className="space-y-8">
                 <div>
-                    <div className="mb-2 pb-1 border-gray-800">
-                        <span className="text-xs font-medium uppercase tracking-wider text-gray-400">{t('change_password')}</span>
+                    <div className="mb-2 pb-1 border-(--border-header-buttons)">
+                        <span className="text-xs font-medium uppercase tracking-wider text-(--text-secondary)">{t('change_password')}</span>
                     </div>
                     <div className="space-y-4 max-w-md">
                         <div>
@@ -70,7 +70,7 @@ export function SettingsSecuritySetup() {
                                     handleCurrentPasswordChange(e.target.value)
                                     setCurrentPas(e.target.value)
                                 }}
-                                className={`w-full bg-black border rounded-md px-3 py-2 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-0 transition-all duration-300 cursor-pointer hover:border-white hover:placeholder-white focus:border-white focus:placeholder-white ${currentPasswordError ? 'border-red-500 focus:border-red-500 hover:border-red-500' : 'border-gray-700'}`}
+                                className={`w-full bg-(--bg) border rounded-md px-3 py-2 text-(--text-main) placeholder-(--text-secondary) focus:outline-none focus:ring-0 transition-all duration-300 cursor-pointer hover:border-(--border-header-buttons-hover) hover:placeholder-(--text-main) focus:border-(--border-header-buttons-hover) focus:placeholder-(--text-main) ${currentPasswordError ? 'border-red-500 focus:border-red-500 hover:border-red-500' : 'border-(--border-header-buttons)'}`}
                             />
                             {currentPasswordError && (
                                 <p className="text-red-400 text-xs mt-1 animate-in fade-in duration-200">
@@ -87,7 +87,7 @@ export function SettingsSecuritySetup() {
                                     handleNewPasswordChange(e.target.value)
                                     setConfirmPas(e.target.value)
                                 }}
-                                className={`w-full bg-black border rounded-md px-3 py-2 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-0 transition-all duration-300 cursor-pointer hover:border-white hover:placeholder-white focus:border-white focus:placeholder-white ${newPasswordError ? 'border-red-500 focus:border-red-500 hover:border-red-500' : 'border-gray-700'}`}
+                                className={`w-full bg-(--bg) border rounded-md px-3 py-2 text-(--text-main) placeholder-(--text-secondary) focus:outline-none focus:ring-0 transition-all duration-300 cursor-pointer hover:border-(--border-header-buttons-hover) hover:placeholder-(--text-main) focus:border-(--border-header-buttons-hover) focus:placeholder-(--text-main) ${newPasswordError ? 'border-red-500 focus:border-red-500 hover:border-red-500' : 'border-(--border-header-buttons)'}`}
                             />
                             {newPasswordError && (
                                 <p className="text-red-400 text-xs mt-1 animate-in fade-in duration-200">
@@ -104,7 +104,7 @@ export function SettingsSecuritySetup() {
                                     handleConfirmPasswordChange(e.target.value)
                                     setNewPas(e.target.value)
                                 }}
-                                className={`w-full bg-black border rounded-md px-3 py-2 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-0 transition-all duration-300 cursor-pointer hover:border-white hover:placeholder-white focus:border-white focus:placeholder-white ${confirmPasswordError ? 'border-red-500 focus:border-red-500 hover:border-red-500' : 'border-gray-700'}`}
+                                className={`w-full bg-(--bg) border rounded-md px-3 py-2 text-(--text-main) placeholder-(--text-secondary) focus:outline-none focus:ring-0 transition-all duration-300 cursor-pointer hover:border-(--border-header-buttons-hover) hover:placeholder-(--text-main) focus:border-(--border-header-buttons-hover) focus:placeholder-(--text-main) ${confirmPasswordError ? 'border-red-500 focus:border-red-500 hover:border-red-500' : 'border-(--border-header-buttons)'}`}
                             />
                             {confirmPasswordError && (
                                 <p className="text-red-400 text-xs mt-1 animate-in fade-in duration-200">
@@ -117,7 +117,7 @@ export function SettingsSecuritySetup() {
                                 type="button"
                                 disabled={!isPasswordFormValid()}
                                 onClick={() => handleEditPassword(currentPas, newPas)}
-                                className={`px-4 py-1.5 text-sm border rounded-md transition-all duration-300 cursor-pointer ${isPasswordFormValid() ? 'border-gray-600 text-gray-200 hover:border-white hover:text-white' : 'border-gray-800 text-gray-600 cursor-not-allowed opacity-50'}`}
+                                className={`px-4 py-1.5 text-sm border rounded-md transition-all duration-300 cursor-pointer ${isPasswordFormValid() ? 'border-(--border-header-buttons) text-(--text-main) hover:border-(--border-header-buttons-hover) hover:text-(--text-main)' : 'border-(--border-header-buttons) text-(--text-secondary) cursor-not-allowed opacity-50'}`}
                             >
                                 {t('update_password')}
                             </button>
@@ -132,7 +132,7 @@ export function SettingsSecuritySetup() {
                                 ${status === 'Пароль должен содержать заглавную букву' && 'text-yellow-400 border border-yellow-400/30 bg-yellow-400/10'}
                                 ${status === 'Пароль должен содержать цифру' && 'text-yellow-400 border border-yellow-400/30 bg-yellow-400/10'}
                             `}>
-                                {status}
+                                {t(`${status}`)}
                             </div>
                         )}
                     </div>

@@ -16,12 +16,12 @@ export function ExpensesMenu() {
 
     if (!transactions) return (
         <div className="mt-12">
-            <div className="hidden sm:grid sm:grid-cols-[1fr_2fr_1.2fr_1fr] mb-3 px-2 text-gray-400 text-xs md:text-sm uppercase tracking-wider">
-                <p className="text-sm font-medium text-gray-500 "> {t('date')} </p>
-                <p className="text-sm font-medium text-gray-500 "> {t("description")} </p>
-                <p className="text-sm font-medium text-gray-500 "> {t("category")} </p>
+            <div className="hidden sm:grid sm:grid-cols-[1fr_2fr_1.2fr_1fr] mb-3 px-2 text-(--text-expenses-menu) text-xs md:text-sm uppercase tracking-wider">
+                <p className="text-sm font-medium text-(--text-expenses-menu) "> {t('date')} </p>
+                <p className="text-sm font-medium text-(--text-expenses-menu) "> {t("description")} </p>
+                <p className="text-sm font-medium text-(--text-expenses-menu) "> {t("category")} </p>
                 <div className="text-right">
-                    <p className="text-sm font-medium text-gray-500 "> {t("amount")} </p>
+                    <p className="text-sm font-medium text-(--text-expenses-menu) "> {t("amount")} </p>
                 </div>
             </div>
             <div className="border border-[#2a2a2a] rounded-xl overflow-hidden">
@@ -36,12 +36,12 @@ export function ExpensesMenu() {
 
     return (
         <div className="mt-12">
-            <div className="hidden sm:grid sm:grid-cols-[1fr_2fr_1.2fr_1fr] mb-3 px-2 text-gray-400 text-xs md:text-sm uppercase tracking-wider">
-                <p className="text-sm font-medium text-gray-500 "> {t('date')} </p>
-                <p className="text-sm font-medium text-gray-500 "> {t("description")} </p>
-                <p className="text-sm font-medium text-gray-500 "> {t("category")} </p>
+            <div className="hidden sm:grid sm:grid-cols-[1fr_2fr_1.2fr_1fr] mb-3 px-2 text-(--text-expenses-menu) text-xs md:text-sm uppercase tracking-wider">
+                <p className="text-sm font-medium text-(--text-expenses-menu) "> {t('date')} </p>
+                <p className="text-sm font-medium text-(--text-expenses-menu) "> {t("description")} </p>
+                <p className="text-sm font-medium text-(--text-expenses-menu) "> {t("category")} </p>
                 <div className="text-right">
-                    <p className="text-sm font-medium text-gray-500 "> {t("amount")} </p>
+                    <p className="text-sm font-medium text-(--text-expenses-menu) "> {t("amount")} </p>
                 </div>
             </div>
             <div className="border border-[#2a2a2a] rounded-xl overflow-hidden">
@@ -54,7 +54,7 @@ export function ExpensesMenu() {
                                     duration-300 hover:border-white hover:bg-[#1c1c1c] cursor-pointer group`}
                         onClick={() => setCurrentPage(currentPage - 1)}
                     >
-                        <IoChevronBack className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors duration-300" />
+                        <IoChevronBack className="w-4 h-4 text-(--text-expenses-menu) group-hover:text-white transition-colors duration-300" />
                     </button>
                 )}
                 {currentPage !== Math.ceil(filteredTransactions.length / Number(onPage)) && (
@@ -63,7 +63,7 @@ export function ExpensesMenu() {
                                     duration-300 hover:border-white hover:bg-[#1c1c1c] cursor-pointer group`}
                         onClick={() => setCurrentPage(currentPage + 1)}
                     >
-                        <IoChevronForward className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors duration-300" />
+                        <IoChevronForward className="w-4 h-4 text-(--text-expenses-menu) group-hover:text-white transition-colors duration-300" />
                     </button>
                 )}
             </div>}

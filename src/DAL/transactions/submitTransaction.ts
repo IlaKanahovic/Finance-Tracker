@@ -2,12 +2,15 @@ import toast from "react-hot-toast";
 import { getCurrencySymbol } from "../../assets/static-files/getCurrencySymbol";
 import type { TransactionFormData } from "../../BLL/transactions/useFormTransations";
 import { getTokenToLS } from "../api";
+import { useTranslation } from "react-i18next";
 
 export const handleSubmit = (
     transactionsValueForm: TransactionFormData,
     onClose: () => void,
     refreshTransactions: () => void
 ) => {
+    const { t } = useTranslation()
+
     return (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
@@ -46,7 +49,7 @@ export const handleSubmit = (
             .then(data => {
                 refreshTransactions()
                 console.log(data)
-                toast.success('Транзакция добавлена')
+                toast.success(t('transaction_add'))
                 onClose()
             })
             .catch(er => console.error('Error submit:', er))

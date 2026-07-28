@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { getCurrencySymbol } from "../../assets/static-files/getCurrencySymbol";
 import type { TransactionFormData } from "../../BLL/transactions/useFormTransations";
 import { getTokenToLS, type GetTransactions } from "../api";
@@ -9,6 +10,8 @@ export const handleChange = (
     onClose: () => void,
     refreshTransactions: () => void
 ) => {
+    const { t } = useTranslation()
+
     return (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
@@ -44,13 +47,13 @@ export const handleChange = (
             })
             .then(data => {
                 console.log(data)
-                toast.success('Транзакция обновлена')
+                toast.success(t('toast_transaction_updated'))
                 refreshTransactions()
                 onClose()
             })
             .catch(er => {
                 console.log('ERROR CHANGE', er)
-                toast.error(er.message || 'Ошибка при обновлении транзакции')
+                toast.error(er.message || t('toast_transaction_update_error'))
             })
     }
 }

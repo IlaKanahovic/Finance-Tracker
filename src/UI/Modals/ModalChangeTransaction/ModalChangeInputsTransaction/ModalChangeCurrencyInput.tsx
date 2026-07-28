@@ -1,7 +1,8 @@
 import Select, { type SingleValue } from "react-select";
 import { currencyList, currencyListRu } from "../../../../assets/static-files/categoryOptions";
-import { customStylesForReactSelect } from "../../../../assets/static-files/customStylesForReactSelect";
+import { customStylesForReactSelect, customStylesForReactSelectLight } from "../../../../assets/static-files/customStylesForReactSelect";
 import { useTranslation } from "react-i18next";
+import { targetTheme } from "../../../../store/settingsStore";
 
 type CurrencyOption = {
     value: string;
@@ -34,16 +35,23 @@ export function ModalChangeCurrencyInput(props: ModalChangeCurrencyInputType) {
         props.setCurrency(selectedOption?.value || '')
     }
 
+    const theme = targetTheme()
+
+    const selectStyleForReactSelectTheme = () => {
+        if (theme === 'Dark') return customStylesForReactSelect
+        if (theme === 'Light') return customStylesForReactSelectLight
+    }
+
     return (
         <div className='mt-4'>
             <label
                 htmlFor="currency"
-                className="text-xl text-white font-medium block mb-2"
+                className="text-xl text-(--text-main) font-medium block mb-2"
             > {t('currency')}
             </label>
             <Select<CurrencyOption, false, GroupedOption>
                 options={targetLnCategory()}
-                styles={customStylesForReactSelect}
+                styles={selectStyleForReactSelectTheme()}
                 placeholder={t('select_currency')}
                 id="currency"
                 instanceId="currency-select"

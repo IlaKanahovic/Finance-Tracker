@@ -7,7 +7,6 @@ import { ExpensesMenu } from "./Dashboard-Menu-Expenses/ExpensesMenu";
 import { ButtonAddTransition } from "./Utils/ButtonAddTransaction";
 
 export function Dashboard() {
-
     return (
         <div>
             <DashboardHeader />

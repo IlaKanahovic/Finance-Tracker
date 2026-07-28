@@ -26,13 +26,13 @@ export function AccountSetupEmailInput() {
 
     return (
         <div className="space-y-2">
-            <label className="text-xs font-medium uppercase tracking-wider text-gray-400 sm:hidden">{t('email')}</label>
+            <label className="text-xs font-medium uppercase tracking-wider text-(--text-secondary) sm:hidden">{t('email')}</label>
 
             <input
                 type="email"
                 autoComplete="off"
                 value={email}
-                className={`w-full bg-black border rounded-md px-3 py-2 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-0 transition-all duration-300 cursor-pointer hover:border-white hover:placeholder-white focus:border-white focus:placeholder-white ${emailError ? 'border-red-500 focus:border-red-500 hover:border-red-500' : 'border-gray-700'}`}
+                className={`w-full bg-(--bg) border rounded-md px-3 py-2 text-(--text-main) placeholder-(--text-secondary) focus:outline-none focus:ring-0 transition-all duration-300 cursor-pointer hover:border-(--border-header-buttons-hover) hover:placeholder-(--text-main) focus:border-(--border-header-buttons-hover) focus:placeholder-(--text-main) ${emailError ? 'border-red-500 focus:border-red-500 hover:border-red-500' : 'border-(--border-header-buttons)'}`}
                 onChange={(event) => {
                     setEmail(event.target.value)
                     const error = validateEmail(event.target.value)
@@ -56,11 +56,11 @@ export function AccountSetupEmailInput() {
         ${status === 'Email обязателен' && 'text-yellow-400 border border-yellow-400/30 bg-yellow-400/10'}
         ${status === 'Новый email совпадает с текущим' && 'text-yellow-400 border border-yellow-400/30 bg-yellow-400/10'}
     `}>
-                    {status}
+                    {t(`${status}`)}
                 </div>
             )}
 
-            <label className="block text-xs text-gray-500">
+            <label className="block text-xs text-(--text-secondary)">
                 {t('main_email')}
             </label>
             {openModal && email.length > 0 && (
@@ -73,7 +73,7 @@ export function AccountSetupEmailInput() {
                 <button
                     type="button"
                     onClick={() => handleOpenModal()}
-                    className="px-4 py-1.5 text-sm border border-gray-600 rounded-md text-gray-200 transition-all duration-300 cursor-pointer hover:border-white hover:text-white"
+                    className="px-4 py-1.5 text-sm border border-(--border-header-buttons) rounded-md text-(--text-main) transition-all duration-300 cursor-pointer hover:border-(--border-header-buttons-hover) hover:text-(--text-main)"
                 >
                     {t('edit_email')}
                 </button>

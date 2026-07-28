@@ -5,13 +5,15 @@ import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 import autoTable from "jspdf-autotable";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 export function useExportTransactions(transactions: GetTransactions[] | null, format: string) {
+    const { t } = useTranslation()
 
     if (format === 'CSV') {
         const exportToCSV = () => {
             if (!transactions || transactions.length === 0) {
-                toast.error('Нет транзакций для экспорта')
+                toast.error(t('toast_export_no_data'))
                 return
             }
 
@@ -33,14 +35,14 @@ export function useExportTransactions(transactions: GetTransactions[] | null, fo
             link.click()
             document.body.removeChild(link)
             URL.revokeObjectURL(url)
-            toast.success('CSV экспортирован')
+            toast.success(t('toast_export_csv_success'))
         }
 
         return exportToCSV
     } else if (format === 'PDF') {
         const exportToPDF = () => {
             if (!transactions || transactions.length === 0) {
-                toast.error('Нет транзакций для экспорта')
+                toast.error(t('toast_export_no_data'))
                 return
             }
 
@@ -71,9 +73,9 @@ export function useExportTransactions(transactions: GetTransactions[] | null, fo
                 })
 
                 doc.save('Transactions.pdf')
-                toast.success('PDF экспортирован')
+                toast.success(t('toast_export_pdf_success'))
             } catch {
-                toast.error('Ошибка при создании PDF')
+                toast.error(t('toast_export_pdf_error'))
             }
         }
 
@@ -81,7 +83,7 @@ export function useExportTransactions(transactions: GetTransactions[] | null, fo
     } else if (format === 'Excel') {
         const exportToExcel = () => {
             if (!transactions || transactions.length === 0) {
-                toast.error('Нет транзакций для экспорта')
+                toast.error(t('toast_export_no_data'))
                 return
             }
 
@@ -92,9 +94,9 @@ export function useExportTransactions(transactions: GetTransactions[] | null, fo
                 const excelBuffer = XLSX.write(book, { bookType: 'xlsx', type: 'array' })
                 const blob = new Blob([excelBuffer], { type: 'application/octet-stream' })
                 saveAs(blob, 'Transactions.xlsx')
-                toast.success('Excel экспортирован')
+                toast.success(t('toast_export_excel_success'))
             } catch {
-                toast.error('Ошибка при создании Excel')
+                toast.error(t('toast_export_excel_error'))
             }
         }
 

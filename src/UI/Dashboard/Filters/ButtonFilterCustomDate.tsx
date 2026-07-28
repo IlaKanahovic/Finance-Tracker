@@ -19,7 +19,7 @@ export function ButtonFiltersCustomDate({ value, label, isActive, onClick }: Pro
             <button
                 className={`
                 px-3 py-1.5 border border-(--bg) text-sm duration-300 font-medium
-                ${isActive ? 'text-white border-white' : 'text-gray-700 hover:text-white hover:border-gray-100'}
+                ${isActive ? 'text-(--black-ili-white) border-(--black-ili-white)' : 'text-gray-700 hover:text-(--black-ili-white) hover:border-(--black-ili-white)'}
                 cursor-pointer
             `}
                 onClick={() => {

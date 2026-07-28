@@ -8,41 +8,41 @@ export function PreferencesSetupTransactionOnPage() {
 
     return (
         <div>
-            <div className="mb-3 pb-1 border-b border-gray-800">
-                <span className="text-xs font-medium uppercase tracking-wider text-gray-400">{t('per_page')}</span>
+            <div className="mb-3 pb-1 border-b border-(--border-header-buttons)">
+                <span className="text-xs font-medium uppercase tracking-wider text-(--text-secondary)">{t('per_page')}</span>
             </div>
             <div className="flex flex-wrap gap-3">
-                <button className={`px-4 py-1.5 text-sm border border-gray-600 rounded-md text-gray-200 transition-all duration-300 cursor-pointer
-                        hover:border-white hover:text-white ${onPage === 'All'
-                        ? 'border-white text-white bg-white/5'
-                        : 'border-gray-600 text-gray-200 hover:border-white hover:text-white'
+                <button className={`px-4 py-1.5 text-sm border rounded-md transition-all duration-300 cursor-pointer
+                        hover:border-(--border-header-buttons-hover) hover:text-(--text-main) ${onPage === 'All'
+                        ? 'border-(--border-header-buttons-hover) text-(--text-main) bg-(--text-expenses-item-hover)'
+                        : 'border-(--border-header-buttons) text-(--text-secondary) hover:border-(--border-header-buttons-hover) hover:text-(--text-main)'
                     }`}
                     onClick={() => setTransactionsOnPage('All')}
                 >
                     All
                 </button>
-                <button className={`px-4 py-1.5 text-sm border border-gray-600 rounded-md text-gray-200 transition-all duration-300 cursor-pointer
-                        hover:border-white hover:text-white ${onPage === '10'
-                        ? 'border-white text-white bg-white/5'
-                        : 'border-gray-600 text-gray-200 hover:border-white hover:text-white'
+                <button className={`px-4 py-1.5 text-sm border rounded-md transition-all duration-300 cursor-pointer
+                        hover:border-(--border-header-buttons-hover) hover:text-(--text-main) ${onPage === '10'
+                        ? 'border-(--border-header-buttons-hover) text-(--text-main) bg-(--text-expenses-item-hover)'
+                        : 'border-(--border-header-buttons) text-(--text-secondary) hover:border-(--border-header-buttons-hover) hover:text-(--text-main)'
                     }`}
                     onClick={() => setTransactionsOnPage('10')}
                 >
                     10
                 </button>
-                <button className={`px-4 py-1.5 text-sm border border-gray-600 rounded-md text-gray-200 transition-all duration-300 cursor-pointer
-                        hover:border-white hover:text-white ${onPage === '25'
-                        ? 'border-white text-white bg-white/5'
-                        : 'border-gray-600 text-gray-200 hover:border-white hover:text-white'
+                <button className={`px-4 py-1.5 text-sm border rounded-md transition-all duration-300 cursor-pointer
+                        hover:border-(--border-header-buttons-hover) hover:text-(--text-main) ${onPage === '25'
+                        ? 'border-(--border-header-buttons-hover) text-(--text-main) bg-(--text-expenses-item-hover)'
+                        : 'border-(--border-header-buttons) text-(--text-secondary) hover:border-(--border-header-buttons-hover) hover:text-(--text-main)'
                     }`}
                     onClick={() => setTransactionsOnPage('25')}
                 >
                     25
                 </button>
-                <button className={`px-4 py-1.5 text-sm border border-gray-600 rounded-md text-gray-200 transition-all duration-300 cursor-pointer
-                        hover:border-white hover:text-white ${onPage === '50'
-                        ? 'border-white text-white bg-white/5'
-                        : 'border-gray-600 text-gray-200 hover:border-white hover:text-white'
+                <button className={`px-4 py-1.5 text-sm border rounded-md transition-all duration-300 cursor-pointer
+                        hover:border-(--border-header-buttons-hover) hover:text-(--text-main) ${onPage === '50'
+                        ? 'border-(--border-header-buttons-hover) text-(--text-main) bg-(--text-expenses-item-hover)'
+                        : 'border-(--border-header-buttons) text-(--text-secondary) hover:border-(--border-header-buttons-hover) hover:text-(--text-main)'
                     }`}
                     onClick={() => setTransactionsOnPage('50')}
                 >

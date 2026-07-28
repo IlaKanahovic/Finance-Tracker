@@ -1,7 +1,7 @@
 import Select from "react-select";
-import { customStylesForReactSelectForSettings } from "../../../../assets/static-files/customStylesForReactSelect";
+import { customStylesForReactSelectForSettings, customStylesForReactSelectForSettingsLight } from "../../../../assets/static-files/customStylesForReactSelect";
 import { currencyList, currencyListRu } from "../../../../assets/static-files/categoryOptions";
-import { setTargetCurrency } from "../../../../store/settingsStore";
+import { setTargetCurrency, targetTheme } from "../../../../store/settingsStore";
 import { useTranslation } from "react-i18next";
 
 type CurrencyOption = {
@@ -22,14 +22,21 @@ export function PreferencesSetupCurrency() {
         if (i18n.language === 'en') return currencyList
     }
 
+    const theme = targetTheme()
+
+    const selectStyleForReactSelectTheme = () => {
+        if (theme === 'Dark') return customStylesForReactSelectForSettings
+        if (theme === 'Light') return customStylesForReactSelectForSettingsLight
+    }
+
     return (
         <div>
-            <div className="mb-3 pb-1 border-b border-gray-800">
-                <span className="text-xs font-medium uppercase tracking-wider text-gray-400">{t('primary_currency')}</span>
+            <div className="mb-3 pb-1 border-b border-(--border-header-buttons)">
+                <span className="text-xs font-medium uppercase tracking-wider text-(--text-secondary)">{t('primary_currency')}</span>
             </div>
             <Select<CurrencyOption, false, GroupedOption>
                 options={targetLnCategory()}
-                styles={customStylesForReactSelectForSettings}
+                styles={selectStyleForReactSelectTheme()}
                 placeholder={t('select_currency')}
                 id="currency"
                 instanceId="currency-select"

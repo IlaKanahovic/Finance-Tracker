@@ -26,13 +26,13 @@ export function AccountSetupNameInput() {
             toast.error(t('toast_name_invalid'))
         } else if (edit.status === 401) {
             setStatus('Вы не авторизованы')
-            toast.error(t('toast_name_taken'))
+            toast.error(t('toast_name_unauthorized'))
         } else if (edit.status === 404) {
             setStatus('Пользователь не найден')
-            toast.error(t('toast_name_unauthorized'))
+            toast.error(t('toast_user_not_found'))
         } else if (edit.status === 409) {
             setStatus('Имя занято')
-            toast.error('Имя занято')
+            toast.error(t('toast_name_taken'))
         } else if (edit.status === 422) {
             setStatus('Имя некорректно')
             toast.error('Имя некорректно')
@@ -43,7 +43,7 @@ export function AccountSetupNameInput() {
 
     return (
         <div className="space-y-2">
-            <label className="text-xs font-medium uppercase tracking-wider text-gray-400 sm:hidden">{t('username')}</label>
+            <label className="text-xs font-medium uppercase tracking-wider text-(--text-secondary) sm:hidden">{t('username')}</label>
             <input
                 type="text"
                 autoComplete="off"
@@ -51,7 +51,7 @@ export function AccountSetupNameInput() {
                 onChange={(event) => {
                     setName(event.target.value)
                 }}
-                className="w-full bg-black border border-gray-700 rounded-md px-3 py-2 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-0 transition-all duration-300 cursor-pointer hover:border-white hover:placeholder-white focus:border-white focus:placeholder-white"
+                className="w-full bg-(--bg) border border-(--border-header-buttons) rounded-md px-3 py-2 text-(--text-main) placeholder-(--text-secondary) focus:outline-none focus:ring-0 transition-all duration-300 cursor-pointer hover:border-(--border-header-buttons-hover) hover:placeholder-(--text-main) focus:border-(--border-header-buttons-hover) focus:placeholder-(--text-main)"
             />
             {status && (
                 <div className={`
@@ -63,16 +63,16 @@ export function AccountSetupNameInput() {
     ${status === 'Имя занято' && 'text-red-400 border border-red-400/30 bg-red-400/10'}
     ${status === 'Имя некорректно' && 'text-red-400 border border-red-400/30 bg-red-400/10'}
     ${!status && 'opacity-0'}`}>
-                    {status}
+                    {t(`${status}`)}
                 </div>
             )}
-            <label className="block text-xs text-gray-500">
+            <label className="block text-xs text-(--text-secondary)">
                 {t('your_username')}
             </label>
             <div className="pt-2">
                 <button
                     type="button"
-                    className="px-4 py-1.5 text-sm border border-gray-600 rounded-md text-gray-200 transition-all duration-300 cursor-pointer hover:border-white hover:text-white"
+                    className="px-4 py-1.5 text-sm border border-(--border-header-buttons) rounded-md text-(--text-main) transition-all duration-300 cursor-pointer hover:border-(--border-header-buttons-hover) hover:text-(--text-main)"
                     onClick={async () => {
                         handleEditName(name)
                         dataValue.state.user.userName = name
