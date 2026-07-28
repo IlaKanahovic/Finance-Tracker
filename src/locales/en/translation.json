@@ -272,5 +272,6 @@
     "Пароль обязателен": "A password is required",
     "Email обязателен": "Email is required",
     "Новый email совпадает с текущим": "The new email is the same as the current one",
-    "transaction_add": "Transaction add"
+    "transaction_add": "Transaction add",
+    "toast_reset_default": "Reset by default"
 }
