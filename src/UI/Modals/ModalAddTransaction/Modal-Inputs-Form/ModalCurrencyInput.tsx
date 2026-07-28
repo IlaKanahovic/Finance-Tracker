@@ -1,4 +1,4 @@
-import Select from "react-select";
+import Select, { type StylesConfig } from "react-select";
 import { currencyList, currencyListRu } from "../../../../assets/static-files/categoryOptions";
 import { customStylesForReactSelect, customStylesForReactSelectLight } from "../../../../assets/static-files/customStylesForReactSelect";
 import { useTranslation } from "react-i18next";
@@ -24,11 +24,11 @@ export function ModalCurrencyInput(props: { setCurrency: (value: string) => void
 
     const theme = targetTheme()
 
-    const selectStyleForReactSelectTheme = () => {
-        if (theme === 'Dark') return customStylesForReactSelect
-        if (theme === 'Light') return customStylesForReactSelectLight
+    const selectStyleForReactSelectTheme = (): StylesConfig<CurrencyOption, false, GroupedOption> => {
+        if (theme === 'Dark') return customStylesForReactSelect as StylesConfig<CurrencyOption, false, GroupedOption>
+        if (theme === 'Light') return customStylesForReactSelectLight as StylesConfig<CurrencyOption, false, GroupedOption>
+        return customStylesForReactSelect as StylesConfig<CurrencyOption, false, GroupedOption>
     }
-
     return (
         <div>
             <label

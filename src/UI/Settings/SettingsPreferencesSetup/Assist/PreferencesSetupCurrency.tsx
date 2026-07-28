@@ -1,4 +1,4 @@
-import Select from "react-select";
+import Select, { type StylesConfig } from "react-select";
 import { customStylesForReactSelectForSettings, customStylesForReactSelectForSettingsLight } from "../../../../assets/static-files/customStylesForReactSelect";
 import { currencyList, currencyListRu } from "../../../../assets/static-files/categoryOptions";
 import { setTargetCurrency, targetTheme } from "../../../../store/settingsStore";
@@ -24,9 +24,10 @@ export function PreferencesSetupCurrency() {
 
     const theme = targetTheme()
 
-    const selectStyleForReactSelectTheme = () => {
-        if (theme === 'Dark') return customStylesForReactSelectForSettings
-        if (theme === 'Light') return customStylesForReactSelectForSettingsLight
+    const selectStyleForReactSelectTheme = (): StylesConfig<CurrencyOption, false, GroupedOption> => {
+        if (theme === 'Dark') return customStylesForReactSelectForSettings as StylesConfig<CurrencyOption, false, GroupedOption>
+        if (theme === 'Light') return customStylesForReactSelectForSettingsLight as StylesConfig<CurrencyOption, false, GroupedOption>
+        return customStylesForReactSelectForSettings as StylesConfig<CurrencyOption, false, GroupedOption>
     }
 
     return (

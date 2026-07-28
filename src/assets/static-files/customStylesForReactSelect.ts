@@ -1,10 +1,7 @@
-type Option = {
-    isFocused: boolean
-    isSelected: boolean
-}
+import type { StylesConfig } from "react-select";
 
-export const customStylesForReactSelect = {
-    control: (base: object) => ({
+export const customStylesForReactSelect: StylesConfig<{ value: string; label: string }, false> = {
+    control: (base) => ({
         ...base,
         backgroundColor: "#0A0A0A",
         borderColor: "#333333",
@@ -16,14 +13,14 @@ export const customStylesForReactSelect = {
             borderColor: "#555555",
         },
     }),
-    menu: (base: object) => ({
+    menu: (base) => ({
         ...base,
         backgroundColor: "#0A0A0A",
         border: "1px solid #333333",
         borderRadius: "0.5rem",
         marginTop: "4px",
     }),
-    menuList: (base: object) => ({
+    menuList: (base) => ({
         ...base,
         "::-webkit-scrollbar": {
             display: "none",
@@ -31,7 +28,7 @@ export const customStylesForReactSelect = {
         scrollbarWidth: "none",
         msOverflowStyle: "none",
     }),
-    option: (base: object, { isFocused, isSelected }: Option) => ({
+    option: (base, { isFocused, isSelected }) => ({
         ...base,
         backgroundColor: isSelected
             ? "#FFFFFF"
@@ -44,33 +41,33 @@ export const customStylesForReactSelect = {
             backgroundColor: "#333333",
         },
     }),
-    singleValue: (base: object) => ({
+    singleValue: (base) => ({
         ...base,
         color: "#FFFFFF",
     }),
-    input: (base: object) => ({
+    input: (base) => ({
         ...base,
         color: "#FFFFFF",
     }),
-    placeholder: (base: object) => ({
+    placeholder: (base) => ({
         ...base,
         color: "#666666",
     }),
-    dropdownIndicator: (base: object) => ({
+    dropdownIndicator: (base) => ({
         ...base,
         color: "#888888",
         "&:hover": {
             color: "#FFFFFF",
         },
     }),
-    indicatorSeparator: (base: object) => ({
+    indicatorSeparator: (base) => ({
         ...base,
         backgroundColor: "#333333",
     }),
 }
 
-export const customStylesForReactSelectForFilter = {
-    control: (base: object) => ({
+export const customStylesForReactSelectForFilter: StylesConfig<{ value: string; label: string }, false> = {
+    control: (base) => ({
         ...base,
         backgroundColor: "#0A0A0A",
         borderColor: "transparent",
@@ -86,22 +83,22 @@ export const customStylesForReactSelectForFilter = {
             borderColor: "transparent",
         },
     }),
-    valueContainer: (base: object) => ({
+    valueContainer: (base) => ({
         ...base,
         padding: 0,
     }),
-    indicatorsContainer: (base: object) => ({
+    indicatorsContainer: (base) => ({
         ...base,
         padding: 0,
     }),
-    menu: (base: object) => ({
+    menu: (base) => ({
         ...base,
         backgroundColor: "#0A0A0A",
         border: "1px solid #333333",
         borderRadius: "0",
         marginTop: "4px",
     }),
-    menuList: (base: object) => ({
+    menuList: (base) => ({
         ...base,
         "::-webkit-scrollbar": {
             display: "none",
@@ -109,7 +106,7 @@ export const customStylesForReactSelectForFilter = {
         scrollbarWidth: "none",
         msOverflowStyle: "none",
     }),
-    option: (base: object, { isFocused, isSelected }: any) => ({
+    option: (base, { isFocused, isSelected }) => ({
         ...base,
         backgroundColor: isSelected
             ? "#FFFFFF"
@@ -122,33 +119,33 @@ export const customStylesForReactSelectForFilter = {
             backgroundColor: "#333333",
         },
     }),
-    singleValue: (base: object) => ({
+    singleValue: (base) => ({
         ...base,
         color: "inherit",
     }),
-    input: (base: object) => ({
+    input: (base) => ({
         ...base,
         color: "inherit",
     }),
-    placeholder: (base: object) => ({
+    placeholder: (base) => ({
         ...base,
         display: "none",
     }),
-    dropdownIndicator: (base: object) => ({
+    dropdownIndicator: (base) => ({
         ...base,
         color: "inherit",
         "&:hover": {
             color: "inherit",
         },
     }),
-    indicatorSeparator: (base: object) => ({
+    indicatorSeparator: (base) => ({
         ...base,
         display: "none",
     }),
 }
 
-export const customStylesForReactSelectForSettings = {
-    control: (base: object) => ({
+export const customStylesForReactSelectForSettings: StylesConfig<{ value: string; label: string }, false> = {
+    control: (base) => ({
         ...base,
         backgroundColor: "#0A0A0A",
         borderColor: "#364153",
@@ -160,14 +157,14 @@ export const customStylesForReactSelectForSettings = {
             borderColor: "#ffffff",
         },
     }),
-    menu: (base: object) => ({
+    menu: (base) => ({
         ...base,
         backgroundColor: "#0A0A0A",
         border: "1px solid #333333",
         borderRadius: "0.5rem",
         marginTop: "4px",
     }),
-    menuList: (base: object) => ({
+    menuList: (base) => ({
         ...base,
         "::-webkit-scrollbar": {
             display: "none",
@@ -175,7 +172,7 @@ export const customStylesForReactSelectForSettings = {
         scrollbarWidth: "none",
         msOverflowStyle: "none",
     }),
-    option: (base: object, { isFocused, isSelected }: Option) => ({
+    option: (base, { isFocused, isSelected }) => ({
         ...base,
         backgroundColor: isSelected
             ? "#FFFFFF"
@@ -188,33 +185,33 @@ export const customStylesForReactSelectForSettings = {
             backgroundColor: "#333333",
         },
     }),
-    singleValue: (base: object) => ({
+    singleValue: (base) => ({
         ...base,
         color: "#FFFFFF",
     }),
-    input: (base: object) => ({
+    input: (base) => ({
         ...base,
         color: "#FFFFFF",
     }),
-    placeholder: (base: object) => ({
+    placeholder: (base) => ({
         ...base,
         color: "#364153",
     }),
-    dropdownIndicator: (base: object) => ({
+    dropdownIndicator: (base) => ({
         ...base,
         color: "#888888",
         "&:hover": {
             color: "#FFFFFF",
         },
     }),
-    indicatorSeparator: (base: object) => ({
+    indicatorSeparator: (base) => ({
         ...base,
         backgroundColor: "#333333",
     }),
 }
 
-export const customStylesForReactSelectLight = {
-    control: (base: object) => ({
+export const customStylesForReactSelectLight: StylesConfig<{ value: string; label: string }, false> = {
+    control: (base) => ({
         ...base,
         backgroundColor: "#F5F5F5",
         borderColor: "#000000",
@@ -226,14 +223,14 @@ export const customStylesForReactSelectLight = {
             borderColor: "#000000",
         },
     }),
-    menu: (base: object) => ({
+    menu: (base) => ({
         ...base,
         backgroundColor: "#F5F5F5",
         border: "1px solid #D0D0D0",
         borderRadius: "0.5rem",
         marginTop: "4px",
     }),
-    menuList: (base: object) => ({
+    menuList: (base) => ({
         ...base,
         "::-webkit-scrollbar": {
             display: "none",
@@ -241,7 +238,7 @@ export const customStylesForReactSelectLight = {
         scrollbarWidth: "none",
         msOverflowStyle: "none",
     }),
-    option: (base: object, { isFocused, isSelected }: Option) => ({
+    option: (base, { isFocused, isSelected }) => ({
         ...base,
         backgroundColor: isSelected
             ? "#000000"
@@ -254,33 +251,33 @@ export const customStylesForReactSelectLight = {
             backgroundColor: "#D0D0D0",
         },
     }),
-    singleValue: (base: object) => ({
+    singleValue: (base) => ({
         ...base,
         color: "#000000",
     }),
-    input: (base: object) => ({
+    input: (base) => ({
         ...base,
         color: "#000000",
     }),
-    placeholder: (base: object) => ({
+    placeholder: (base) => ({
         ...base,
         color: "#999999",
     }),
-    dropdownIndicator: (base: object) => ({
+    dropdownIndicator: (base) => ({
         ...base,
         color: "#666666",
         "&:hover": {
             color: "#000000",
         },
     }),
-    indicatorSeparator: (base: object) => ({
+    indicatorSeparator: (base) => ({
         ...base,
         backgroundColor: "#D0D0D0",
     }),
 }
 
-export const customStylesForReactSelectForFilterLight = {
-    control: (base: object) => ({
+export const customStylesForReactSelectForFilterLight: StylesConfig<{ value: string; label: string }, false> = {
+    control: (base) => ({
         ...base,
         backgroundColor: "#F5F5F5",
         borderColor: "transparent",
@@ -296,22 +293,22 @@ export const customStylesForReactSelectForFilterLight = {
             borderColor: "transparent",
         },
     }),
-    valueContainer: (base: object) => ({
+    valueContainer: (base) => ({
         ...base,
         padding: 0,
     }),
-    indicatorsContainer: (base: object) => ({
+    indicatorsContainer: (base) => ({
         ...base,
         padding: 0,
     }),
-    menu: (base: object) => ({
+    menu: (base) => ({
         ...base,
         backgroundColor: "#F5F5F5",
         border: "1px solid #D0D0D0",
         borderRadius: "0",
         marginTop: "4px",
     }),
-    menuList: (base: object) => ({
+    menuList: (base) => ({
         ...base,
         "::-webkit-scrollbar": {
             display: "none",
@@ -319,7 +316,7 @@ export const customStylesForReactSelectForFilterLight = {
         scrollbarWidth: "none",
         msOverflowStyle: "none",
     }),
-    option: (base: object, { isFocused, isSelected }: any) => ({
+    option: (base, { isFocused, isSelected }) => ({
         ...base,
         backgroundColor: isSelected
             ? "#000000"
@@ -332,33 +329,33 @@ export const customStylesForReactSelectForFilterLight = {
             backgroundColor: "#D0D0D0",
         },
     }),
-    singleValue: (base: object) => ({
+    singleValue: (base) => ({
         ...base,
         color: "inherit",
     }),
-    input: (base: object) => ({
+    input: (base) => ({
         ...base,
         color: "inherit",
     }),
-    placeholder: (base: object) => ({
+    placeholder: (base) => ({
         ...base,
         display: "none",
     }),
-    dropdownIndicator: (base: object) => ({
+    dropdownIndicator: (base) => ({
         ...base,
         color: "inherit",
         "&:hover": {
             color: "inherit",
         },
     }),
-    indicatorSeparator: (base: object) => ({
+    indicatorSeparator: (base) => ({
         ...base,
         display: "none",
     }),
 }
 
-export const customStylesForReactSelectForSettingsLight = {
-    control: (base: object) => ({
+export const customStylesForReactSelectForSettingsLight: StylesConfig<{ value: string; label: string }, false> = {
+    control: (base) => ({
         ...base,
         backgroundColor: "#F5F5F5",
         borderColor: "#000000",
@@ -370,14 +367,14 @@ export const customStylesForReactSelectForSettingsLight = {
             borderColor: "#A0A0A0",
         },
     }),
-    menu: (base: object) => ({
+    menu: (base) => ({
         ...base,
         backgroundColor: "#F5F5F5",
         border: "1px solid #D0D0D0",
         borderRadius: "0.5rem",
         marginTop: "4px",
     }),
-    menuList: (base: object) => ({
+    menuList: (base) => ({
         ...base,
         "::-webkit-scrollbar": {
             display: "none",
@@ -385,39 +382,39 @@ export const customStylesForReactSelectForSettingsLight = {
         scrollbarWidth: "none",
         msOverflowStyle: "none",
     }),
-    option: (base: object, { isFocused, isSelected }: Option) => ({
+    option: (base, { isFocused, isSelected }) => ({
         ...base,
         backgroundColor: isSelected
-            ? "#F5F5F5"
+            ? "#000000"
             : isFocused
                 ? "#E5E5E5"
                 : "#F5F5F5",
-        color: isSelected ? "#F5F5F5" : "#000000",
+        color: isSelected ? "#FFFFFF" : "#000000",
         cursor: "pointer",
         "&:active": {
             backgroundColor: "#D0D0D0",
         },
     }),
-    singleValue: (base: object) => ({
+    singleValue: (base) => ({
         ...base,
         color: "#000000",
     }),
-    input: (base: object) => ({
+    input: (base) => ({
         ...base,
         color: "#000000",
     }),
-    placeholder: (base: object) => ({
+    placeholder: (base) => ({
         ...base,
         color: "#999999",
     }),
-    dropdownIndicator: (base: object) => ({
+    dropdownIndicator: (base) => ({
         ...base,
         color: "#666666",
         "&:hover": {
             color: "#000000",
         },
     }),
-    indicatorSeparator: (base: object) => ({
+    indicatorSeparator: (base) => ({
         ...base,
         backgroundColor: "#D0D0D0",
     }),
