@@ -12,9 +12,9 @@ export function SignInMain() {
 
     useEffect(() => {
         if (token) {
-            navigate('/');
+            navigate('/')
         }
-    }, [token, navigate]);
+    }, [token, navigate])
 
     return (
         <div className="min-h-screen bg-(--bg) flex flex-col">
