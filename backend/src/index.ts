@@ -19,3 +19,5 @@ app.use('/api/transactions', transactionsRoutes)
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`)
 })
+
+export default app

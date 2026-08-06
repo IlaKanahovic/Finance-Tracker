@@ -8,7 +8,8 @@
     "server": "json-server db.json --routes routes.json -m ./node_modules/json-server-auth --port 3001",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.4",

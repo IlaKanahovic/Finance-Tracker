@@ -8,7 +8,7 @@ export type GetTransactions = {
     amount: string
 }
 
-const API_BASE = 'https://finance-tracker-backend-production-e1c9.up.railway.app/api'
+const datalink = import.meta.env.VITE_API_URL
 
 export const getTokenToLS = (): string | null => {
     try {
@@ -28,12 +28,12 @@ const handleUnauthorized = () => {
 }
 
 const request = async <T>(
-    endpoint: string,
+    point: string,
     options: RequestInit = {}
 ): Promise<T> => {
     const token = getTokenToLS()
 
-    const res = await fetch(`${API_BASE}${endpoint}`, {
+    const res = await fetch(`${datalink}${point}`, {
         ...options,
         headers: {
             'Content-Type': 'application/json',

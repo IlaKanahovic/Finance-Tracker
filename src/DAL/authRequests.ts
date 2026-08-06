@@ -1,5 +1,7 @@
 import { getTokenToLS } from "./api"
 
+const datalink = import.meta.env.VITE_API_URL
+
 export const registerRequest = async (email: string, userName: string, password: string) => {
     const newClient = {
         email: email,
@@ -7,7 +9,7 @@ export const registerRequest = async (email: string, userName: string, password:
         password: password
     }
 
-    const register = await fetch('https://finance-tracker-backend-production-e1c9.up.railway.app/api/register', {
+    const register = await fetch(`${datalink}/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newClient)
@@ -22,7 +24,7 @@ export const loginRequest = async (email: string, password: string) => {
         password: password
     }
 
-    const login = await fetch('https://finance-tracker-backend-production-e1c9.up.railway.app/api/login', {
+    const login = await fetch(`${datalink}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(checkClient)
@@ -32,7 +34,7 @@ export const loginRequest = async (email: string, password: string) => {
 }
 
 export const editUserName = async (name: string) => {
-    const edit = await fetch(`https://finance-tracker-backend-production-e1c9.up.railway.app/api/user`, {
+    const edit = await fetch(`${datalink}/user`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -45,7 +47,7 @@ export const editUserName = async (name: string) => {
 }
 
 export const editEmail = async (email: string, password: string) => {
-    const edit = await fetch(`https://finance-tracker-backend-production-e1c9.up.railway.app/api/email`, {
+    const edit = await fetch(`${datalink}/email`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -58,7 +60,7 @@ export const editEmail = async (email: string, password: string) => {
 }
 
 export const editPassword = async (currentPassword: string, newPassword: string) => {
-    const edit = await fetch(`https://finance-tracker-backend-production-e1c9.up.railway.app/api/password`, {
+    const edit = await fetch(`${datalink}/password`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -71,7 +73,7 @@ export const editPassword = async (currentPassword: string, newPassword: string)
 }
 
 export const deleteAccount = async () => {
-    const deleteAccount = await fetch(`https://finance-tracker-backend-production-e1c9.up.railway.app/api/accountdelete`, {
+    const deleteAccount = await fetch(`${datalink}/accountdelete`, {
         method: 'DELETE',
         headers: { 'Authorization': 'Bearer ' + getTokenToLS() }
     })

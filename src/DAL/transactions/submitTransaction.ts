@@ -10,6 +10,8 @@ export const handleSubmit = (
     refreshTransactions: () => void
 ) => {
     const { t } = useTranslation()
+    
+    const datalink = import.meta.env.VITE_API_URL
 
     return (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -37,7 +39,7 @@ export const handleSubmit = (
             amount: currencySymbol + indicator() + transactionsValueForm.handleAmountChange
         }
 
-        fetch('https://finance-tracker-backend-production-e1c9.up.railway.app/api/transactions', {
+        fetch(`${datalink}/transactions`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

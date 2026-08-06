@@ -8,8 +8,10 @@ export const handleDeleteTransaction = async (
 ) => {
     const { t } = useTranslation()
 
+    const datalink = import.meta.env.VITE_API_URL
+
     try {
-        const response = await fetch(`https://finance-tracker-backend-production-e1c9.up.railway.app/api/transactions/${idTransaction}`, {
+        const response = await fetch(`${datalink}/transactions/${idTransaction}`, {
             method: 'DELETE',
             headers: { 'Authorization': 'Bearer ' + getTokenToLS() }
         })
