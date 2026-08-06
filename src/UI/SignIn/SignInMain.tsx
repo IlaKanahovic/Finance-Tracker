@@ -2,10 +2,19 @@ import { FaBookOpen } from 'react-icons/fa';
 import { SignInForm } from './SignInForm';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useAuthStore } from '../../store/authStore';
+import { useEffect } from 'react';
 
 export function SignInMain() {
     const navigate = useNavigate()
     const { t } = useTranslation()
+    const token = useAuthStore((state) => state.token)
+
+    useEffect(() => {
+        if (token) {
+            navigate('/')
+        }
+    }, [token, navigate])
 
     return (
         <div className="min-h-screen bg-(--bg) flex flex-col">
