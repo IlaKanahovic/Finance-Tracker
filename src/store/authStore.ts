@@ -63,7 +63,10 @@ export const useAuthStore = create<IAuthState>()(
     persist(authStore, {
         name: 'auth-storage',
         storage: createJSONStorage(() => localStorage),
-        partialize: (state) => ({ user: state.user, token: state.token })
+        partialize: (state) => {
+            console.log('🔵 authStore partialize: user =', state.user, 'token =', state.token)
+            return { user: state.user, token: state.token }
+        }
     })
 )
 
