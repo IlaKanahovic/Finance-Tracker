@@ -7,7 +7,7 @@ import './i18n'
 
 createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter basename="/Finance-Tracker">
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </React.StrictMode>
