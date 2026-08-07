@@ -10,11 +10,8 @@ export function SignInMain() {
     const { t } = useTranslation()
     const token = useAuthStore((state) => state.token)
 
-    console.log('🔵 SignInMain: token =', token)
-
     useEffect(() => {
         if (token) {
-            console.log('🟢 SignInMain: токен есть, редирект на /')
             navigate('/')
         }
     }, [token, navigate])

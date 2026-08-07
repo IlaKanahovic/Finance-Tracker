@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Dashboard } from "./UI/Dashboard/Dashboard";
 import { SettingsMain } from "./UI/Settings/SettingMain";
 import { SignInMain } from "./UI/SignIn/SignInMain";
@@ -10,7 +10,6 @@ import { Suspense, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Toaster } from 'react-hot-toast';
 import { notificationsAnimation, notificationsPosition, notificationsSwitch, targetTheme } from "./store/settingsStore";
-import { useAuthStore } from "./store/authStore";
 
 export function App() {
   useUpdatedTimeAPIRequastCurrency()
@@ -18,8 +17,6 @@ export function App() {
   const notificEnabled = notificationsSwitch()
   const notificPosition = notificationsPosition()
   const notificAnimation = notificationsAnimation()
-  const token = useAuthStore((state) => state.token)
-  const navigate = useNavigate()
 
   const theme = targetTheme()
   useEffect(() => {
@@ -30,19 +27,6 @@ export function App() {
       root.classList.remove('light')
     }
   }, [theme])
-
-  useEffect(() => {
-    const path = window.location.pathname
-    console.log('🔵 App: path =', path, 'token =', token)
-
-    if (!token && path !== '/signIn' && path !== '/signUp') {
-      console.log('🔴 App: нет токена, редирект на /signIn')
-      navigate('/signIn')
-    } else if (token && (path === '/signIn' || path === '/signUp')) {
-      console.log('🟢 App: токен есть, редирект на /')
-      navigate('/')
-    }
-  }, [token, navigate])
 
   return (
     <Suspense fallback={<div>{t('loading')}</div>}>
